@@ -16,17 +16,20 @@
     "sequelize-cli": "^5.5.0"
   },
   "scripts": {
-    "server": "node app.js",
+    "server": "npx nodemon app.js",
     "migrate": "npx sequelize db:migrate",
     "reset": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate",
-    "start": "react-scripts start | npm run server",
+    "start": "node app.js",
+    "react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "run-p server react"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
+  "proxy": "http://localhost:4000",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -38,5 +41,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1",
+    "npm-run-all": "^4.1.5"
   }
 }
