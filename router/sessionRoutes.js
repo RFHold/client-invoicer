@@ -10,6 +10,7 @@ module.exports = function (router) {
                 if (user) {
                     req.sessionUser = user
                     next()
+                    return null
                 } else {
                     req.session.destroy()
                     res.status(401).json({ error: "Session user does not exist" })

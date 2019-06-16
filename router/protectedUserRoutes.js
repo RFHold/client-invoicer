@@ -8,6 +8,7 @@ module.exports = function(router) {
             if (user) {
                 req.user = user
                 next()
+                return null
             } else {
                 res.status(404).json({ error: "User does not exist" })
             }
@@ -39,7 +40,7 @@ module.exports = function(router) {
             firstName: firstName,
             lastName: lastName
         }).then((user) => {
-            res.json({ success: true, result: user, message: `Updated user: "${user.username}"` })
+            res.json({ success: true, result: user.json, message: `Updated user: "${user.username}"` })
         }).catch((error) => {
             res.status(500).json({ error: "Internal server error" })
         })
@@ -49,7 +50,7 @@ module.exports = function(router) {
     })
     router.delete("/api/user", function (req, res) {
         return req.sessionUser.destroy().then((user) => {
-            res.json({ success: true, result: user, message: `Deleted user: "${user.username}"` })
+            res.json({ success: true, result: user.json, message: `Deleted user: "${user.username}"` })
         }).catch((error) => {
             res.status(500).json({ error: "Internal server error" })
         })

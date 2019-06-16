@@ -19,7 +19,6 @@ module.exports = function (router) {
             req.session.userID = user.id
             res.json({ success: true, message: `Logged in as ${user.username}` })
         }).catch(error => {
-            console.log(error);
             res.status(500).json({ error: "Internal server error" })
         })
     })

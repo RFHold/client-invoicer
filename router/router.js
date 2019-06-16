@@ -9,6 +9,7 @@ router.use(express.urlencoded({ extended: true }));
 router.use(express.json());
 
 router.use((req, res, next) => {
+    req.query = () => {}
     if (req.query.q) {
         const q = JSON.parse(req.query.q)
 
@@ -55,5 +56,6 @@ require("./sessionRoutes")(router)
 
 // routes that do require authentication go here
 require("./protectedUserRoutes")(router)
+require("./companyRoutes")(router)
 
 module.exports = router

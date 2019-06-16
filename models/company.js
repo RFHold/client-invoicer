@@ -11,7 +11,17 @@ module.exports = (sequelize, DataTypes) => {
       references: { model: 'Users', key: 'id' },
       onDelete: "CASCADE"
     }
-  }, { paranoid: true });
+  }, {
+    paranoid: true, 
+    getterMethods: {
+      json() {
+        return {
+          id: this.id,
+          name: this.name
+        }
+      }
+    }  
+  });
   Company.associate = function(models) {
     // associations can be defined here
     this.hasMany(models.Role,{
