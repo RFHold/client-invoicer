@@ -10,10 +10,9 @@ router.use(express.json());
 
 router.use((req, res, next) => {
     if (req.query.q) {
-        console.log(req.query.q);
         const q = JSON.parse(req.query.q)
 
-        const query = (fields) => {
+        const query = ({ fields, models }) => {
 
             function pass(obj) {
                 const finalObject = {}
@@ -39,8 +38,7 @@ router.use((req, res, next) => {
                 return finalObject
             }
 
-            console.log({ where: pass(q) });
-            return {where: pass(q)}
+            return { where: pass(q), offset: req.query.offset || 0, limit: (req.query.limit > 500) ? 500 : req.query.limit || 500}
         }
 
         req.query = query
