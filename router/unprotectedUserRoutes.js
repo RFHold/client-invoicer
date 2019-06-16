@@ -6,7 +6,7 @@ module.exports = function (router) {
     router.post("/api/users", function (req, res) {
         const { username, password, email, address, phone, firstName, lastName } = req.body
 
-        db.User.create({
+        return db.User.create({
             username: username,
             password: password,
             email: email,

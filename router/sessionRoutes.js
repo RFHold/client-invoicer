@@ -6,7 +6,7 @@ const Op = Sequelize.Op;
 module.exports = function (router) {
     function authenticate(req, res, next) {
         if (req.session.userID) {
-            db.User.findByPk(req.session.userID).then((user) => {
+            return db.User.findByPk(req.session.userID).then((user) => {
                 if (user) {
                     req.sessionUser = user
                     next()
@@ -18,7 +18,7 @@ module.exports = function (router) {
                 res.status(500).json({ error: "Internal server error" })
             })
         }else{
-            res.status(401).json({ error: "Not logged in" })
+            return res.status(401).json({ error: "Not logged in" })
         }
     }
     
@@ -27,7 +27,7 @@ module.exports = function (router) {
 
         if (!login || !password) return res.status(400).json({ success: false, error: "Input missing" })
 
-        db.User.findOne({
+        return db.User.findOne({
             where: { [Op.or]: [{ username: login }, { email: login }] }
         }).then((user) => {
             if (user && bcrypt.compareSync(password, user.password)) {
@@ -44,10 +44,10 @@ module.exports = function (router) {
     router.all("/api/*", authenticate)
 
     router.get("/api/session", function (req, res) {
-        res.json({ success: true, result: req.sessionUser.json, message: `Logged in as: ${req.sessionUser.username}` })
+        return res.json({ success: true, result: req.sessionUser.json, message: `Logged in as: ${req.sessionUser.username}` })
     })
     router.delete("/api/session", function (req, res) {
         req.session.destroy()
-        res.json({ success: true, message: `Session destroyed` })
+        return res.json({ success: true, message: `Session destroyed` })
     })
 }
