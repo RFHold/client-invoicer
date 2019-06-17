@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     project: {
       type: DataTypes.INTEGER,
     },
-    goal: {
+    task: {
       type: DataTypes.INTEGER,
     },
     startDate: {
@@ -83,8 +83,8 @@ module.exports = (sequelize, DataTypes) => {
       constraints: true,
       onDelete: "CASCADE"
     });
-    this.belongsTo(models.Goal, {
-      foreignKey: 'goal',
+    this.belongsTo(models.Task, {
+      foreignKey: 'task',
       constraints: true,
       onDelete: "CASCADE"
     });

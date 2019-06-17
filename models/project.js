@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
       constraints: true,
       onDelete: "CASCADE"
     });
-    this.hasMany(models.Goal, {
+    this.hasMany(models.Task, {
       foreignKey: 'goal',
       constraints: true,
       onDelete: "CASCADE"
