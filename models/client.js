@@ -47,6 +47,14 @@ module.exports = (sequelize, DataTypes) => {
       constraints: true,
       onDelete: "CASCADE"
     });
+    this.belongsToMany(models.User, {
+      through: {
+        model: models.CompanyClient,
+        unique: false
+      },
+      foreignKey: 'client',
+      as: "ClientUsers"
+    });
   };
   return Client;
 };

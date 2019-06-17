@@ -79,6 +79,14 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'user',
       constraints: true
     });
+    this.belongsToMany(models.Client, {
+      through: {
+        model: models.CompanyClient,
+        unique: false
+      },
+      foreignKey: 'user',
+      as: "UserClients"
+    });
   };
   return User;
 };
