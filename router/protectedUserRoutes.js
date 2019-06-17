@@ -31,17 +31,23 @@ module.exports = function(router) {
     router.patch("/api/user", function (req, res) {
         const { username, password, email, address, phone, firstName, lastName } = req.body
 
-        return req.sessionUser.update({
-            username: username,
-            password: password,
-            email: email,
-            address: address,
-            phone: phone,
-            firstName: firstName,
-            lastName: lastName
-        }).then((user) => {
-            res.json({ success: true, result: user.json, message: `Updated user: "${user.username}"` })
-        }).catch((error) => {
+        return db.sequelize.transaction().then((t) => {
+            return req.sessionUser.update({
+                username: username,
+                password: password,
+                email: email,
+                address: address,
+                phone: phone,
+                firstName: firstName,
+                lastName: lastName
+            }, { transaction: t }).then((user) => {
+                t.commit()
+                return res.json({ success: true, result: user.json, message: `Updated user: "${user.username}"` })
+            }).catch((error) => {
+                t.rollback()
+                return res.status(500).json({ error: "Internal server error" })
+            })
+        }).catch(error => {
             res.status(500).json({ error: "Internal server error" })
         })
     })
@@ -49,9 +55,15 @@ module.exports = function(router) {
         res.json({ success: true, result: req.user.json, message: `Found user: "${req.user.username}"` })
     })
     router.delete("/api/user", function (req, res) {
-        return req.sessionUser.destroy().then((user) => {
-            res.json({ success: true, result: user.json, message: `Deleted user: "${user.username}"` })
-        }).catch((error) => {
+        return db.sequelize.transaction().then((t) => {
+            return req.sessionUser.destroy({ transaction: t }).then((user) => {
+                t.commit()
+                return res.json({ success: true, result: user.json, message: `Deleted user: "${user.username}"` })
+            }).catch((error) => {
+                t.rollback()
+                return res.status(500).json({ error: "Internal server error" })
+            })
+        }).catch(error => {
             res.status(500).json({ error: "Internal server error" })
         })
     })

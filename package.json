@@ -19,7 +19,7 @@
   "scripts": {
     "server": "npx nodemon app.js",
     "migrate": "npx sequelize db:migrate",
-    "reset": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate",
+    "reset": "npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate",
     "start": "node app.js",
     "react": "react-scripts start",
     "build": "react-scripts build",
