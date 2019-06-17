@@ -54,7 +54,7 @@ module.exports = (sequelize, DataTypes) => {
       constraints: true
     });
     this.belongsTo(models.CompanyUser, {
-      foreignKey: 'employee',
+      foreignKey: 'member',
       constraints: true,
       onDelete: "CASCADE"
     });
