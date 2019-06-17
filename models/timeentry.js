@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER,
     },
-    employee: {
+    member: {
       allowNull: false,
       type: DataTypes.INTEGER,
     },
@@ -53,7 +53,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'user',
       constraints: true
     });
-    this.belongsTo(models.CompanyMember, {
+    this.belongsTo(models.CompanyUser, {
       foreignKey: 'employee',
       constraints: true,
       onDelete: "CASCADE"

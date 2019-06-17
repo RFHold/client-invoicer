@@ -43,9 +43,6 @@ module.exports = function(router) {
             }, { transaction: t }).then((user) => {
                 t.commit()
                 return res.json({ success: true, result: user.json, message: `Updated user: "${user.username}"` })
-            }).catch((error) => {
-                t.rollback()
-                return res.status(500).json({ error: "Internal server error" })
             })
         }).catch(error => {
             res.status(500).json({ error: "Internal server error" })
@@ -59,9 +56,6 @@ module.exports = function(router) {
             return req.sessionUser.destroy({ transaction: t }).then((user) => {
                 t.commit()
                 return res.json({ success: true, result: user.json, message: `Deleted user: "${user.username}"` })
-            }).catch((error) => {
-                t.rollback()
-                return res.status(500).json({ error: "Internal server error" })
             })
         }).catch(error => {
             res.status(500).json({ error: "Internal server error" })

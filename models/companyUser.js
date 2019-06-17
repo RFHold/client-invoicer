@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const CompanyMember = sequelize.define('CompanyMember', {
+  const CompanyMember = sequelize.define('CompanyUser', {
     user: {
       allowNull: false,
       type: DataTypes.INTEGER
@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
       constraints: true
     });
     this.hasMany(models.TimeEntry,{
-      foreignKey:'employee',
+      foreignKey:'member',
       constraints: true,
       onDelete: "CASCADE"
     });

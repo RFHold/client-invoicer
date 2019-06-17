@@ -37,11 +37,6 @@ module.exports = (sequelize, DataTypes) => {
       constraints: true,
       onDelete: "CASCADE"
     });
-    this.hasMany(models.CompanyClient, {
-      foreignKey: 'client',
-      constraints: true,
-      onDelete: "CASCADE"
-    });
     this.hasMany(models.Token, {
       foreignKey: 'client',
       constraints: true,
@@ -49,10 +44,11 @@ module.exports = (sequelize, DataTypes) => {
     });
     this.belongsToMany(models.User, {
       through: {
-        model: models.CompanyClient,
+        model: models.ClientUser,
         unique: false
       },
       foreignKey: 'client',
+      otherKey: 'user',
       as: "ClientUsers"
     });
   };

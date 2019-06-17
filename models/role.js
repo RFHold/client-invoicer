@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }, { paranoid: true });
   Role.associate = function(models) {
     // associations can be defined here
-    this.hasMany(models.CompanyMember,{
+    this.hasMany(models.CompanyUser,{
       foreignKey: 'role',
       constraints: true
     });

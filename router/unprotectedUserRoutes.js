@@ -19,9 +19,6 @@ module.exports = function (router) {
                 req.session.userID = user.id
                 t.commit()
                 return res.json({ success: true, message: `Logged in as ${user.username}` })
-            }).catch(error => {
-                t.rollback()
-                return res.status(500).json({ error: "Internal server error" })
             })
         }).catch(error => {
             res.status(500).json({ error: "Internal server error" })

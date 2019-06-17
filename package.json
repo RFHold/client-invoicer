@@ -17,7 +17,7 @@
     "sequelize-cli": "^5.5.0"
   },
   "scripts": {
-    "server": "npx nodemon app.js",
+    "server": "cross-env PORT=3000 npx nodemon app.js",
     "migrate": "npx sequelize db:migrate",
     "reset": "npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate",
     "start": "node app.js",
@@ -44,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "nodemon": "^1.19.1",
     "npm-run-all": "^4.1.5"
   }

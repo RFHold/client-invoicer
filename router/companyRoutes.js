@@ -4,17 +4,11 @@ const Op = Sequelize.Op;
 
 module.exports = function (router) {
     router.param('company_id', function (req, res, next, id) {
-        return db.Company.findOne({
-            where: {
-                id: id
-            },
-            include: [{
-                model: db.CompanyMember,
-                where: { user: req.sessionUser.id }
-            }]
-        }).then((company) => {
-            if (company) {
-                req.company = company
+        return req.sessionUser.getUserCompanies({ 
+            where: { id: id } 
+        }).then((companies) => {
+            if (companies.length === 1) {
+                req.company = companies[0]
                 next()
                 return null
             } else {
@@ -48,18 +42,15 @@ module.exports = function (router) {
                     permissions: 99,
                     company: company.id
                 }, { transaction: t }).then((role) => {
-                    return db.CompanyMember.create({
+                    return db.CompanyUser.create({
                         role: role.id,
                         user: req.sessionUser.id,
                         company: company.id
-                    }, { transaction: t }).then((companyMember) => {
+                    }, { transaction: t }).then((companyUser) => {
                         t.commit()
                         return res.json({ success: true, message: `Created company: ${company.name}` })
                     })
                 })
-            }).catch(error => {
-                t.rollback()
-                return res.status(500).json({ error: "Internal server error" })
             })
         }).catch(error => {
             res.status(500).json({ error: "Internal server error" })
@@ -73,9 +64,6 @@ module.exports = function (router) {
             }, { transaction: t }).then((company) => {
                 t.commit()
                 return res.json({ success: true, result: company.json, message: `Updated company: "${company.name}"` })
-            }).catch((error) => {
-                t.rollback()
-                return res.status(500).json({ error: "Internal server error" })
             })
         }).catch(error => {
             res.status(500).json({ error: "Internal server error" })
@@ -95,10 +83,7 @@ module.exports = function (router) {
             }).then((company) => {
                 if (!company) return null
                 t.commit()
-                res.json({ success: true, result: company.json, message: `Deleted company: "${company.name}"` })
-            }).catch((error) => {
-                t.rollback()
-                res.status(500).json({ error: "Internal server error" })
+                return res.json({ success: true, result: company.json, message: `Deleted company: "${company.name}"` })
             })
         }).catch(error => {
             res.status(500).json({ error: "Internal server error" })
