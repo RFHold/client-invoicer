@@ -6,7 +6,7 @@ class App extends React.Component {
     return (
       <Grid fluid>
         <Row>
-          <Col xs={6} md={3}>
+          <Col xs={12}>
             Hello, world!
           </Col>
         </Row>
