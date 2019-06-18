@@ -37,10 +37,9 @@ module.exports = function (router) {
                 name: name,
                 user: req.sessionUser.id
             }, { transaction: t }).then((company) => {
-                return db.Role.create({
+                return company.createRole({
                     name: "Member",
-                    permissions: 99,
-                    company: company.id
+                    permissions: 99
                 }, { transaction: t }).then((role) => {
                     return db.CompanyUser.create({
                         role: role.id,
