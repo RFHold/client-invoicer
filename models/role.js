@@ -12,10 +12,21 @@ module.exports = (sequelize, DataTypes) => {
     permissions: {
       type: DataTypes.INTEGER
     }
-  }, { paranoid: true });
+  }, {
+    paranoid: true,
+    getterMethods: {
+      json() {
+        return {
+          id: this.id,
+          name: this.name,
+          permissions: this.permissions
+        }
+      }
+    }
+  });
   Role.associate = function(models) {
     // associations can be defined here
-    this.hasMany(models.CompanyMember,{
+    this.hasMany(models.CompanyUser,{
       foreignKey: 'role',
       constraints: true
     });

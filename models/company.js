@@ -11,7 +11,17 @@ module.exports = (sequelize, DataTypes) => {
       references: { model: 'Users', key: 'id' },
       onDelete: "CASCADE"
     }
-  }, { paranoid: true });
+  }, {
+    paranoid: true, 
+    getterMethods: {
+      json() {
+        return {
+          id: this.id,
+          name: this.name
+        }
+      }
+    }  
+  });
   Company.associate = function(models) {
     // associations can be defined here
     this.hasMany(models.Role,{
@@ -19,12 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       constraints:true,
       onDelete:"CASCADE"
     });
-    this.hasMany(models.CompanyClient,{
-      foreignKey:'company',
-      constraints:true,
-      onDelete:"CASCADE"
-    });
-    this.hasMany(models.CompanyMember,{
+    this.hasMany(models.ClientUser,{
       foreignKey:'company',
       constraints:true,
       onDelete:"CASCADE"
@@ -44,10 +49,15 @@ module.exports = (sequelize, DataTypes) => {
       constraints:true,
       onDelete:"CASCADE"
     });
-    this.hasMany(models.Token,{
-      foreignKey:'company',
-      constraints:true,
-      onDelete:"CASCADE"
+    this.hasMany(models.Token, {
+      foreignKey: 'company',
+      constraints: true,
+      onDelete: "CASCADE"
+    });
+    this.hasMany(models.Client, {
+      foreignKey: 'company',
+      constraints: true,
+      onDelete: "CASCADE"
     });
     this.belongsTo(models.User, {
       foreignKey: 'user',
@@ -58,12 +68,20 @@ module.exports = (sequelize, DataTypes) => {
       constraints: true,
       onDelete: "CASCADE"
     });
-    this.hasMany(models.Goal, {
+    this.hasMany(models.Task, {
       foreignKey: 'company',
       constraints: true,
       onDelete: "CASCADE"
     });
-
+    this.belongsToMany(models.User, {
+      through: {
+        model: models.CompanyUser,
+        unique: false
+      },
+      foreignKey: 'company',
+      otherKey: 'user',
+      as: "CompanyUsers"
+    });
   };
   return Company;
 };

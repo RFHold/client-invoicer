@@ -9,7 +9,17 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER
     }
-  }, { paranoid: true });
+  }, {
+    paranoid: true,
+      getterMethods: {
+        json() {
+          return {
+            id: this.id,
+            name: this.name
+          }
+        }
+      }  
+  });
   Client.associate = function(models) {
     // associations can be defined here
     this.belongsTo(models.Company, {
@@ -27,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
       constraints: true,
       onDelete: "CASCADE"
     });
-    this.hasMany(models.Goal, {
+    this.hasMany(models.Task, {
       foreignKey: 'client',
       constraints: true,
       onDelete: "CASCADE"
@@ -37,15 +47,19 @@ module.exports = (sequelize, DataTypes) => {
       constraints: true,
       onDelete: "CASCADE"
     });
-    this.hasMany(models.CompanyClient, {
-      foreignKey: 'client',
-      constraints: true,
-      onDelete: "CASCADE"
-    });
     this.hasMany(models.Token, {
       foreignKey: 'client',
       constraints: true,
       onDelete: "CASCADE"
+    });
+    this.belongsToMany(models.User, {
+      through: {
+        model: models.ClientUser,
+        unique: false
+      },
+      foreignKey: 'client',
+      otherKey: 'user',
+      as: "ClientUsers"
     });
   };
   return Client;

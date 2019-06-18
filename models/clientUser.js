@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const CompanyClient = sequelize.define('CompanyClient', {
+  const CompanyClient = sequelize.define('ClientUser', {
     user: {
       allowNull: false,
       type: DataTypes.INTEGER
