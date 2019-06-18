@@ -57,5 +57,7 @@ require("./sessionRoutes")(router)
 // routes that do require authentication go here
 require("./protectedUserRoutes")(router)
 require("./companyRoutes")(router)
+require("./clientRoutes")(router)
+require("./projectRoutes")(router)
 
 module.exports = router
