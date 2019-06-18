@@ -14,7 +14,8 @@
     "react-flexbox-grid": "^2.1.2",
     "react-scripts": "3.0.1",
     "sequelize": "^5.8.9",
-    "sequelize-cli": "^5.5.0"
+    "sequelize-cli": "^5.5.0",
+    "webpack": "^4.34.0"
   },
   "scripts": {
     "server": "npx nodemon app.js",
