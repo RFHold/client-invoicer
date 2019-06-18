@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Goal = sequelize.define('Goal', {
+  const Task = sequelize.define('Task', {
     company: {
       type: DataTypes.INTEGER
     },
@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     startDate: {
       type: DataTypes.DATE
     },
-    endDate: {
+    dueDate: {
       type: DataTypes.DATE
     },
     name: {
@@ -22,8 +22,23 @@ module.exports = (sequelize, DataTypes) => {
     description: {
       type: DataTypes.STRING
     }
-  }, { paranoid: true });
-  Goal.associate = function(models) {
+  }, {
+    paranoid: true,
+      getterMethods: {
+        json() {
+          return {
+            id: this.id,
+            name: this.name,
+            description: this.description,
+            startDate: this.startDate,
+            dueDate: this.dueDate,
+            project: this.project,
+            client: this.client
+          }
+        }
+      }
+    });
+  Task.associate = function(models) {
     // associations can be defined here
     this.belongsTo(models.Company, {
       foreignKey: 'company',
@@ -41,10 +56,10 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE"
     });
     this.hasMany(models.TimeEntry, {
-      foreignKey: 'goal',
+      foreignKey: 'task',
       constraints: true,
       onDelete: "CASCADE"
     });
   };
-  return Goal;
+  return Task;
 };

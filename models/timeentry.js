@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER,
     },
-    employee: {
+    member: {
       allowNull: false,
       type: DataTypes.INTEGER,
     },
@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     project: {
       type: DataTypes.INTEGER,
     },
-    goal: {
+    task: {
       type: DataTypes.INTEGER,
     },
     startDate: {
@@ -53,8 +53,8 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'user',
       constraints: true
     });
-    this.belongsTo(models.CompanyMember, {
-      foreignKey: 'employee',
+    this.belongsTo(models.CompanyUser, {
+      foreignKey: 'member',
       constraints: true,
       onDelete: "CASCADE"
     });
@@ -83,8 +83,8 @@ module.exports = (sequelize, DataTypes) => {
       constraints: true,
       onDelete: "CASCADE"
     });
-    this.belongsTo(models.Goal, {
-      foreignKey: 'goal',
+    this.belongsTo(models.Task, {
+      foreignKey: 'task',
       constraints: true,
       onDelete: "CASCADE"
     });
