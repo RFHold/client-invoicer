@@ -60,5 +60,6 @@ require("./companyRoutes")(router)
 require("./clientRoutes")(router)
 require("./projectRoutes")(router)
 require("./taskRoutes")(router)
+require("./serviceRoutes")(router)
 
 module.exports = router

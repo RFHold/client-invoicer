@@ -13,7 +13,18 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.FLOAT
     }
-  }, { paranoid: true });
+  }, {
+    paranoid: true,
+    getterMethods: {
+      json() {
+        return {
+          id: this.id,
+          name: this.name,
+          rate: this.rate
+        }
+      }
+    }
+  });
   Service.associate = function(models) {
     // associations can be defined here
     this.belongsTo(models.Company, {
