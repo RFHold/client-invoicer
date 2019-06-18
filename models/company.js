@@ -49,10 +49,15 @@ module.exports = (sequelize, DataTypes) => {
       constraints:true,
       onDelete:"CASCADE"
     });
-    this.hasMany(models.Token,{
-      foreignKey:'company',
-      constraints:true,
-      onDelete:"CASCADE"
+    this.hasMany(models.Token, {
+      foreignKey: 'company',
+      constraints: true,
+      onDelete: "CASCADE"
+    });
+    this.hasMany(models.Client, {
+      foreignKey: 'company',
+      constraints: true,
+      onDelete: "CASCADE"
     });
     this.belongsTo(models.User, {
       foreignKey: 'user',

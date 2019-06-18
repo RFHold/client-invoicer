@@ -9,7 +9,17 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER
     }
-  }, { paranoid: true });
+  }, {
+    paranoid: true,
+      getterMethods: {
+        json() {
+          return {
+            id: this.id,
+            name: this.name
+          }
+        }
+      }  
+  });
   Client.associate = function(models) {
     // associations can be defined here
     this.belongsTo(models.Company, {
