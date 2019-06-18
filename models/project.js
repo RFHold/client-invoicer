@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.DATE
     },
-    endDate: {
+    dueDate: {
       allowNull: false,
       type: DataTypes.DATE
     },
@@ -25,7 +25,21 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING
     }
-  }, { paranoid: true });
+  }, {
+    paranoid: true,
+      getterMethods: {
+        json() {
+          return {
+            id: this.id,
+            name: this.name,
+            description: this.description,
+            startDate: this.startDate,
+            dueDate: this.dueDate,
+            client: this.client
+          }
+        }
+      }
+    });
   Project.associate = function(models) {
     // associations can be defined here
     this.belongsTo(models.Company, {

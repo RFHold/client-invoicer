@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     startDate: {
       type: DataTypes.DATE
     },
-    endDate: {
+    dueDate: {
       type: DataTypes.DATE
     },
     name: {
