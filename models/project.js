@@ -58,7 +58,7 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE"
     });
     this.hasMany(models.Task, {
-      foreignKey: 'goal',
+      foreignKey: 'project',
       constraints: true,
       onDelete: "CASCADE"
     });

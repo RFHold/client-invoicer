@@ -22,7 +22,22 @@ module.exports = (sequelize, DataTypes) => {
     description: {
       type: DataTypes.STRING
     }
-  }, { paranoid: true });
+  }, {
+    paranoid: true,
+      getterMethods: {
+        json() {
+          return {
+            id: this.id,
+            name: this.name,
+            description: this.description,
+            startDate: this.startDate,
+            dueDate: this.dueDate,
+            project: this.project,
+            client: this.client
+          }
+        }
+      }
+    });
   Task.associate = function(models) {
     // associations can be defined here
     this.belongsTo(models.Company, {

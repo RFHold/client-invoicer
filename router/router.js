@@ -59,5 +59,6 @@ require("./protectedUserRoutes")(router)
 require("./companyRoutes")(router)
 require("./clientRoutes")(router)
 require("./projectRoutes")(router)
+require("./taskRoutes")(router)
 
 module.exports = router

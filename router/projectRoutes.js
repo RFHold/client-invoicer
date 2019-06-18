@@ -38,7 +38,7 @@ module.exports = function (router) {
                 description: description,
                 startDate: startDate,
                 dueDate: dueDate,
-                client: client,
+                client: client
             }, { transaction: t }).then((project) => {
                 t.commit()
                 return res.json({ success: true, message: `Created project: ${project.name}` })
@@ -55,7 +55,7 @@ module.exports = function (router) {
                 description: description,
                 startDate: startDate,
                 dueDate: dueDate,
-                client: client,
+                client: client
             }, { transaction: t }).then((project) => {
                 t.commit()
                 return res.json({ success: true, result: project.json, message: `Updated project: "${project.name}"` })
