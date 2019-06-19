@@ -1,24 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, PureComponent as Component } from "react";
 
-function Form(props) {
+class Form extends Component(props) {
 
-    const state = { }
+    constructor(props) {
+        super(props);
 
-    for (const [key, input] of Object.entries(props.inputs)) {
-        const [variable, setVariable] = useState(input.value || input || "")
-        state[key] = { get: variable, set: setVariable}
+        this.state = {
+            method: props.method,
+            action: props.action
+        };
+    }
+    componentDidMount() {
     }
 
-    const handleFormSubmit = event => {
-        event.preventDefault();
+    componentWillUnmount() {
+    }
 
-    };
-
-    return (
-        <div>
-            {props.children}
-        </div>
-    )
+    render(){
+        return (
+            <form ref={(el) => this.form = el} method={this.state.method} action={this.state.action}>
+                {props.children}
+            </form>
+        )
+    }
 }
+
+Form.defaultProps = {
+    method: "POST"
+};
 
 export default Form;
