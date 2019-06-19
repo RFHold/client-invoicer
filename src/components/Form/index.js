@@ -19,7 +19,6 @@ class Form extends Component {
 
     handleInputChange(event) {
         const input = event.target
-        console.log(input.value);
         const formData = this.state.formData
 
         formData[input.name] = input.value
@@ -67,8 +66,8 @@ class Form extends Component {
 
     render(){
         return (
-            <form ref={(el) => this.$form = el} method={this.state.method} action={this.state.action} onSubmit={(ev) => {this.handleSubmit(ev)}}>
-                {this.children}
+            <form ref={(el) => this.$form = el} method={this.props.method} action={this.props.action} onSubmit={(ev) => {this.handleSubmit(ev)}}>
+                {this.props.children}
             </form>
         )
     }

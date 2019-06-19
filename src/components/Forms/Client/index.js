@@ -1,27 +1,24 @@
 import React, { PureComponent as Component } from "react";
 import Form from '../../Form';
+import { CompanyContext } from "../../Contexts"
 
-class Client extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            company: props.company
-        };
-    }
-
+export class ClientForm extends Component {
     render() {
         return (
-            <Form method="POST" action={`/api/company/${this.state.company}/clients`}>
-                <h1>Create Client</h1>
-                <div>
-                    <label htmlFor="clientFormNameInput">Name</label>
-                    <input id="clientFormNameInput" name="name" type="text" />
-                </div>
-                <button type="submit">Create Client</button>
-            </Form>
+            <CompanyContext.Consumer>
+                {
+                    ctx => (
+                        <Form method="POST" action={ctx.routes.clientsRoute}>
+                            <h1>Create Client</h1>
+                            <div>
+                                <label htmlFor="clientFormNameInput">Name</label>
+                                <input id="clientFormNameInput" name="name" type="text" />
+                            </div>
+                            <button type="submit">Create Client</button>
+                        </Form>
+                    )
+                }
+            </CompanyContext.Consumer>
         );
     }
 }
-
-export default Client;
