@@ -1,16 +1,37 @@
-import React, { useState, PureComponent as Component } from "react";
+import React, { PureComponent as Component } from "react";
 
-class Form extends Component(props) {
+class Form extends Component {
 
     constructor(props) {
         super(props);
 
+        this.children = props.children
+
         this.state = {
             method: props.method,
-            action: props.action
+            action: props.action,
+            formData: {}
         };
     }
+
+    handleInputChange(event) {
+        const input = event.target
+        console.log(input.value);
+        const formData = this.state.formData
+
+        formData[input.name] = input.value
+
+        this.setState({ formData: formData })
+    }
+
     componentDidMount() {
+        this.parseForm()
+    }
+
+    componentDidUpdate(){
+        for (const input of this.$form.querySelectorAll("input")) {
+            input.value = this.state.formData[input.name]
+        }
     }
 
     componentWillUnmount() {
@@ -18,10 +39,21 @@ class Form extends Component(props) {
 
     render(){
         return (
-            <form ref={(el) => this.form = el} method={this.state.method} action={this.state.action}>
-                {props.children}
+            <form ref={(el) => this.$form = el} method={this.state.method} action={this.state.action}>
+                {this.children}
             </form>
         )
+    }
+
+    parseForm(){
+        const formData = {}
+
+        for (const input of this.$form.querySelectorAll("input")) {
+            input.onchange = (ev) => { this.handleInputChange(ev) }
+            formData[input.name] = input.value
+        }
+
+        this.setState({ formData: formData })
     }
 }
 
