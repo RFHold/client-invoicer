@@ -6,11 +6,11 @@ import "./style.css";
 function GlobalHeader() {
 	return (
 		<Grid fluid id="global-header-container">
-			<Row>
-				<Col xs={6}>
-					<Link to="/" id="brand">App Name</Link>
+			<Row id="global-header-row">
+				<Col xs={6} id="brand-col">
+					<Link to="/dashboard" id="brand">App Name</Link>
 				</Col>
-				<Col xs={6}>
+				<Col xs={6} id="links-col">
 					<Row end="xs" id="header-links">
 						<div id="timers">
 							Timers

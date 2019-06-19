@@ -4,15 +4,9 @@ import { Link } from "react-router-dom";
 import "./style.css";
 
 function PageContainer() {
-	return (
-		<Grid fluid id="page-container">
-			<Row>
-				<Col xs={12}>
-					<p>Hello World</p>
-				</Col>
-			</Row>
-		</Grid>
-	);
+	return null;
 }
 
 export default PageContainer;
+
+// 'Null' needs to be changed to whichever page component is clicked

@@ -6,29 +6,29 @@ import "./style.css";
 function Navbar() {
     return (
         <Grid fluid id="navbar-container">
-            <Row>
+            <Row id="dashboard-row">
                 <Col xs={12}>
-                    <Link to="/" id="dashboard">Dashboard</Link>
+                    <Link to="/dashboard" id="dashboard">Dashboard</Link>
                 </Col>
             </Row>
-            <Row>
+            <Row id="projects-row">
                 <Col xs={12}>
-                    <Link to="/" id="projects">Projects</Link>
+                    <Link to="/projects" id="projects">Projects</Link>
                 </Col>
             </Row>
-            <Row>
+            <Row id="clients-row">
                 <Col xs={12}>
-                    <Link to="/" id="projects">Clients</Link>
+                    <Link to="/clients" id="clients">Clients</Link>
                 </Col>
             </Row>
-            <Row>
+            <Row id="invoices-row">
                 <Col xs={12}>
-                    <Link to="/" id="projects">Invoices</Link>
+                    <Link to="/invoices" id="invoices">Invoices</Link>
                 </Col>
             </Row>
-            <Row>
+            <Row id="reports-row">
                 <Col xs={12}>
-                    <Link to="/" id="projects">Reports</Link>
+                    <Link to="/reports" id="reports">Reports</Link>
                 </Col>
             </Row>
         </Grid>
