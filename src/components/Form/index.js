@@ -42,7 +42,14 @@ class Form extends Component {
     }
 
     componentDidMount() {
-        this.parseForm()
+        const formData = {}
+
+        for (const input of this.$form.querySelectorAll("input")) {
+            input.oninput = (ev) => { this.handleInputChange(ev) }
+            formData[input.name] = input.value
+        }
+
+        this.setState({ formData: formData })
     }
 
     componentDidUpdate(){
@@ -60,17 +67,6 @@ class Form extends Component {
                 {this.children}
             </form>
         )
-    }
-
-    parseForm(){
-        const formData = {}
-
-        for (const input of this.$form.querySelectorAll("input")) {
-            input.onchange = (ev) => { this.handleInputChange(ev) }
-            formData[input.name] = input.value
-        }
-
-        this.setState({ formData: formData })
     }
 }
 
