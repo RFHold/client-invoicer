@@ -19,6 +19,7 @@ class App extends React.Component {
                 <label htmlFor="sessionFormPasswordInput">Password</label>
                 <input id="sessionFormPasswordInput" name="password" type="password" />
               </div>
+              <button type="submit">Login</button>
             </Form>
           </Col>
         </Row>

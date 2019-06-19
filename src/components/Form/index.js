@@ -1,4 +1,5 @@
 import React, { PureComponent as Component } from "react";
+import axios from "axios";
 
 class Form extends Component {
 
@@ -6,6 +7,8 @@ class Form extends Component {
         super(props);
 
         this.children = props.children
+        this.onSuccess = props.onSuccess
+        this.onError = props.onError
 
         this.state = {
             method: props.method,
@@ -24,6 +27,20 @@ class Form extends Component {
         this.setState({ formData: formData })
     }
 
+    handleSubmit(event) {
+        event.preventDefault()
+
+        axios({
+            method: this.state.method,
+            url: this.state.action,
+            data: this.state.formData
+        }).then((response) => {
+            this.onSuccess(response)
+        }).catch((error) => {
+            this.onError(error)
+        })
+    }
+
     componentDidMount() {
         this.parseForm()
     }
@@ -39,7 +56,7 @@ class Form extends Component {
 
     render(){
         return (
-            <form ref={(el) => this.$form = el} method={this.state.method} action={this.state.action}>
+            <form ref={(el) => this.$form = el} method={this.state.method} action={this.state.action} onSubmit={(ev) => {this.handleSubmit(ev)}}>
                 {this.children}
             </form>
         )
@@ -58,7 +75,9 @@ class Form extends Component {
 }
 
 Form.defaultProps = {
-    method: "POST"
+    method: "POST",
+    onSuccess: () => { },
+    onError: () => { }
 };
 
 export default Form;
