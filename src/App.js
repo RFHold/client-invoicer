@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent as Component} from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import { Grid, Row, Col } from 'react-flexbox-grid';
@@ -11,9 +11,27 @@ import Clients from "./components/PageContainer/Dashboard";
 import Invoices from "./components/PageContainer/Dashboard";
 import Reports from "./components/PageContainer/Dashboard";
 
-function App() {
-  return (
-    <Router>
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      company: 1
+    };
+  }
+
+  componentDidMount() {
+  }
+
+  componentDidUpdate() {
+  }
+
+  componentWillUnmount() {
+  }
+
+  render() {
+    return (
+      <Router>
       <div>
         <GlobalHeader />
         <Grid fluid id="app-container">
@@ -34,7 +52,8 @@ function App() {
         </Grid>
       </div>
     </Router>
-  );
-};
+    );
+  }
+}
 
 export default App;
