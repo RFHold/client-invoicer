@@ -1,16 +1,17 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import GlobalHeader from "./components/GlobalHeader";
+import Navbar from "./components/Navbar";
 
 class App extends React.Component {
   render() {
     return (
-      <Grid fluid>
-        <Row>
-          <Col xs={12}>
-            Hello, world!
-          </Col>
-        </Row>
-      </Grid>
+      <Router>
+        <div>
+          <GlobalHeader />
+          <Navbar />
+        </div>
+      </Router>
     );
   }
 }
