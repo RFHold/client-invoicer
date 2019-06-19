@@ -13,7 +13,7 @@ class Form extends Component {
         this.state = {
             method: props.method,
             action: props.action,
-            formData: {}
+            formData: props.formData || {}
         };
     }
 
@@ -46,7 +46,11 @@ class Form extends Component {
 
         for (const input of this.$form.querySelectorAll("input")) {
             input.oninput = (ev) => { this.handleInputChange(ev) }
-            formData[input.name] = input.value
+            if (formData[input.name]) {
+                input.value = formData[input.name]
+            }else{
+                formData[input.name] = input.value
+            }
         }
 
         this.setState({ formData: formData })
