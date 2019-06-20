@@ -16,6 +16,11 @@ function Navbar() {
                     <Link to="/projects" id="projects">Projects</Link>
                 </Col>
             </Row>
+            <Row id="projects-row">
+                <Col xs={12}>
+                    <Link to="/tasks" id="tasks">Tasks</Link>
+                </Col>
+            </Row>
             <Row id="clients-row">
                 <Col xs={12}>
                     <Link to="/clients" id="clients">Clients</Link>
