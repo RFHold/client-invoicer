@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "node app.js",
-    "start:dev": "run-p server react",
+    "start:dev": "run-p start:server start:react",
     "start:react": "react-scripts start",
     "start:server": "npx nodemon app.js",
     "start:server:dev": "npx cross-env PORT=3000 npx nodemon app.js",
