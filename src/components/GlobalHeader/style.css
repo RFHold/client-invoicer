@@ -1,4 +1,20 @@
 #global-header-container {
+    height: 60px;
     border: 1px solid #000;
     background-color: cornflowerblue;
+}
+
+#global-header-row {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#brand-col, #links-col {
+    display: flex;
+    align-items: center;
+}
+
+#links-col {
+    justify-content: flex-end;
 }
