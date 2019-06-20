@@ -39,7 +39,15 @@ class App extends Component {
               setCompany: (id) => this.setState({ company: id }),
               getCompany: () => this.state.company,
               routes: {
-                clientsRoute: `/api/company/${this.state.company}/clients`
+                clientsRoute: `/api/company/${this.state.company}/clients`,
+                projectsRoute: `/api/company/${this.state.company}/projects`,
+                tasksRoute: `/api/company/${this.state.company}/tasks`,
+                clientRoute: (id) => `/api/company/${this.state.company}/client/${id}`,
+                projectRoute: (id) => `/api/company/${this.state.company}/project/${id}`,
+                taskRoute: (id) => `/api/company/${this.state.company}/task/${id}`,
+                companiesRoute: `/api/companies`,
+                companyRoute: `/api/company/${this.state.company}`,
+                usersRoute: `/api/users`,
               }
             }
           }>
