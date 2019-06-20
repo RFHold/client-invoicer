@@ -1,18 +1,23 @@
 import React, { PureComponent as Component } from "react";
 import Form from '../../Form';
+import { CompanyContext } from "../../Contexts"
 
-class Task extends Component {
+class TaskForm extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
-        this.state = {
-            company: props.company
-        };
+        const state = {}
+
+        state.method = (props.type === "edit") ? "PATCH" : "POST"
+        state.action = (props.action) ? props.action : this.context.routes.tasksRoute
+        state.verb = (props.type === "edit") ? "Edit" : "Create"
+
+        this.state = state
     }
 
     render() {
         return (
-            <Form method="POST" action={`/api/company/${this.state.company}/tasks`}>
+            <Form method={this.state.method} action={this.state.action}>
                 <h1>Create Task</h1>
                 <div>
                     <label htmlFor="taskFormNameInput">Name</label>
@@ -30,10 +35,12 @@ class Task extends Component {
                     <label htmlFor="taskFormDueDateInput">Due Date</label>
                     <input id="taskFormDueDateInput" name="dueDate" type="datetime-local" />
                 </div>
-                <button type="submit">Create Task</button>
+                <button type="submit">{this.state.verb} Task</button>
             </Form>
         );
     }
 }
 
-export default Task;
+TaskForm.contextType = CompanyContext;
+
+export { TaskForm }

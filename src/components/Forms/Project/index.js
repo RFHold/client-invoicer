@@ -1,18 +1,23 @@
 import React, { PureComponent as Component } from "react";
 import Form from '../../Form';
+import { CompanyContext } from "../../Contexts"
 
-class Project extends Component {
+class ProjectForm extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
-        this.state = {
-            company: props.company
-        };
+        const state = {}
+
+        state.method = (props.type === "edit") ? "PATCH" : "POST"
+        state.action = (props.action) ? props.action : this.context.routes.projectsRoute
+        state.verb = (props.type === "edit") ? "Edit" : "Create"
+
+        this.state = state
     }
 
     render() {
         return (
-            <Form method="POST" action={`/api/company/${this.state.company}/projects`}>
+            <Form method={this.state.method} action={this.state.action}>
                 <h1>Create Project</h1>
                 <div>
                     <label htmlFor="projectFormNameInput">Name</label>
@@ -30,10 +35,12 @@ class Project extends Component {
                     <label htmlFor="projectFormDueDateInput">Due Date</label>
                     <input id="projectFormDueDateInput" name="dueDate" type="datetime-local" />
                 </div>
-                <button type="submit">Create Project</button>
+                <button type="submit">{this.state.verb} Project</button>
             </Form>
         );
     }
 }
 
-export default Project;
+ProjectForm.contextType = CompanyContext;
+
+export { ProjectForm }

@@ -9,6 +9,17 @@ class Form extends Component {
         this.children = props.children
         this.onSuccess = props.onSuccess
         this.onError = props.onError
+        
+        if (props.method === "PATCH"){
+            axios({
+                method: "GET",
+                url: props.action
+            }).then((response) => {
+                this.setState({formData: response.data.result})
+            }).catch((error) => {
+                this.onError(error)
+            })
+        }
 
         this.state = {
             method: props.method,
@@ -19,7 +30,6 @@ class Form extends Component {
 
     handleInputChange(event) {
         const input = event.target
-        console.log(input.value);
         const formData = this.state.formData
 
         formData[input.name] = input.value
@@ -67,8 +77,8 @@ class Form extends Component {
 
     render(){
         return (
-            <form ref={(el) => this.$form = el} method={this.state.method} action={this.state.action} onSubmit={(ev) => {this.handleSubmit(ev)}}>
-                {this.children}
+            <form ref={(el) => this.$form = el} method={this.props.method} action={this.props.action} onSubmit={(ev) => {this.handleSubmit(ev)}}>
+                {this.props.children}
             </form>
         )
     }
