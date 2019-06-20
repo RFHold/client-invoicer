@@ -1,27 +1,33 @@
 import React, { PureComponent as Component } from "react";
 import Form from '../../Form';
+import { CompanyContext } from "../../Contexts"
 
-class Client extends Component {
+class ClientForm extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
-        this.state = {
-            company: props.company
-        };
+        const state = {}
+
+        state.method = (props.type === "edit") ? "PATCH" : "POST"
+        state.action = (props.action) ? props.action : this.context.routes.clientsRoute
+        state.verb = (props.type === "edit") ? "Edit" : "Create"
+
+        this.state = state
     }
-
     render() {
         return (
-            <Form method="POST" action={`/api/company/${this.state.company}/clients`}>
+            <Form method={this.state.method} action={this.state.action}>
                 <h1>Create Client</h1>
                 <div>
                     <label htmlFor="clientFormNameInput">Name</label>
                     <input id="clientFormNameInput" name="name" type="text" />
                 </div>
-                <button type="submit">Create Client</button>
+                <button type="submit">{this.state.verb} Client</button>
             </Form>
         );
     }
 }
 
-export default Client;
+ClientForm.contextType = CompanyContext;
+
+export { ClientForm }

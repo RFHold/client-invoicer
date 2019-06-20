@@ -1,10 +1,23 @@
 import React, { PureComponent as Component } from "react";
 import Form from '../../Form';
+import { CompanyContext } from "../../Contexts"
 
-class User extends Component {
+class UserForm extends Component {
+    constructor(props) {
+        super(props)
+
+        const state = {}
+
+        state.method = (props.type === "edit") ? "PATCH" : "POST"
+        state.action = (props.action) ? props.action : this.context.routes.usersRoute
+        state.verb = (props.type === "edit") ? "Submit" : "Register"
+
+        this.state = state
+    }
+
     render() {
         return (
-            <Form method="POST" action="/api/users">
+            <Form method={this.state.method} action={this.state.action}>
                 <h1>Register</h1>
                 <div>
                     <label htmlFor="userFormUsernameInput">Username</label> 
@@ -34,10 +47,12 @@ class User extends Component {
                     <label htmlFor="userFormPhoneInput">Phone</label> 
                     <input id="userFormPhoneInput" name="phone" type="text" />
                 </div>
-                <button type="submit">Register</button>
+                <button type="submit">{this.state.verb}</button>
             </Form>
         );
     }
 }
 
-export default User;
+UserForm.contextType = CompanyContext;
+
+export { UserForm }
