@@ -1,9 +1,6 @@
-import CompanyForm from './Company';
-import UserForm from './User';
-import ProjectForm from './Project';
-import TaskForm from './Task';
-import LoginForm from './Login';
-
+export * from './User';
+export * from './Login';
+export * from './Company';
 export * from './Client';
-
-export { CompanyForm, UserForm, ProjectForm, TaskForm, LoginForm }
+export * from './Project';
+export * from './Task';

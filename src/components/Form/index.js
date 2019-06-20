@@ -9,6 +9,17 @@ class Form extends Component {
         this.children = props.children
         this.onSuccess = props.onSuccess
         this.onError = props.onError
+        
+        if (props.method === "PATCH"){
+            axios({
+                method: "GET",
+                url: props.action
+            }).then((response) => {
+                this.setState({formData: response.data.result})
+            }).catch((error) => {
+                this.onError(error)
+            })
+        }
 
         this.state = {
             method: props.method,

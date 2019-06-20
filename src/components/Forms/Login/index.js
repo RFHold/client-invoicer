@@ -1,7 +1,7 @@
 import React, { PureComponent as Component } from "react";
 import Form from '../../Form';
 
-class Login extends Component {
+class LoginForm extends Component {
     render() {
         return (
             <Form method="POST" action="/api/session">
@@ -20,4 +20,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export {LoginForm};
