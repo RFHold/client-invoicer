@@ -4,7 +4,7 @@
 }
 
 #app-container, #navbar-col, #pagecontainer-col, #app-row {
-    height: calc(100vh - 60px);
+    height: calc(100vh - 70px);
     padding: 0;
     margin: 0;
 }

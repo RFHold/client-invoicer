@@ -20,5 +20,3 @@ function PageContainer(props) {
 }
 
 export default PageContainer;
-
-// 'Null' needs to be changed to whichever page component is clicked

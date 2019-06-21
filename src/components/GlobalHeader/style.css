@@ -1,7 +1,8 @@
 #global-header-container {
-    height: 60px;
-    border: 1px solid #000;
-    background-color: cornflowerblue;
+    height: 70px;
+    background: #fbfbfb;
+    margin: 0;
+    padding: 0;
 }
 
 #global-header-row {
@@ -10,11 +11,33 @@
     height: 100%;
 }
 
-#brand-col, #links-col {
+#brand-col, #headernav-col {
     display: flex;
     align-items: center;
+    padding: 0 20px;
+    margin: 0;
 }
 
-#links-col {
+#brand-col {
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+#brand {
+    font-size: 28px;
+    color: #444;
+}
+
+.fa-circle {
+    margin-right: 10px;
+}
+
+#headernav-col {
     justify-content: flex-end;
+    border-bottom: 1px solid #ccc;
+}
+
+#header-links {
+    margin: 0;
+    padding: 0;
 }

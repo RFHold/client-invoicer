@@ -1,4 +1,4 @@
-import React, {PureComponent as Component} from 'react';
+import React, { PureComponent as Component } from 'react';
 import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import { Grid, Row, Col } from 'react-flexbox-grid';
@@ -53,9 +53,8 @@ class App extends Component {
                   <Navbar />
                 </Col>
                 <Col xs={10} id="pagecontainer-col">
-                  <PageContainer/>
-                </Col>
-              </Row>
+                  <PageContainer />
+                </Col>              </Row>
             </Grid>
           </CompanyContext.Provider>
         </div>
