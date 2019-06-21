@@ -13,7 +13,7 @@ function GlobalHeader() {
 				<Col xs={10} id="headernav-col">
 					<Row end="xs" id="header-links">
 						<div id="timers">
-							Timers
+							<i class="fas fa-stopwatch"></i>
 						</div>
 						<div id="user">
 							Username

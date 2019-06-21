@@ -37,6 +37,12 @@
     border-bottom: 1px solid #ccc;
 }
 
+#timers {
+    font-size: 24px;
+    border: 1px solid #ccc;
+    margin-right: 20px;
+}
+
 #header-links {
     margin: 0;
     padding: 0;

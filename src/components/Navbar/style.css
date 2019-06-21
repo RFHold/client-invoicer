@@ -53,6 +53,6 @@
     border-top: 1px solid #ccc;
 }
 
-.fas {
+.navbar-button>.fas {
     padding-right: 10px;
 }
