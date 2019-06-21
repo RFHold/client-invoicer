@@ -15,7 +15,7 @@ class TaskForm extends Component {
         this.state = state
     }
     componentDidMount() {
-        this.setState({ action: (props.action) ? props.action : this.context.routes.tasksRoute })
+        this.setState({ action: (this.props.action) ? this.props.action : this.context.routes.tasksRoute })
     }
     render() {
         return (

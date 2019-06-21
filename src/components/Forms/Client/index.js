@@ -15,7 +15,7 @@ class ClientForm extends Component {
         this.state = state
     }
     componentDidMount() {
-        this.setState({ action: (props.action) ? props.action : this.context.routes.clientsRoute})
+        this.setState({ action: (this.props.action) ? this.props.action : this.context.routes.clientsRoute})
     }
     render() {
         return (
