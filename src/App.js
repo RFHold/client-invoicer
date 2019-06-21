@@ -1,11 +1,12 @@
 import React, {PureComponent as Component} from 'react';
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import GlobalHeader from "./components/GlobalHeader";
 import Navbar from "./components/Navbar";
 import PageContainer from "./components/PageContainer";
 import { CompanyContext } from "./components/Contexts";
+import {LoginForm, UserForm} from './components/Forms';
 
 class App extends Component {
   constructor(props) {
@@ -50,12 +51,21 @@ class App extends Component {
             <GlobalHeader />
             <Grid fluid id="app-container">
               <Row id="app-row">
-                <Col xs={2} id="navbar-col">
-                  <Navbar />
-                </Col>
-                <Col xs={10} id="pagecontainer-col">
-                  <PageContainer/>
-                </Col>
+                <Switch>
+                  <Route exact path="/login" >
+                    <LoginForm/>
+                  </Route>
+                  <Route path="/companies/new" component={CompanyForm} />
+                  <Route exact path="/register" component={UserForm} />
+                  <Route path="*">
+                    <Col xs={2} id="navbar-col">
+                      <Navbar />
+                    </Col>
+                    <Col xs={10} id="pagecontainer-col">
+                      <PageContainer/>
+                    </Col>
+                  </Route>
+                  </Switch>
               </Row>
             </Grid>
           </CompanyContext.Provider>
