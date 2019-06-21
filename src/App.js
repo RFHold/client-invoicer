@@ -56,7 +56,7 @@ class App extends Component {
                   </Route>
                   <Route path="/companies/new" component={CompanyForm} />
                   <Route exact path="/register" component={UserForm} />
-                  <Route path="*">
+                  <Route path="/company/*">
                     <Col xs={2} id="navbar-col">
                       <Navbar />
                     </Col>
