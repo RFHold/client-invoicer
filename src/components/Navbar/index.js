@@ -6,29 +6,46 @@ import "./style.css";
 function Navbar() {
     return (
         <Grid fluid id="navbar-container">
-            <Row id="dashboard-row">
+            {/* <Row id="dashboard-row">
                 <Col xs={12}>
-                    <Link to="/dashboard" id="dashboard">Dashboard</Link>
+                    <Link to="/dashboard" class="nav-link">Dashboard</Link>
                 </Col>
             </Row>
             <Row id="projects-row">
                 <Col xs={12}>
-                    <Link to="/projects" id="projects">Projects</Link>
+                    <Link to="/projects" class="nav-link">Projects</Link>
                 </Col>
             </Row>
             <Row id="clients-row">
                 <Col xs={12}>
-                    <Link to="/clients" id="clients">Clients</Link>
+                    <Link to="/clients" class="nav-link">Clients</Link>
                 </Col>
             </Row>
             <Row id="invoices-row">
                 <Col xs={12}>
-                    <Link to="/invoices" id="invoices">Invoices</Link>
+                    <Link to="/invoices" class="nav-link">Invoices</Link>
                 </Col>
             </Row>
             <Row id="reports-row">
                 <Col xs={12}>
-                    <Link to="/reports" id="reports">Reports</Link>
+                    <Link to="/reports" class="nav-link">Reports</Link>
+                </Col>
+            </Row> */}
+            <Row id="links-row">
+                <Col xs={12}>
+                    <Link to="/dashboard" class="nav-link">Dashboard</Link>
+                </Col>
+                <Col xs={12}>
+                    <Link to="/projects" class="nav-link">Projects</Link>
+                </Col>
+                <Col xs={12}>
+                    <Link to="/clients" class="nav-link">Clients</Link>
+                </Col>
+                <Col xs={12}>
+                    <Link to="/invoices" class="nav-link">Invoices</Link>
+                </Col>
+                <Col xs={12}>
+                    <Link to="/reports" class="nav-link">Reports</Link>
                 </Col>
             </Row>
         </Grid>

@@ -18,7 +18,7 @@ function App() {
         <GlobalHeader />
         <Grid fluid id="app-container">
           <Row id="app-row">
-            <Col xs={2} id="navbar-col">
+            <Col lg={2} md={12} id="navbar-col">
               <Navbar>
                 <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/projects" component={Projects} />
@@ -27,7 +27,7 @@ function App() {
                 <Route exact path="/reports" component={Reports} />
               </Navbar>
             </Col>
-            <Col xs={10} id="pagecontainer-col">
+            <Col lg={10} md={12} id="pagecontainer-col">
               <PageContainer />
             </Col>
           </Row>
