@@ -44,6 +44,7 @@ class App extends Component {
                 usersRoute: `/api/users`,
                 companyViewRoute: (id) => `/company/${id || this.state.company}/dashboard`,
                 clientsViewRoute: (id) => `/company/${id || this.state.company}/clients`,
+                newClientViewRoute: (id) => `/company/${id || this.state.company}/clients/new`,
                 projectsViewRoute: (id) => `/company/${id || this.state.company}/projects`,
                 tasksViewRoute: (id) => `/company/${id || this.state.company}/tasks`,
                 invoicesViewRoute: (id) => `/company/${id || this.state.company}/invoices`,
