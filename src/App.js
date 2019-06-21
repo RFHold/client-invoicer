@@ -43,6 +43,7 @@ class App extends Component {
                 taskRoute: (id) => `/api/company/${this.state.company}/task/${id}`,
                 companiesRoute: `/api/companies`,
                 companyRoute: `/api/company/${this.state.company}`,
+                companyViewRoute: (id) => `/company/${id || this.state.company}`,
                 usersRoute: `/api/users`,
               }
             }
