@@ -1,41 +1,43 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import { Link } from "react-router-dom";
+import { CompanyContext } from "../Contexts"
 import "./style.css";
 
 function Navbar() {
+    const context = useContext(CompanyContext);
     return (
         <Grid fluid id="navbar-container">
             <Row id="dashboard-row">
                 <Col xs={12}>
-                    <Link to="/dashboard" id="dashboard">Dashboard</Link>
+                    <Link to={context.routes.companyViewRoute()} id="dashboard">Dashboard</Link>
                 </Col>
             </Row>
             <Row id="projects-row">
                 <Col xs={12}>
-                    <Link to="/projects" id="projects">Projects</Link>
+                    <Link to={context.routes.projectsViewRoute()} id="projects">Projects</Link>
                 </Col>
             </Row>
             <Row id="projects-row">
                 <Col xs={12}>
-                    <Link to="/tasks" id="tasks">Tasks</Link>
+                    <Link to={context.routes.tasksViewRoute()} id="tasks">Tasks</Link>
                 </Col>
             </Row>
             <Row id="clients-row">
                 <Col xs={12}>
-                    <Link to="/clients" id="clients">Clients</Link>
+                    <Link to={context.routes.clientsViewRoute()} id="clients">Clients</Link>
                 </Col>
             </Row>
             <Row id="invoices-row">
                 <Col xs={12}>
-                    <Link to="/invoices" id="invoices">Invoices</Link>
+                    <Link to={context.routes.invoicesViewRoute()} id="invoices">Invoices</Link>
                 </Col>
             </Row>
             <Row id="reports-row">
                 <Col xs={12}>
-                    <Link to="/reports" id="reports">Reports</Link>
+                    <Link to={context.routes.reportsViewRoute()} id="reports">Reports</Link>
                 </Col>
-            </Row>
+            </Row>  
         </Grid>
     );
 }
