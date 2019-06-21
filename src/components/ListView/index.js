@@ -15,7 +15,7 @@ class ListView extends React.PureComponent {
         this.setState({ results: response.data.results || [response.data.result]});
       })
       .catch(error => {
-        this.onError(error);
+        console.log(error);
       });
   }
 
