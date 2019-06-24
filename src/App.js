@@ -5,6 +5,7 @@ import { Grid, Row } from 'react-flexbox-grid';
 import GlobalHeader from "./components/GlobalHeader";
 import PageContainer from "./components/PageContainer";
 import { CompanyContext } from "./components/Contexts";
+import Navbar from "./components/PageContainer/Navbar";
 
 class App extends Component {
   constructor(props) {
@@ -55,7 +56,7 @@ class App extends Component {
             <GlobalHeader />
             <Grid fluid id="app-container">
               <Row id="app-row">
-                <PageContainer/>
+                <PageContainer />
               </Row>
             </Grid>
           </CompanyContext.Provider>

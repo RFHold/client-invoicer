@@ -5,21 +5,23 @@ import "./style.css";
 
 function PageHeader() {
     return (
-        <div>
+        <div id="client-container">
             <Row className="page-header">
                 <Col xs={6}>
                     <h2>Clients</h2>
                 </Col>
                 <Col xs={6}>
-                    <button>Add New Client</button>
+                    <Row end="xs">
+                        <button id="new-client-button"><i class="fas fa-plus"></i>Add New Client</button>
+                    </Row>
                 </Col>
-            </Row>
-            <Row className="page-links">
                 <Col xs={12}>
-                    <ul>
-                        <li>Active Clients</li>
-                        <li>Inactive Clients</li>
-                    </ul>
+                    <Row bottom="xs">
+                        <ul>
+                            <li><Link to="/clients">Active Clients</Link></li>
+                            <li><Link to="/clients">Inactive Clients</Link></li>
+                        </ul>
+                    </Row>
                 </Col>
             </Row>
         </div>
