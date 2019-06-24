@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import { Link } from "react-router-dom";
 import "./style.css";
 import ListView from '../../ListView';
-import PageHeader from "../../PageHeader";
+import {CompanyContext} from '../../Contexts';
 
 function ListItem ({ data: client }) {
     return (
@@ -14,13 +14,14 @@ function ListItem ({ data: client }) {
 }
 
 function Clients() {
-
+    const context = useContext(CompanyContext)
     return (
         <Grid fluid id="clients-container">
             <PageHeader />
             <Row>
                 <Col xs={12}>
-                    <Link to="/clients/new" id="clients">new Clients</Link>
+                    <Link to={context.routes.newClientViewRoute()} id="clients">new Clients</Link>
+                    <p>Clients says hello</p>
                     <ListView itemComponent={ListItem} resource="/api/company/1/clients"/>
                 </Col>
             </Row>

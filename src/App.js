@@ -1,12 +1,10 @@
 import React, { PureComponent as Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import { Grid, Row, Col } from 'react-flexbox-grid';
+import { Grid, Row } from 'react-flexbox-grid';
 import GlobalHeader from "./components/GlobalHeader";
-import Navbar from "./components/Navbar";
 import PageContainer from "./components/PageContainer";
 import { CompanyContext } from "./components/Contexts";
-import { LoginForm, UserForm, CompanyForm } from './components/Forms';
 
 class App extends Component {
   constructor(props) {
@@ -43,29 +41,21 @@ class App extends Component {
                 taskRoute: (id) => `/api/company/${this.state.company}/task/${id}`,
                 companiesRoute: `/api/companies`,
                 companyRoute: `/api/company/${this.state.company}`,
-                companyViewRoute: (id) => `/company/${id || this.state.company}`,
                 usersRoute: `/api/users`,
+                companyViewRoute: (id) => `/company/${id || this.state.company}/dashboard`,
+                clientsViewRoute: (id) => `/company/${id || this.state.company}/clients`,
+                newClientViewRoute: (id) => `/company/${id || this.state.company}/clients/new`,
+                projectsViewRoute: (id) => `/company/${id || this.state.company}/projects`,
+                tasksViewRoute: (id) => `/company/${id || this.state.company}/tasks`,
+                invoicesViewRoute: (id) => `/company/${id || this.state.company}/invoices`,
+                reportsViewRoute: (id) => `/company/${id || this.state.company}/reports`,
               }
             }
           }>
             <GlobalHeader />
             <Grid fluid id="app-container">
               <Row id="app-row">
-                <Switch>
-                  <Route exact path="/login" >
-                    <LoginForm />
-                  </Route>
-                  <Route path="/companies/new" component={CompanyForm} />
-                  <Route exact path="/register" component={UserForm} />
-                  <Route path="*">
-                    <Col xs={2} id="navbar-col">
-                      <Navbar />
-                    </Col>
-                    <Col xs={10} id="pagecontainer-col">
-                      <PageContainer />
-                    </Col>
-                  </Route>
-                </Switch>
+                <PageContainer/>
               </Row>
             </Grid>
           </CompanyContext.Provider>

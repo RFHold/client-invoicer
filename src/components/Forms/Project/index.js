@@ -1,6 +1,7 @@
 import React, { PureComponent as Component } from "react";
 import Form from '../../Form';
 import { CompanyContext } from "../../Contexts"
+import { withRouter } from 'react-router-dom';
 
 class ProjectForm extends Component {
     constructor(props) {
@@ -9,10 +10,12 @@ class ProjectForm extends Component {
         const state = {}
 
         state.method = (props.type === "edit") ? "PATCH" : "POST"
-        state.action = (props.action) ? props.action : this.context.routes.projectsRoute
         state.verb = (props.type === "edit") ? "Edit" : "Create"
 
         this.state = state
+    }
+    componentDidMount() {
+        this.setState({ action: (this.props.action) ? this.props.action : this.context.routes.projectsRoute })
     }
 
     render() {
@@ -41,6 +44,6 @@ class ProjectForm extends Component {
     }
 }
 
-ProjectForm.contextType = CompanyContext;
+ProjectForm.contextType = withRouter(CompanyContext);
 
 export { ProjectForm }
