@@ -8,7 +8,7 @@ import Invoices from "./Invoices";
 import Reports from "./Reports";
 import { ClientForm, ProjectForm, TaskForm } from "../Forms";
 import { Col } from 'react-flexbox-grid';
-import Navbar from "../Navbar";
+import Navbar from "./Navbar";
 import { LoginForm, UserForm, CompanyForm } from '../Forms';
 import { CompanyContext } from "../Contexts"
 import "./style.css";
@@ -21,6 +21,9 @@ function PageContainer(props) {
 				<LoginForm/>
 			</Route>
 			<Route path="/companies/new" component={CompanyForm} />
+			<Route path="/dashboard" >
+				<CompanyForm />
+			</Route>
 			<Route exact path="/register" component={UserForm} />
 			<Route path="/company/*">
 				<Route exact path="/company/:companyId/*" component={(props) => {

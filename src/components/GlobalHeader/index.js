@@ -9,7 +9,7 @@ import DropDown from "../DropDown"
 function CompanyItem({ data: company }) {
 	const context = useContext(CompanyContext);
 	return (
-		<div>
+		<div id="user-companies">
 			<Link to={context.routes.companyViewRoute(company.id)} id="dashboard">{company.name}</Link>
 		</div>
 	);
@@ -28,13 +28,15 @@ function GlobalHeader() {
 							<i className="fas fa-stopwatch"></i>
 						</div>
 						<DropDown header="Username" className="dropdown">
-							<div>
-								<Link to="/login"><i className="fas fa-circle"></i>Login</Link>
-							</div>
-							<div>
-								<Link to="/register"><i className="fas fa-circle"></i>Register</Link>
-							</div>
 							<ListView itemComponent={CompanyItem} resource={context.routes.companiesRoute} />
+							<div id="user-options">
+								<div>
+									<Link to="/login">Login</Link>
+								</div>
+								<div>
+									<Link to="/register">Register</Link>
+								</div>
+							</div>
 						</DropDown>
 					</Row>
 				</Col>

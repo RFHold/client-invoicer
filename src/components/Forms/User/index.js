@@ -2,8 +2,9 @@ import React, { PureComponent as Component } from "react";
 import Form from '../../Form';
 import { CompanyContext } from "../../Contexts"
 import { withRouter } from 'react-router-dom';
+import "./style.css";
 
-class UserForm extends Component {
+class UserFormWithoutRouter extends Component {
     constructor(props) {
         super(props)
 
@@ -20,43 +21,51 @@ class UserForm extends Component {
 
     render() {
         return (
-            <Form method={this.state.method} action={this.state.action}>
-                <h1>Register</h1>
-                <div>
-                    <label htmlFor="userFormUsernameInput">Username</label> 
-                    <input id="userFormUsernameInput" name="username" type="text" />
-                </div>
-                <div>
-                    <label htmlFor="userFormPasswordInput">Password</label> 
-                    <input id="userFormPasswordInput" name="password" type="password" />
-                </div>
-                <div>
-                    <label htmlFor="userFormFirstNameInput">First Name</label> 
-                    <input id="userFormFirstNameInput" name="firstName" type="text" />
-                </div>
-                <div>
-                    <label htmlFor="userFormLastNameInput">Last Name</label> 
-                    <input id="userFormLastNameInput" name="lastName" type="text" />
-                </div>
-                <div>
-                    <label htmlFor="userFormEmailInput">Email</label> 
-                    <input id="userFormEmailInput" name="email" type="email" />
-                </div>
-                <div>
-                    <label htmlFor="userFormAddressInput">Address</label> 
-                    <input id="userFormAddressInput" name="address" type="text" />
-                </div>
-                <div>
-                    <label htmlFor="userFormPhoneInput">Phone</label> 
-                    <input id="userFormPhoneInput" name="phone" type="text" />
-                </div>
-                <button type="submit">{this.state.verb}</button>
-            </Form>
+            <div className="card">
+                <Form method={this.state.method} action={this.state.action}>
+                    <h1>Register</h1>
+                    <div>
+                        <label htmlFor="userFormUsernameInput">Username</label>
+                        <input id="userFormUsernameInput" name="username" type="text" />
+                    </div>
+                    <div>
+                        <label htmlFor="userFormPasswordInput">Password</label>
+                        <input id="userFormPasswordInput" name="password" type="password" />
+                    </div>
+                    <div>
+                        <label htmlFor="userFormEmailInput">Email</label>
+                        <input id="userFormEmailInput" name="email" type="email" />
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <label htmlFor="userFormFirstNameInput">First Name</label>
+                            <input id="userFormFirstNameInput" name="firstName" type="text" />
+                        </div>
+                        <div>
+                            <label htmlFor="userFormLastNameInput">Last Name</label>
+                            <input id="userFormLastNameInput" name="lastName" type="text" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <label htmlFor="userFormAddressInput">Address</label>
+                            <input id="userFormAddressInput" name="address" type="text" />
+                        </div>
+                        <div>
+                            <label htmlFor="userFormPhoneInput">Phone</label>
+                            <input id="userFormPhoneInput" name="phone" type="text" />
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <button class="submit-button" type="submit">{this.state.verb}</button>
+                    </div>
+                </Form>
+            </div>
         );
     }
 }
 
-withRouter(UserForm)
-UserForm.contextType = CompanyContext;
+UserFormWithoutRouter.contextType = CompanyContext;
+const UserForm = withRouter(UserFormWithoutRouter)
 
 export { UserForm }

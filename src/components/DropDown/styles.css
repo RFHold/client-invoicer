@@ -1,5 +1,6 @@
 .drop-down {
     position: relative;
+    border-left: 1px solid #ccc;
 }
 
 #user-button {
@@ -29,4 +30,7 @@
 
 .drop-down.open .options {
     visibility: visible;
+    border: 1px solid #ccc;
+    width: 100%;
+    padding: 0;
 }
