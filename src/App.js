@@ -4,6 +4,7 @@ import "./App.css";
 import { Grid, Row } from 'react-flexbox-grid';
 import GlobalHeader from "./components/GlobalHeader";
 import PageContainer from "./components/PageContainer";
+import Authenticator from "./components/Authenticator";
 import { CompanyContext } from "./components/Contexts";
 import Navbar from "./components/PageContainer/Navbar";
 
@@ -56,7 +57,8 @@ class App extends Component {
             <GlobalHeader />
             <Grid fluid id="app-container">
               <Row id="app-row">
-                <PageContainer />
+                <Authenticator/>
+                <PageContainer/>
               </Row>
             </Grid>
           </CompanyContext.Provider>
@@ -65,5 +67,7 @@ class App extends Component {
     );
   }
 }
+
+withRouter(App)
 
 export default App;
