@@ -31,6 +31,7 @@ class ClientForm extends Component {
     }
 }
 
-ClientForm.contextType = withRouter(CompanyContext);
+withRouter(ClientForm)
+ClientForm.contextType = CompanyContext;
 
 export { ClientForm }

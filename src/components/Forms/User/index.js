@@ -56,6 +56,7 @@ class UserForm extends Component {
     }
 }
 
-UserForm.contextType = withRouter(CompanyContext);
+withRouter(UserForm)
+UserForm.contextType = CompanyContext;
 
 export { UserForm }

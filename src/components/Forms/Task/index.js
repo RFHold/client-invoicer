@@ -43,6 +43,7 @@ class TaskForm extends Component {
     }
 }
 
-TaskForm.contextType = withRouter(CompanyContext);
+withRouter(TaskForm)
+TaskForm.contextType = CompanyContext;
 
 export { TaskForm }
