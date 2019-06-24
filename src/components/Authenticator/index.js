@@ -21,7 +21,9 @@ class Authenticator extends Component {
         checkSession().then(response => {
 
         }).catch(error => {
-            this.props.history.push("/login")
+            if (this.props.history.location.pathname !== "/register") {
+                this.props.history.push("/login")
+            }
         })
     }
     render() {
