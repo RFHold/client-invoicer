@@ -6,6 +6,7 @@ import Tasks from "./Tasks";
 import Clients from "./Clients";
 import Invoices from "./Invoices";
 import Reports from "./Reports";
+import Register from "./Register";
 import { ClientForm, ProjectForm, TaskForm } from "../Forms";
 import { Col } from 'react-flexbox-grid';
 import Navbar from "../Navbar";
@@ -17,14 +18,13 @@ function PageContainer(props) {
 	const context = useContext(CompanyContext);
 	return (
 		<Switch>
-			<Route path="/login">
-				<LoginForm/>
-			</Route>
+			<Route path="/register" component={Register} />
+			<Route path="/login" component={Register} />
+			<Route exact path="/register" component={UserForm} />
 			<Route path="/companies/new" component={CompanyForm} />
 			<Route path="/dashboard" >
 				<CompanyForm />
 			</Route>
-			<Route exact path="/register" component={UserForm} />
 			<Route path="/company/*">
 				<Route exact path="/company/:companyId/*" component={(props) => {
 					if (context.getCompany() !== props.match.params.companyId) {
