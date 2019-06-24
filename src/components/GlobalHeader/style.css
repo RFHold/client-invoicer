@@ -49,7 +49,6 @@
 
 #timers {
     font-size: 24px;
-    border-right: 1px solid #ccc;
     width: 70px;
     display: inline-block;
     text-align: center;
@@ -65,4 +64,16 @@
     padding: 25px;
 }
 
-.dropdown {}
+#user-companies {
+    padding: 10px;
+    text-align: left;
+}
+
+#user-options {
+    border-top: 1px solid #ccc;
+    padding: 10px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

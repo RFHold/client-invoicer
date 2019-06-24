@@ -68,6 +68,4 @@ class App extends Component {
   }
 }
 
-withRouter(App)
-
 export default App;
