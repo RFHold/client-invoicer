@@ -17,7 +17,7 @@ function Clients() {
     const context = useContext(CompanyContext)
     return (
         <Grid fluid id="clients-container">
-            <PageHeader />
+            {/* <PageHeader /> */}
             <Row>
                 <Col xs={12}>
                     <Link to={context.routes.newClientViewRoute()} id="clients">new Clients</Link>

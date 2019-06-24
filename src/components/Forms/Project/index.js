@@ -2,6 +2,14 @@ import React, { PureComponent as Component } from "react";
 import Form from '../../Form';
 import { CompanyContext } from "../../Contexts"
 import { withRouter } from 'react-router-dom';
+import ListView from '../../ListView';
+
+function SelectItem ({ data: option }) {
+    return (
+        <option value={option.id}>{option.name}</option>
+    );
+}
+
 
 class ProjectFormWithoutRouter extends Component {
     constructor(props) {
@@ -25,6 +33,13 @@ class ProjectFormWithoutRouter extends Component {
                 <div>
                     <label htmlFor="projectFormNameInput">Name</label>
                     <input id="projectFormNameInput" name="name" type="text" />
+                </div>
+                <div>
+                    <label htmlFor="projectFormClientInput">Client</label>
+                    <select name="client" id="projectFormClientInput">
+                        <option value="">Select a Client</option>
+                        <ListView itemComponent={SelectItem} resource={this.context.routes.clientsRoute}/>
+                    </select>
                 </div>
                 <div>
                     <label htmlFor="projectFormDescriptionInput">Description</label>

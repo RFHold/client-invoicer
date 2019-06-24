@@ -12,7 +12,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      company: undefined
+      company: 1
     };
   }
 
