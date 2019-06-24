@@ -22,7 +22,7 @@ function PageContainer(props) {
 			</Route>
 			<Route path="/companies/new" component={CompanyForm} />
 			<Route path="/dashboard" >
-				<h1>Dashboard</h1>
+				<CompanyForm />
 			</Route>
 			<Route exact path="/register" component={UserForm} />
 			<Route path="/company/*">

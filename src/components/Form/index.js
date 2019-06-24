@@ -41,8 +41,8 @@ class Form extends Component {
         event.preventDefault()
 
         axios({
-            method: this.state.method,
-            url: this.state.action,
+            method: this.props.method,
+            url: this.props.action,
             data: this.state.formData
         }).then((response) => {
             this.onSuccess(response)
