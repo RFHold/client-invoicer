@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-// import "./style.css";
+import "./style.css";
 
 function Projects() {
     return (

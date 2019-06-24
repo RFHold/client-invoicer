@@ -1,4 +1,4 @@
-import React, {PureComponent as Component} from 'react';
+import React, { PureComponent as Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import { Grid, Row, Col } from 'react-flexbox-grid';
@@ -6,7 +6,7 @@ import GlobalHeader from "./components/GlobalHeader";
 import Navbar from "./components/Navbar";
 import PageContainer from "./components/PageContainer";
 import { CompanyContext } from "./components/Contexts";
-import {LoginForm, UserForm} from './components/Forms';
+import { LoginForm, UserForm, CompanyForm } from './components/Forms';
 
 class App extends Component {
   constructor(props) {
@@ -53,7 +53,7 @@ class App extends Component {
               <Row id="app-row">
                 <Switch>
                   <Route exact path="/login" >
-                    <LoginForm/>
+                    <LoginForm />
                   </Route>
                   <Route path="/companies/new" component={CompanyForm} />
                   <Route exact path="/register" component={UserForm} />
@@ -62,10 +62,10 @@ class App extends Component {
                       <Navbar />
                     </Col>
                     <Col xs={10} id="pagecontainer-col">
-                      <PageContainer/>
+                      <PageContainer />
                     </Col>
                   </Route>
-                  </Switch>
+                </Switch>
               </Row>
             </Grid>
           </CompanyContext.Provider>
