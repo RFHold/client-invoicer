@@ -44,6 +44,7 @@ class ProjectForm extends Component {
     }
 }
 
-ProjectForm.contextType = withRouter(CompanyContext);
+withRouter(ProjectForm)
+ProjectForm.contextType = CompanyContext;
 
 export { ProjectForm }
