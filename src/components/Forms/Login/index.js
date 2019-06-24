@@ -2,7 +2,7 @@ import React, { PureComponent as Component } from "react";
 import Form from '../../Form';
 import { withRouter } from 'react-router-dom';
 
-class LoginFormComponent extends Component {
+class LoginFormWithoutRouter extends Component {
     render() {
         return (
             <Form method="POST" action="/api/session" onSuccess={() => {this.props.history.push("/dashboard")}}>
@@ -20,7 +20,6 @@ class LoginFormComponent extends Component {
         );
     }
 }
+const LoginForm = withRouter(LoginFormWithoutRouter)
 
-const LoginForm = withRouter(LoginFormComponent);
-
-export {LoginForm};
+export { LoginForm };

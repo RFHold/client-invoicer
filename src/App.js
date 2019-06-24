@@ -1,9 +1,10 @@
-import React, { PureComponent as Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, {PureComponent as Component} from 'react';
+import { BrowserRouter as Router, withRouter } from "react-router-dom";
 import "./App.css";
 import { Grid, Row } from 'react-flexbox-grid';
 import GlobalHeader from "./components/GlobalHeader";
 import PageContainer from "./components/PageContainer";
+import Authenticator from "./components/Authenticator";
 import { CompanyContext } from "./components/Contexts";
 
 class App extends Component {
@@ -55,6 +56,7 @@ class App extends Component {
             <GlobalHeader />
             <Grid fluid id="app-container">
               <Row id="app-row">
+                <Authenticator/>
                 <PageContainer/>
               </Row>
             </Grid>
@@ -64,5 +66,7 @@ class App extends Component {
     );
   }
 }
+
+withRouter(App)
 
 export default App;

@@ -3,7 +3,7 @@ import Form from '../../Form';
 import { CompanyContext } from "../../Contexts"
 import { withRouter } from 'react-router-dom';
 
-class UserForm extends Component {
+class UserFormWithoutRouter extends Component {
     constructor(props) {
         super(props)
 
@@ -56,6 +56,7 @@ class UserForm extends Component {
     }
 }
 
-UserForm.contextType = withRouter(CompanyContext);
+UserFormWithoutRouter.contextType = CompanyContext;
+const UserForm = withRouter(UserFormWithoutRouter)
 
 export { UserForm }
