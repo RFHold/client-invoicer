@@ -28,6 +28,12 @@ function GlobalHeader() {
 							<i className="fas fa-stopwatch"></i>
 						</div>
 						<DropDown header="Username" className="dropdown">
+							<div>
+								<Link to="/login"><i className="fas fa-circle"></i>Login</Link>
+							</div>
+							<div>
+								<Link to="/register"><i className="fas fa-circle"></i>Register</Link>
+							</div>
 							<ListView itemComponent={CompanyItem} resource={context.routes.companiesRoute} />
 						</DropDown>
 					</Row>
