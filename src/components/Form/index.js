@@ -63,12 +63,24 @@ class Form extends Component {
             }
         }
 
+        for (const select of this.$form.querySelectorAll("select")) {
+            select.onchange = (ev) => { this.handleInputChange(ev) }
+            if (formData[select.name]) {
+                select.value = formData[select.name]
+            }else{
+                formData[select.name] = select.value
+            }
+        }
+
         this.setState({ formData: formData })
     }
 
     componentDidUpdate(){
         for (const input of this.$form.querySelectorAll("input")) {
             input.value = this.state.formData[input.name]
+        }
+        for (const select of this.$form.querySelectorAll("select")) {
+            select.value = this.state.formData[select.name]
         }
     }
 

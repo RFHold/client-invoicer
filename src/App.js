@@ -1,5 +1,5 @@
-import React, { PureComponent as Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, {PureComponent as Component} from 'react';
+import { BrowserRouter as Router, withRouter } from "react-router-dom";
 import "./App.css";
 import { Grid, Row } from 'react-flexbox-grid';
 import GlobalHeader from "./components/GlobalHeader";
@@ -13,7 +13,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      company: undefined
+      company: 1
     };
   }
 
