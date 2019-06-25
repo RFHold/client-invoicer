@@ -3,6 +3,7 @@ import Form from '../../Form';
 import { CompanyContext } from "../../Contexts"
 import { withRouter } from 'react-router-dom';
 import ListView from '../../ListView';
+import Modal from '../../Modal';
 
 function SelectItem ({ data: option }) {
     return (
@@ -26,6 +27,7 @@ class TaskFormWithoutRouter extends Component {
     }
     render() {
         return (
+            <Modal header={`${this.state.verb} Client`} onClose={this.context.routes.tasksViewRoute()}>
             <Form method={this.state.method} action={this.state.action} onSuccess={() => {this.props.history.push("/company/1/tasks")}}>
                 <h1>Create Task</h1>
                 <div>
@@ -53,6 +55,7 @@ class TaskFormWithoutRouter extends Component {
                 </div>
                 <button type="submit">{this.state.verb} Task</button>
             </Form>
+            </Modal>
         );
     }
 }

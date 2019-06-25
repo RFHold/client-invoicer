@@ -51,8 +51,10 @@ class App extends Component {
                 projectsViewRoute: (id) => `/company/${id || this.state.company}/projects`,
                 newProjectViewRoute: (id) => `/company/${id || this.state.company}/projects/new`,
                 tasksViewRoute: (id) => `/company/${id || this.state.company}/tasks`,
+                newTaskViewRoute: (id) => `/company/${id || this.state.company}/tasks/new`,
                 invoicesViewRoute: (id) => `/company/${id || this.state.company}/invoices`,
                 reportsViewRoute: (id) => `/company/${id || this.state.company}/reports`,
+                deleteTaskRoute: (companyid, taskid) => `/company/${companyid || this.state.company}/task/${taskid}`,
               }
             }
           }>
