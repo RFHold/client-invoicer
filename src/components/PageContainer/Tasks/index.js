@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 //import "./style.css";
 import ListView from "../../ListView";
 import {CompanyContext} from "../../Contexts";
+import { continueStatement } from "@babel/types";
 
 function ListItem ({ data: task }) {
   const context = useContext(CompanyContext)
@@ -14,7 +15,8 @@ function ListItem ({ data: task }) {
       <p>Description: {task.description}</p>
       <p>Due Date: {task.dueDate}</p>
       <p>Start Date: {task.startDate}</p>
-      <Link to={context.routes.deleteTaskRoute()}>Delete Task</Link> 
+      <Link to={context.routes.deleteTaskRoute(task.id)}>Delete Task</Link> 
+      <Link to={context.routes.newTimeEntryViewRoute(task.id)}>Add Time</Link>
     </div>
   );
 }

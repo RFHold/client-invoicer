@@ -7,12 +7,12 @@ import Clients from "./Clients";
 import Invoices from "./Invoices";
 import Reports from "./Reports";
 import Register from "./Register";
-import { ClientForm, ProjectForm, TaskForm } from "../Forms";
+import { ClientForm, ProjectForm, TaskForm, TimeForm } from "../Forms";
 import { Col } from 'react-flexbox-grid';
 import Navbar from "./Navbar";
 import { CompanyForm } from '../Forms';
 import { CompanyContext } from "../Contexts"
-import "./style.css";
+import "./style.css"; 
 
 function PageContainer(props) {
 	const context = useContext(CompanyContext);
@@ -45,8 +45,10 @@ function PageContainer(props) {
 					<Route path="/company/:companyId/tasks" component={Tasks} />
 					<Route path="/company/:companyId/tasks/new" component={TaskForm} />
 					<Route path="/company/:companyId/tasks/edit/:taskId" component={TaskForm} />
+					<Route path="/company/:companyId/tasks/timeEntry" component={TimeForm} />
 					<Route path="/company/:companyId/invoices" component={Invoices} />
 					<Route path="/company/:companyId/reports" component={Reports} />
+					
 				</Col>
 			</Route>
 		</Switch>
