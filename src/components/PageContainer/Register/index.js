@@ -9,12 +9,12 @@ function Register() {
         <Grid fluid>
             <Row>
                 <Col xs={12}>
-                    <p>Register says hello</p>
                     <Switch>
                         <Route exact path="/register">
                             <Link to="/login">Login</Link>
                             <UserForm />
                         </Route>
+
                         <Route exact path="/login">
                             <Link to="/register">Register</Link>
                             <LoginForm />

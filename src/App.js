@@ -1,5 +1,5 @@
 import React, { PureComponent as Component } from 'react';
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Redirect } from "react-router-dom";
 import "./App.css";
 import { Grid, Row } from 'react-flexbox-grid';
 import GlobalHeader from "./components/GlobalHeader";
@@ -29,6 +29,8 @@ class App extends Component {
     return (
       <Router>
         <div>
+          <Redirect from="/" to="/login" />
+
           <CompanyContext.Provider value={
             {
               setCompany: (id) => this.setState({ company: id }),
