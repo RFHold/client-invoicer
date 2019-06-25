@@ -54,7 +54,9 @@ class App extends Component {
                 newTaskViewRoute: (id) => `/company/${id || this.state.company}/tasks/new`,
                 invoicesViewRoute: (id) => `/company/${id || this.state.company}/invoices`,
                 reportsViewRoute: (id) => `/company/${id || this.state.company}/reports`,
-                deleteTaskRoute: (companyid, taskid) => `/company/${companyid || this.state.company}/task/${taskid}`,
+                deleteTaskRoute: (taskid) => `/api/company/${this.state.company}/task/${taskid}`,
+                deleteProjectRoute: (projectid) => `/api/company/${this.state.company}/project/${projectid}`,
+                deleteClientRoute: (clientid) => `/api/company/${this.state.company}/client/${clientid}`
               }
             }
           }>
