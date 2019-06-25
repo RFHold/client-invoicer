@@ -20,7 +20,7 @@ function GlobalHeader() {
 		<Grid fluid id="global-header-container">
 			<Row id="global-header-row">
 				<Col xs={2} id="brand-col">
-					<Link to="/dashboard" id="brand"><i className="fas fa-circle"></i>App Name</Link>
+					<Link to={context.routes.companyViewRoute()} id="brand"><i className="fas fa-circle"></i>App Name</Link>
 				</Col>
 				<Col xs={10} id="headernav-col">
 					<Row end="xs" id="header-links">
