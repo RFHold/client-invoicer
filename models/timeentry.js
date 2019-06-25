@@ -5,14 +5,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER,
     },
-    member: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-    },
-    service: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-    },
     company: {
       allowNull: false,
       type: DataTypes.INTEGER,
@@ -52,16 +44,6 @@ module.exports = (sequelize, DataTypes) => {
     this.belongsTo(models.User, {
       foreignKey: 'user',
       constraints: true
-    });
-    this.belongsTo(models.CompanyUser, {
-      foreignKey: 'member',
-      constraints: true,
-      onDelete: "CASCADE"
-    });
-    this.belongsTo(models.Service, {
-      foreignKey: 'service',
-      constraints: true,
-      onDelete: "CASCADE"
     });
     this.belongsTo(models.Company, {
       foreignKey: 'company',

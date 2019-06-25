@@ -1,12 +1,11 @@
 import React, {PureComponent as Component} from 'react';
-import { BrowserRouter as Router, withRouter } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import { Grid, Row } from 'react-flexbox-grid';
 import GlobalHeader from "./components/GlobalHeader";
 import PageContainer from "./components/PageContainer";
 import Authenticator from "./components/Authenticator";
 import { CompanyContext } from "./components/Contexts";
-import Navbar from "./components/PageContainer/Navbar";
 
 class App extends Component {
   constructor(props) {
