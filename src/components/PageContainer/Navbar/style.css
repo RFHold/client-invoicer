@@ -39,7 +39,7 @@
     border: none;
     font-size: 16px;
     text-align: left;
-    padding: 0 25px;
+    padding: 0 30px;
     outline: none;
 }
 
@@ -54,5 +54,5 @@
 }
 
 .navbar-button>.fas {
-    padding-right: 10px;
+    padding-right: 15px;
 }

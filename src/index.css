@@ -2,7 +2,6 @@
   box-sizing: border-box;
 }
 
-@import-normalize;
 html, body, #root, #root>div, div[data-reactroot] {
   height: 100%;
   padding: 0;

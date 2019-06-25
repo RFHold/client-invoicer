@@ -1,28 +1,28 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
+import { Col } from 'react-flexbox-grid';
 import { UserForm, LoginForm } from '../../Forms';
 import { Route, Link, Switch } from "react-router-dom";
 // import "./style.css";
 
 function Register() {
     return (
-        <Grid fluid>
-            <Row>
-                <Col xs={12}>
-                    <Switch>
-                        <Route exact path="/register">
-                            <Link to="/login">Login</Link>
-                            <UserForm />
-                        </Route>
 
-                        <Route exact path="/login">
-                            <Link to="/register">Register</Link>
-                            <LoginForm />
-                        </Route>
-                    </Switch>
+        <Switch>
+            <Route exact path="/register">
+                <Col xs={12}>
+                    <UserForm />
+                    <div className="login-register"><p>Already Registered?&nbsp;</p><Link to="/login">Login</Link></div>
                 </Col>
-            </Row>
-        </Grid>
+            </Route >
+
+            <Route exact path="/login">
+                <Col xs={12}>
+                    <LoginForm />
+                    <div className="login-register"><Link to="/register">Register</Link></div>
+                </Col>
+            </Route>
+        </Switch >
+
     );
 }
 

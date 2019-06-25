@@ -61,8 +61,8 @@ class App extends Component {
             }
           }>
             <GlobalHeader />
-            <Grid fluid id="app-container">
-              <Row id="app-row">
+            <Grid fluid id="container">
+              <Row>
                 <Authenticator />
                 <PageContainer />
               </Row>
