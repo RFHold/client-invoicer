@@ -5,6 +5,7 @@ import { CompanyContext } from '../../Contexts';
 import "./style.css";
 import ListView from '../../ListView';
 
+
 function ListItem({ data: client }) {
     return (
         <div id="client-card">
