@@ -1,5 +1,5 @@
 const db = require(__root + "/models")
-const Sequelize = require('sequelize');
+const Sequelize = require('./node_modules/sequelize');
 const Op = Sequelize.Op;
 
 module.exports = function (router) {
@@ -21,7 +21,7 @@ module.exports = function (router) {
                 return res.json({ success: true, message: `Logged in as ${user.username}` })
             })
         }).catch(error => {
-            res.status(500).json({ error: "Internal server error" })
+            res.status(500).json({ message: "Internal server error", error: error })
         })
     })
 }

@@ -1,6 +1,6 @@
-const express = require("express")
+const express = require("./node_modules/express")
 const router = express.Router()
-const Sequelize = require('sequelize');
+const Sequelize = require('./node_modules/sequelize');
 const Op = Sequelize.Op;
 
 const db = require(__root + "/models")
