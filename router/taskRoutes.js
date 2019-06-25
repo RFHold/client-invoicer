@@ -20,7 +20,7 @@ module.exports = function (router) {
     })
 
     router.get("/api/company/:company_id/tasks", function (req, res) {
-        return req.company.getTasks(req.query({ fields: [] })).then((tasks) => {
+        return req.company.getTasks({...req.query({ fields: [] }), incudes: [db.TimeEntry]}).then((tasks) => {
             if (tasks) {
                 res.json({ success: true, length: tasks.length, results: tasks.map(task => task.json), message: `Found ${tasks.length} tasks` })
             } else {
