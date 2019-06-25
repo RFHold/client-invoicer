@@ -1,4 +1,4 @@
-import React, {PureComponent as Component} from 'react';
+import React, { PureComponent as Component } from 'react';
 import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import { Grid, Row } from 'react-flexbox-grid';
@@ -47,6 +47,7 @@ class App extends Component {
                 clientsViewRoute: (id) => `/company/${id || this.state.company}/clients`,
                 newClientViewRoute: (id) => `/company/${id || this.state.company}/clients/new`,
                 projectsViewRoute: (id) => `/company/${id || this.state.company}/projects`,
+                newProjectViewRoute: (id) => `/company/${id || this.state.company}/projects/new`,
                 tasksViewRoute: (id) => `/company/${id || this.state.company}/tasks`,
                 invoicesViewRoute: (id) => `/company/${id || this.state.company}/invoices`,
                 reportsViewRoute: (id) => `/company/${id || this.state.company}/reports`,
@@ -56,8 +57,8 @@ class App extends Component {
             <GlobalHeader />
             <Grid fluid id="app-container">
               <Row id="app-row">
-                <Authenticator/>
-                <PageContainer/>
+                <Authenticator />
+                <PageContainer />
               </Row>
             </Grid>
           </CompanyContext.Provider>

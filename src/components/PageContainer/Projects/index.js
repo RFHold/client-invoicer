@@ -29,7 +29,7 @@ function Projects() {
                     </Col>
                     <Col xs={6}>
                         <Row end="xs">
-                            <Link to={context.routes.projectsViewRoute()} id="projects"><button id="new-client-button"><i class="fas fa-plus"></i>Add New Project</button></Link>
+                            <Link to={context.routes.newProjectViewRoute()} id="projects"><button id="new-client-button"><i class="fas fa-plus"></i>Add New Project</button></Link>
                         </Row>
                     </Col>
                     <Col xs={12}>
@@ -44,7 +44,7 @@ function Projects() {
             </div>
             <Row>
                 <Col xs={12} id="projects-col">
-                    <ListView itemComponent={ListItem} resource="/api/company/1/projects" />
+                    <ListView itemComponent={ListItem} resource="/api/company/1/projects/new" />
                 </Col>
             </Row>
         </Grid>
