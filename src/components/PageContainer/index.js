@@ -45,7 +45,7 @@ function PageContainer(props) {
 					<Route path="/company/:companyId/tasks" component={Tasks} />
 					<Route path="/company/:companyId/tasks/new" component={TaskForm} />
 					<Route path="/company/:companyId/tasks/edit/:taskId" component={TaskForm} />
-					<Route path="/company/:companyId/tasks/timeEntry" component={TimeForm} />
+					<Route path="/company/:companyId/tasks/:taskId/timeEntry" component={TimeForm} />
 					<Route path="/company/:companyId/invoices" component={Invoices} />
 					<Route path="/company/:companyId/reports" component={Reports} />
 					

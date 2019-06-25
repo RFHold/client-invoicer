@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     },
     archived: {
-      allowNull: false,
+      allowNull: true,
       type: DataTypes.DATE
     }
   }, { paranoid: true});

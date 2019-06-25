@@ -27,10 +27,12 @@ module.exports = (sequelize, DataTypes) => {
       getterMethods: {
         elapsed() {
           let time = 0;
-          this.TimeEntries.map(entry => {
-            const diff = new Date(entry.endDate).getTime() - new Date(entry.startDate).getTime();
-            time += diff
-          })
+          if (this.TimeEntries) {
+            this.TimeEntries.map(entry => {
+              const diff = new Date(entry.endDate).getTime() - new Date(entry.startDate).getTime();
+              time += diff
+            })
+          }
           return time
         },
         json() {

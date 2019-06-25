@@ -12,7 +12,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      company: undefined,
+      company: 1,
       session: undefined
     };
   }
@@ -30,44 +30,6 @@ class App extends Component {
     return (
       <Router>
         <div>
-<<<<<<< HEAD
-          <CompanyContext.Provider value={
-            {
-              setCompany: (id) => this.setState({ company: id }),
-              getCompany: () => this.state.company,
-              routes: {
-                clientsRoute: `/api/company/${this.state.company}/clients`,
-                projectsRoute: `/api/company/${this.state.company}/projects`,
-                tasksRoute: `/api/company/${this.state.company}/tasks`,
-                clientRoute: (id) => `/api/company/${this.state.company}/client/${id}`,
-                projectRoute: (id) => `/api/company/${this.state.company}/project/${id}`,
-                taskRoute: (id) => `/api/company/${this.state.company}/task/${id}`,
-                companiesRoute: `/api/companies`,
-                companyRoute: `/api/company/${this.state.company}`,
-                usersRoute: `/api/users`,
-                companyViewRoute: (id) => `/company/${id || this.state.company}/dashboard`,
-                clientsViewRoute: (id) => `/company/${id || this.state.company}/clients`,
-                newClientViewRoute: (id) => `/company/${id || this.state.company}/clients/new`,
-                projectsViewRoute: (id) => `/company/${id || this.state.company}/projects`,
-                newProjectViewRoute: (id) => `/company/${id || this.state.company}/projects/new`,
-                tasksViewRoute: (id) => `/company/${id || this.state.company}/tasks`,
-                newTaskViewRoute: (id) => `/company/${id || this.state.company}/tasks/new`,
-                invoicesViewRoute: (id) => `/company/${id || this.state.company}/invoices`,
-                reportsViewRoute: (id) => `/company/${id || this.state.company}/reports`,
-                deleteTaskRoute: (taskid, companyid) => `/company/${companyid || this.state.company}/task/${taskid}`,
-                newTimeEntryRoute: (task) => `/api/company/${this.state.company}/task/${task}/timeEntry`,
-                newTimeEntryViewRoute: (task) => `/company/${this.state.company}/tasks/timeEntry`
-              }
-            }
-          }>
-            <GlobalHeader />
-            <Grid fluid id="app-container">
-              <Row id="app-row">
-                <Authenticator />
-                <PageContainer />
-              </Row>
-            </Grid>
-=======
           <CompanyContext.Provider value={{
             setCompany: (id) => this.setState({ company: id }),
             getCompany: () => this.state.company,
@@ -85,9 +47,14 @@ class App extends Component {
               clientsViewRoute: (id) => `/company/${id || this.state.company}/clients`,
               newClientViewRoute: (id) => `/company/${id || this.state.company}/clients/new`,
               projectsViewRoute: (id) => `/company/${id || this.state.company}/projects`,
+              newProjectViewRoute: (id) => `/company/${id || this.state.company}/projects/new`,
               tasksViewRoute: (id) => `/company/${id || this.state.company}/tasks`,
+              newTaskViewRoute: (id) => `/company/${id || this.state.company}/tasks/new`,
               invoicesViewRoute: (id) => `/company/${id || this.state.company}/invoices`,
               reportsViewRoute: (id) => `/company/${id || this.state.company}/reports`,
+              deleteTaskRoute: (taskid, companyid) => `/company/${companyid || this.state.company}/task/${taskid}`,
+              newTimeEntryRoute: (task) => `/api/company/${this.state.company}/task/${task}/timeEntries`,
+              newTimeEntryViewRoute: (task) => `/company/${this.state.company}/tasks/${task}/timeEntry`
             }
           }}>
             <SessionContext.Provider value={{
@@ -102,7 +69,6 @@ class App extends Component {
                 </Row>
                 </Grid>
             </SessionContext.Provider>
->>>>>>> a089127ed0a155f3d9c6add45ca914e9b3f013da
           </CompanyContext.Provider>
         </div>
       </Router>

@@ -27,6 +27,7 @@ module.exports = function (router) {
                 res.status(404).json({ error: "No tasks found" })
             }
         }).catch((error) => {
+            console.log(error)
             res.status(500).json({ error: "Internal server error" })
         })
     })
@@ -36,7 +37,7 @@ module.exports = function (router) {
             return db.Project.findOne({
                 where: { id: project, company: req.company.id }
             }).then((project) => {
-                if (task) {
+                if (project) {
                     return req.company.createTask({
                         name: name,
                         description: description,
@@ -48,11 +49,12 @@ module.exports = function (router) {
                 } else {
                     res.status(404).json({ error: "Project does not exist or User is not a member of the parent company" })
                 }
+            }).then((task) => {
+                t.commit()
+                return res.json({ success: true, message: `Created task: ${task.name}` })
             })
-        }).then((task) => {
-            t.commit()
-            return res.json({ success: true, message: `Created task: ${task.name}` })
         }).catch(error => {
+            console.log(error)
             res.status(500).json({ error: "Internal server error" })
         })
     })

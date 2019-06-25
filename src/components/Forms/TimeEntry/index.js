@@ -23,7 +23,8 @@ class TimeFormWithoutRouter extends Component {
         this.state = state
     }
     componentDidMount() {
-        this.setState({ action: (this.props.action) ? this.props.action : this.context.routes.newTimeEntryRoute })
+        console.log(this.props)
+        this.setState({ action: (this.props.action) ? this.props.action : this.context.routes.newTimeEntryRoute(this.props.match.params.taskId) })
     }
     render() {
         return (
@@ -46,7 +47,7 @@ class TimeFormWithoutRouter extends Component {
                 </div>
                 <div>
                     <label htmlFor="timeFormDueDateInput">End Date</label>
-                    <input id="timeFormDueDateInput" name="dueDate" type="datetime-local" />
+                    <input id="timeFormDueDateInput" name="endDate" type="datetime-local" />
                 </div>
                 <button type="submit">{this.state.verb} Time</button>
             </Form>

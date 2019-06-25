@@ -62,5 +62,6 @@ require("./projectRoutes")(router)
 require("./taskRoutes")(router)
 require("./serviceRoutes")(router)
 require("./roleRoutes")(router)
+require("./timeEntryRoutes")(router)
 
 module.exports = router
