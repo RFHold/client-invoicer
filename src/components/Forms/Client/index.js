@@ -19,7 +19,7 @@ class ClientFormWithoutRouter extends Component {
     }
     render() {
         return (
-            <Form method={this.state.method} action={this.state.action}>
+            <Form method={this.state.method} action={this.state.action} onSuccess={() => {this.props.history.push("/company/1/clients")}}>
                 <h1>Create Client</h1>
                 <div>
                     <label htmlFor="clientFormNameInput">Name</label>
