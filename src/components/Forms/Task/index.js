@@ -26,7 +26,7 @@ class TaskFormWithoutRouter extends Component {
     }
     render() {
         return (
-            <Form method={this.state.method} action={this.state.action}>
+            <Form method={this.state.method} action={this.state.action} onSuccess={() => {this.props.history.push("/company/1/tasks")}}>
                 <h1>Create Task</h1>
                 <div>
                     <label htmlFor="taskFormNameInput">Name</label>

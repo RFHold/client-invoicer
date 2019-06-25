@@ -10,7 +10,7 @@ import Register from "./Register";
 import { ClientForm, ProjectForm, TaskForm } from "../Forms";
 import { Col } from 'react-flexbox-grid';
 import Navbar from "./Navbar";
-import { LoginForm, UserForm, CompanyForm } from '../Forms';
+import { CompanyForm } from '../Forms';
 import { CompanyContext } from "../Contexts"
 import "./style.css";
 
@@ -20,7 +20,6 @@ function PageContainer(props) {
 		<Switch>
 			<Route path="/register" component={Register} />
 			<Route path="/login" component={Register} />
-			<Route exact path="/register" component={UserForm} />
 			<Route path="/companies/new" component={CompanyForm} />
 			<Route path="/dashboard" >
 				<CompanyForm />
