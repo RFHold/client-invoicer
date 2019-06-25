@@ -1,13 +1,16 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Task = sequelize.define('Task', {
-    company: {
-      type: DataTypes.INTEGER
+    user: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
     },
     client: {
+      allowNull: false,
       type: DataTypes.INTEGER
     },
     project: {
+      allowNull: false,
       type: DataTypes.INTEGER
     },
     startDate: {
@@ -17,24 +20,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE
     },
     name: {
+      allowNull: false,
       type: DataTypes.STRING
     },
     description: {
+      allowNull: false,
       type: DataTypes.STRING
     }
   }, {
-    paranoid: true,
       getterMethods: {
-        elapsed() {
-          let time = 0;
-          if (this.TimeEntries) {
-            this.TimeEntries.map(entry => {
-              const diff = new Date(entry.endDate).getTime() - new Date(entry.startDate).getTime();
-              time += diff
-            })
-          }
-          return time
-        },
         json() {
           return {
             id: this.id,
@@ -43,7 +37,6 @@ module.exports = (sequelize, DataTypes) => {
             startDate: this.startDate,
             dueDate: this.dueDate,
             project: this.project,
-            elapsed: this.elapsed,
             client: this.client
           }
         }
@@ -51,8 +44,8 @@ module.exports = (sequelize, DataTypes) => {
     });
   Task.associate = function(models) {
     // associations can be defined here
-    this.belongsTo(models.Company, {
-      foreignKey: 'company',
+    this.belongsTo(models.User, {
+      foreignKey: 'user',
       constraints: true,
       onDelete: "CASCADE"
     });
