@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { CompanyContext } from '../../Contexts';
 import "./style.css";
 import ListView from '../../ListView';
-import PageHeader from "../PageHeader";
 
 function ListItem({ data: client }) {
     return (
@@ -18,10 +17,6 @@ function Clients() {
     const context = useContext(CompanyContext);
 
     return (
-<<<<<<< HEAD
-        <Grid fluid id="clients-container">
-            {/* <PageHeader /> */}
-=======
         <Grid fluid id="content-container">
             <div id="client-container">
                 <Row className="page-header">
@@ -43,7 +38,6 @@ function Clients() {
                     </Col>
                 </Row>
             </div>
->>>>>>> d31c77981f086d0f72a75d70ed42c0879a663e08
             <Row>
                 <Col xs={12}>
                     <ListView itemComponent={ListItem} resource="/api/company/1/clients" />

@@ -4,9 +4,11 @@
     height: calc(100vh - 15%);
 }
 
-#client-card {
+#project-card {
     border: 1px solid #ccc;
-    width: 20%;
+    width: 320px;
+    height: 450px;
+    background-color: #fff;
 }
 
 #client-container {
@@ -35,6 +37,11 @@ ul>li:first-child {
     padding: 0;
     margin: 0;
     height: 100%;
+}
+
+#projects-col {
+    margin: 0;
+    padding: 20px;
 }
 
 #new-client-button {

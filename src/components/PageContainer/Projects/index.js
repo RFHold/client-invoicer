@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import { Link } from "react-router-dom";
-//import "./style.css";
+import "./style.css";
 import ListView from "../../ListView";
 import { CompanyContext } from "../../Contexts";
 
 function ListItem({ data: project }) {
     return (
-        <div>
+        <div id="project-card">
             <h4>Project Name: {project.name}</h4>
             <h5>Client: {project.client}</h5>
             <p>Description: {project.description}</p>
@@ -35,15 +35,15 @@ function Projects() {
                     <Col xs={12}>
                         <Row bottom="xs">
                             <ul>
-                                <li><Link to="/clients">Active Projects</Link></li>
-                                <li><Link to="/clients">Inactive Projects</Link></li>
+                                <li><Link to="/projects">Active Projects</Link></li>
+                                <li><Link to="/projects">Inactive Projects</Link></li>
                             </ul>
                         </Row>
                     </Col>
                 </Row>
             </div>
             <Row>
-                <Col xs={12}>
+                <Col xs={12} id="projects-col">
                     <ListView itemComponent={ListItem} resource="/api/company/1/projects" />
                 </Col>
             </Row>
