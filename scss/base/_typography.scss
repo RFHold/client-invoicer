@@ -1,14 +1,7 @@
-:root {
-    --font-primary: 'Roboto', sans-serif;
-    --font-secondary: serif;
-
-    /* set base values */
-    --text-base-size: 1em;
-    --text-scale-ratio: 1.2;
-}
-
+/**
+ * Basic typography style for copy text
+ */
 body {
-    font-size: var(--text-base-size);
-    font-family: var(--font-primary);
-    color: var(--color-text);
+  color: $text-color;
+  font: normal 125% / 1.4 $text-font-stack;
 }
