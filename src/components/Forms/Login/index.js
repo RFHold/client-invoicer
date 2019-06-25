@@ -1,22 +1,27 @@
 import React, { PureComponent as Component } from "react";
 import Form from '../../Form';
 import { withRouter } from 'react-router-dom';
+import "./style.css";
 
 class LoginFormWithoutRouter extends Component {
     render() {
         return (
-            <Form method="POST" action="/api/session" onSuccess={() => {this.props.history.push("/dashboard")}}>
-                <h1>Login</h1>
-                <div>
-                    <label htmlFor="sessionFormLoginInput">Username or Email</label>
-                    <input id="sessionFormLoginInput" name="login" type="text" />
-                </div>
-                <div>
-                    <label htmlFor="sessionFormPasswordInput">Password</label>
-                    <input id="sessionFormPasswordInput" name="password" type="password" />
-                </div>
-                <button type="submit">Login</button>
-            </Form>
+            <div className="login-form">
+                <Form method="POST" action="/api/session" onSuccess={() => { this.props.history.push("/dashboard") }}>
+                    <h1>Login</h1>
+                    <div>
+                        <label htmlFor="sessionFormLoginInput">Username or Email</label>
+                        <input id="sessionFormLoginInput" name="login" type="text" />
+                    </div>
+                    <div>
+                        <label htmlFor="sessionFormPasswordInput">Password</label>
+                        <input id="sessionFormPasswordInput" name="password" type="password" />
+                    </div>
+                    <div class="button-container">
+                        <button class="submit-button" type="submit">Login</button>
+                    </div>
+                </Form>
+            </div>
         );
     }
 }

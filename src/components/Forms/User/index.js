@@ -21,7 +21,7 @@ class UserFormWithoutRouter extends Component {
 
     render() {
         return (
-            <div className="card">
+            <div className="register-form">
                 <Form method={this.state.method} action={this.state.action}>
                     <h1>Register</h1>
                     <div>
