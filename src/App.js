@@ -5,17 +5,18 @@ import { Grid, Row } from 'react-flexbox-grid';
 import GlobalHeader from "./components/GlobalHeader";
 import PageContainer from "./components/PageContainer";
 import Authenticator from "./components/Authenticator";
-import { CompanyContext } from "./components/Contexts";
+import { CompanyContext, SessionContext } from "./components/Contexts";
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      company: 1
+      company: undefined,
+      session: undefined
     };
   }
-
+  
   componentDidMount() {
   }
 
@@ -29,6 +30,7 @@ class App extends Component {
     return (
       <Router>
         <div>
+<<<<<<< HEAD
           <CompanyContext.Provider value={
             {
               setCompany: (id) => this.setState({ company: id }),
@@ -65,6 +67,42 @@ class App extends Component {
                 <PageContainer />
               </Row>
             </Grid>
+=======
+          <CompanyContext.Provider value={{
+            setCompany: (id) => this.setState({ company: id }),
+            getCompany: () => this.state.company,
+            routes: {
+              clientsRoute: `/api/company/${this.state.company}/clients`,
+              projectsRoute: `/api/company/${this.state.company}/projects`,
+              tasksRoute: `/api/company/${this.state.company}/tasks`,
+              clientRoute: (id) => `/api/company/${this.state.company}/client/${id}`,
+              projectRoute: (id) => `/api/company/${this.state.company}/project/${id}`,
+              taskRoute: (id) => `/api/company/${this.state.company}/task/${id}`,
+              companiesRoute: `/api/companies`,
+              companyRoute: `/api/company/${this.state.company}`,
+              usersRoute: `/api/users`,
+              companyViewRoute: (id) => `/company/${id || this.state.company}/dashboard`,
+              clientsViewRoute: (id) => `/company/${id || this.state.company}/clients`,
+              newClientViewRoute: (id) => `/company/${id || this.state.company}/clients/new`,
+              projectsViewRoute: (id) => `/company/${id || this.state.company}/projects`,
+              tasksViewRoute: (id) => `/company/${id || this.state.company}/tasks`,
+              invoicesViewRoute: (id) => `/company/${id || this.state.company}/invoices`,
+              reportsViewRoute: (id) => `/company/${id || this.state.company}/reports`,
+            }
+          }}>
+            <SessionContext.Provider value={{
+              setSession: (state) => this.setState({ session: state }),
+              getSession: () => this.state.session
+            }}>
+              <GlobalHeader />
+              <Grid fluid id="app-container">
+                <Row id="app-row">
+                  <Authenticator/>
+                  <PageContainer/>
+                </Row>
+                </Grid>
+            </SessionContext.Provider>
+>>>>>>> a089127ed0a155f3d9c6add45ca914e9b3f013da
           </CompanyContext.Provider>
         </div>
       </Router>
