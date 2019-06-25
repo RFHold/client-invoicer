@@ -28,7 +28,7 @@ class ProjectFormWithoutRouter extends Component {
 
     render() {
         return (
-            <Form method={this.state.method} action={this.state.action}>
+            <Form method={this.state.method} action={this.state.action} onSuccess={() => {this.props.history.push("/company/1/projects")}}>
                 <h1>Create Project</h1>
                 <div>
                     <label htmlFor="projectFormNameInput">Name</label>
