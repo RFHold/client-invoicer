@@ -33,17 +33,25 @@ module.exports = function (router) {
     router.post("/api/company/:company_id/tasks", function (req, res) {
         const { name, description, startDate, dueDate, project, client } = req.body
         return db.sequelize.transaction().then((t) => {
-            return req.company.createTask({
-                name: name,
-                description: description,
-                startDate: startDate,
-                dueDate: dueDate,
-                project: project,
-                client: client
-            }, { transaction: t }).then((task) => {
-                t.commit()
-                return res.json({ success: true, message: `Created task: ${task.name}` })
+            return db.Project.findOne({
+                where: { id: project, company: req.company.id }
+            }).then((project) => {
+                if (task) {
+                    return req.company.createTask({
+                        name: name,
+                        description: description,
+                        startDate: startDate,
+                        dueDate: dueDate,
+                        project: project.id,
+                        client: project.client
+                    }, { transaction: t })
+                } else {
+                    res.status(404).json({ error: "Project does not exist or User is not a member of the parent company" })
+                }
             })
+        }).then((task) => {
+            t.commit()
+            return res.json({ success: true, message: `Created task: ${task.name}` })
         }).catch(error => {
             res.status(500).json({ error: "Internal server error" })
         })
