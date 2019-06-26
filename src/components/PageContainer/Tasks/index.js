@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import { Link } from "react-router-dom";
+import Form from "../../Form";
 //import "./style.css";
 import ListView from "../../ListView";
 import { CompanyContext } from "../../../Contexts";
@@ -13,6 +14,9 @@ function ListItem({ data: task }) {
       <p>Description: {task.description}</p>
       <p>Due Date: {task.dueDate}</p>
       <p>Start Date: {task.startDate}</p>
+      {/* <Form method="DELETE" action={context.routes.deleteTaskRoute(task.id)}>
+        <input type="submit" value="Delete"></input>
+      </Form> */}
     </div>
   );
 }
@@ -27,7 +31,7 @@ function Tasks() {
           <p>Tasks Say Hello</p>
           <ListView itemComponent={ListItem} resource="/api/company/1/tasks" />
         </Col>
-      </Row>
+    </Row>
     </Grid>
   );
 }
