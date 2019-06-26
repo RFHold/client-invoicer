@@ -1,16 +1,18 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Goals', {
+    return queryInterface.createTable('Tasks', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      company: {
+      user: {
+        allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'Companies', key: 'id' }
+        references: { model: 'Users', key: 'id' },
+        onDelete: "CASCADE"
       },
       client: {
         type: Sequelize.INTEGER,
@@ -23,7 +25,7 @@ module.exports = {
       startDate: {
         type: Sequelize.DATE
       },
-      endDate: {
+      dueDate: {
         type: Sequelize.DATE
       },
       name: {
@@ -43,6 +45,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Goals');
+    return queryInterface.dropTable('Tasks');
   }
 };

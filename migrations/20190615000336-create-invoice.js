@@ -8,10 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      company: {
+      user: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'Companies', key: 'id' },
+        references: { model: 'Users', key: 'id' },
         onDelete: "CASCADE"
       },
       client: {
@@ -24,7 +24,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      endDate: {
+      dueDate: {
         allowNull: false,
         type: Sequelize.DATE
       },
@@ -39,18 +39,6 @@ module.exports = {
       discount: {
         allowNull: false,
         type: Sequelize.FLOAT
-      },
-      viewed: {
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
-      archived: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      inherit: {
-        type: Sequelize.INTEGER,
-        references: { model: 'Invoices', key: 'id' },
       },
       rate: {
         allowNull: false,
