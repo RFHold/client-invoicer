@@ -32,35 +32,7 @@ class App extends Component {
         <div>
           <Redirect from="/" to="/login" />
 
-          <CompanyContext.Provider value={
-            {
-              setCompany: (id) => this.setState({ company: id }),
-              getCompany: () => this.state.company,
-              routes: {
-                clientsRoute: `/api/company/${this.state.company}/clients`,
-                projectsRoute: `/api/company/${this.state.company}/projects`,
-                tasksRoute: `/api/company/${this.state.company}/tasks`,
-                clientRoute: (id) => `/api/company/${this.state.company}/client/${id}`,
-                projectRoute: (id) => `/api/company/${this.state.company}/project/${id}`,
-                taskRoute: (id) => `/api/company/${this.state.company}/task/${id}`,
-                companiesRoute: `/api/companies`,
-                companyRoute: `/api/company/${this.state.company}`,
-                usersRoute: `/api/users`,
-                companyViewRoute: (id) => `/company/${id || this.state.company}/dashboard`,
-                clientsViewRoute: (id) => `/company/${id || this.state.company}/clients`,
-                newClientViewRoute: (id) => `/company/${id || this.state.company}/clients/new`,
-                projectsViewRoute: (id) => `/company/${id || this.state.company}/projects`,
-                newProjectViewRoute: (id) => `/company/${id || this.state.company}/projects/new`,
-                tasksViewRoute: (id) => `/company/${id || this.state.company}/tasks`,
-                newTaskViewRoute: (id) => `/company/${id || this.state.company}/tasks/new`,
-                invoicesViewRoute: (id) => `/company/${id || this.state.company}/invoices`,
-                reportsViewRoute: (id) => `/company/${id || this.state.company}/reports`,
-                deleteTaskRoute: (taskid) => `/api/company/${this.state.company}/task/${taskid}`,
-                deleteProjectRoute: (projectid) => `/api/company/${this.state.company}/project/${projectid}`,
-                deleteClientRoute: (clientid) => `/api/company/${this.state.company}/client/${clientid}`
-              }
-            }
-          }>
+          <CompanyContext.Provider value={}>
             <GlobalHeader />
             <Grid fluid id="container">
               <Row>
