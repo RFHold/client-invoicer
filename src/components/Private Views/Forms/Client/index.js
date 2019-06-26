@@ -1,7 +1,7 @@
 import React, { PureComponent as Component } from "react";
 import Form from '../../../Utilities/Form';
 import Modal from '../../../Utilities/Modal';
-import { CompanyContext } from "../../../../Contexts"
+import { RoutesContext } from "../../../../Contexts"
 import { withRouter } from 'react-router-dom';
 
 class ClientFormWithoutRouter extends Component {
@@ -33,7 +33,7 @@ class ClientFormWithoutRouter extends Component {
     }
 }
 
-ClientFormWithoutRouter.contextType = CompanyContext;
+ClientFormWithoutRouter.contextType = RoutesContext;
 const ClientForm = withRouter(ClientFormWithoutRouter)
 
 export { ClientForm }

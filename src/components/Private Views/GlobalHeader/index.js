@@ -2,12 +2,12 @@ import React, { useContext } from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import { Link } from "react-router-dom";
 import "./style.css";
-import { CompanyContext } from "../../../Contexts";
+import { RoutesContext } from "../../../Contexts";
 import ListView from "../../Utilities/ListView"
 import DropDown from "../../Utilities/DropDown"
 
 function CompanyItem({ data: company }) {
-	const context = useContext(CompanyContext);
+	const context = useContext(RoutesContext);
 	return (
 		<div id="user-companies">
 			<Link to={context.routes.companyViewRoute(company.id)} id="dashboard">{company.name}</Link>
@@ -15,7 +15,7 @@ function CompanyItem({ data: company }) {
 	);
 }
 function GlobalHeader() {
-	const context = useContext(CompanyContext);
+	const context = useContext(RoutesContext);
 	return (
 		<Grid fluid id="global-header-container">
 			<Row id="global-header-row">

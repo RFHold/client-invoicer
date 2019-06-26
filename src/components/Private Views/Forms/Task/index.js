@@ -1,6 +1,6 @@
 import React, { PureComponent as Component } from "react";
 import Form from '../../../Utilities/Form';
-import { CompanyContext } from "../../../../Contexts"
+import { RoutesContext } from "../../../../Contexts"
 import { withRouter } from 'react-router-dom';
 import ListView from '../../../Utilities/ListView';
 import Modal from '../../../Utilities/Modal';
@@ -67,7 +67,7 @@ class TaskFormWithoutRouter extends Component {
     }
 }
 
-TaskFormWithoutRouter.contextType = CompanyContext;
+TaskFormWithoutRouter.contextType = RoutesContext;
 const TaskForm = withRouter(TaskFormWithoutRouter)
 
 export { TaskForm }

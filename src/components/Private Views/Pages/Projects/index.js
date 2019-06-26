@@ -3,10 +3,10 @@ import { Grid, Row, Col } from "react-flexbox-grid";
 import { Link } from "react-router-dom";
 import "./style.css";
 import ListView from "../../../Utilities/ListView";
-import { CompanyContext } from "../../../../Contexts";
+import { RoutesContext } from "../../../../Contexts";
 
 function ListItem({ data: project }) {
-  const context = useContext(CompanyContext);
+  const context = useContext(RoutesContext);
   return (
     <div id="project-card">
       <h4>Project Name: {project.name}</h4>
@@ -22,7 +22,7 @@ function ListItem({ data: project }) {
 }
 
 function Projects() {
-  const context = useContext(CompanyContext);
+  const context = useContext(RoutesContext);
 
   return (
     <Grid fluid id="content-container">

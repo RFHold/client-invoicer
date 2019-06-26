@@ -1,11 +1,11 @@
 import React, {useContext} from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import { Link } from "react-router-dom";
-import { CompanyContext } from "../../../Contexts";
+import { RoutesContext } from "../../../Contexts";
 import "./style.css";
 
 function Navbar() {
-    const context = useContext(CompanyContext);
+    const context = useContext(RoutesContext);
     return (
         <Grid fluid id="navbar-container">
             <Row id="navbar-row">

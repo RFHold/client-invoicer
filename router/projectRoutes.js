@@ -1,5 +1,5 @@
 const db = require(__root + "/models")
-const Sequelize = require('./node_modules/sequelize');
+const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
 module.exports = function (router) {

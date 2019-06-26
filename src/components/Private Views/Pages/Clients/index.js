@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import { Link } from "react-router-dom";
-import { CompanyContext } from '../../../../Contexts';
+import { RoutesContext } from '../../../../Contexts';
 import "./style.css";
 import ListView from "../../../Utilities/ListView";
 import Form from "../../../Utilities/Form";
 
 function ListItem({ data: client }) {
-    const context = useContext(CompanyContext);
+    const context = useContext(RoutesContext);
     return (
         <div id="client-card">
             <h1>{client.name}</h1>
@@ -19,7 +19,7 @@ function ListItem({ data: client }) {
 }
 
 function Clients() {
-    const context = useContext(CompanyContext);
+    const context = useContext(RoutesContext);
 
     return (
         <Grid fluid id="content-container">
