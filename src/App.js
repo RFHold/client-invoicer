@@ -1,10 +1,11 @@
 import React, { PureComponent as Component } from 'react';
-import { BrowserRouter as Router, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Switch } from "react-router-dom";
 import "./App.css";
 import { Grid, Row } from 'react-flexbox-grid';
 import GlobalHeader from "./components/Private Views/GlobalHeader";
 import PageContainer from "./components/Private Views/PageContainer";
 import { RoutesContext, SessionContext } from "./Contexts";
+import axios from "axios"
 
 class App extends Component {
   constructor(props) {
@@ -16,13 +17,10 @@ class App extends Component {
   }
   
   componentDidMount() {
-    checkSession().then(response => {
+    this.checkSession().then(response => {
       this.setState({session: true})
     }).catch(error => {
       this.setState({ session: false })
-      if (this.props.history.location.pathname !== "/register") {
-        this.props.history.push("/login")
-      }
     })
   }
 
@@ -30,8 +28,11 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Redirect exact from="/" to="/login" />
-          <RoutesContext.Provider>
+          <Switch>
+            {(this.state.session === false) ? <Redirect exact from="/register" to="/register" /> : ""}
+            {(this.state.session === false) ? <Redirect exact from="/" to="/login" /> : ""}
+            {(this.state.session === false) ? <Redirect exact from="*" to="/login" /> : ""}
+          </Switch>
             <SessionContext.Provider value={this.state.session}>
               <GlobalHeader />
               <Grid fluid id="container">
@@ -40,7 +41,6 @@ class App extends Component {
                 </Row>
               </Grid>
             </SessionContext.Provider>
-          </RoutesContext.Provider>
         </div>
       </Router>
     );

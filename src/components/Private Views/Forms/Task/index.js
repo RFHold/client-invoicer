@@ -23,12 +23,12 @@ class TaskFormWithoutRouter extends Component {
         this.state = state
     }
     componentDidMount() {
-        this.setState({ action: (this.props.action) ? this.props.action : this.context.routes.tasksRoute })
+        this.setState({ action: (this.props.action) ? this.props.action : this.context.api.tasks })
     }
     render() {
         return (
-            <Modal header={`${this.state.verb} Client`} onClose={this.context.routes.tasksViewRoute()}>
-            <Form method={this.state.method} action={this.state.action} onSuccess={() => {this.props.history.push("/company/1/tasks")}}>
+            <Modal header={`${this.state.verb} Client`} onClose={this.context.view.tasks.all}>
+                <Form method={this.state.method} action={this.state.action} onSuccess={() => { this.props.history.push(this.context.view.tasks.all)}}>
                 <h1>Create Task</h1>
                 <div>
                     <label htmlFor="taskFormNameInput">Name</label>
@@ -38,14 +38,14 @@ class TaskFormWithoutRouter extends Component {
                     <label htmlFor="taskFormProjectInput">Project</label>
                     <select name="project" id="taskFormProjectInput">
                         <option value="">Select a Project</option>
-                        <ListView itemComponent={SelectItem} resource={this.context.routes.projectsRoute}/>
+                        <ListView itemComponent={SelectItem} resource={this.context.api.projects}/>
                     </select>
                 </div>
                 <div>
                     <label htmlFor="taskFormClientInput">Client</label>
                     <select name="client" id="taskFormClientInput">
                         <option value="">Select a Client</option>
-                        <ListView itemComponent={SelectItem} resource={this.context.routes.clientsRoute}/>
+                        <ListView itemComponent={SelectItem} resource={this.context.api.clients}/>
                     </select>
                 </div>
                 <div>

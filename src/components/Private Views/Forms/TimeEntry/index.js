@@ -1,9 +1,9 @@
 import React, { PureComponent as Component } from "react";
-import Form from '../../Form';
-import { RoutesContext } from "../../Contexts"
+import Form from '../../../Utilities/Form';
+import { RoutesContext } from "../../../../Contexts"
 import { withRouter } from 'react-router-dom';
-import ListView from '../../ListView';
-import Modal from '../../Modal';
+import ListView from '../../../Utilities/ListView';
+import Modal from '../../../Utilities/Modal';
 
 function SelectItem({ data: option }) {
     return (
@@ -23,7 +23,7 @@ class TimeFormWithoutRouter extends Component {
         this.state = state
     }
     componentDidMount() {
-        this.setState({ action: (this.props.action) ? this.props.action : this.context.api/timeEntries(this.props.match.params.taskId) })
+        this.setState({ action: (this.props.action) ? this.props.action : this.context.api.timeEntries(this.props.match.params.taskId) })
     }
     render() {
         return (

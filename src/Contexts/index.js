@@ -14,25 +14,25 @@ export const RoutesContext = React.createContext({
         users: `/api/users`
     },
     view: {
-        task: {
+        tasks: {
             all: `/tasks`,
             one: id => `/task/${id}`,
             new: `tasks/new`,
             edit: id => `/task/edit/${id}`
         },
-        project: {
+        projects: {
             all: `/projects`,
             one: id => `/project/${id}`,
             new: `projects/new`,
             edit: id => `/project/edit/${id}`
         },
-        client: {
+        clients: {
             all: `/clients`,
             one: id => `/client/${id}`,
             new: `clients/new`,
             edit: id => `/client/edit/${id}`
         },
-        invoice: {
+        invoices: {
             all: `/invoices`,
             one: id => `/invoice/${id}`,
             new: `invoices/new`,
@@ -42,7 +42,8 @@ export const RoutesContext = React.createContext({
             logout: `/logout`,
             login: `/login`,
             register: `/register`
-        }
+        },
+        index: "/"
     }
 });
 export const SessionContext = React.createContext(undefined);
