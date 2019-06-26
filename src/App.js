@@ -2,9 +2,9 @@ import React, { PureComponent as Component } from 'react';
 import { BrowserRouter as Router, Redirect } from "react-router-dom";
 import "./App.css";
 import { Grid, Row } from 'react-flexbox-grid';
-import GlobalHeader from "./components/GlobalHeader";
-import PageContainer from "./components/PageContainer";
-import Authenticator from "./Authenticator";
+import GlobalHeader from "./components/Private Views/GlobalHeader";
+import PageContainer from "./components/Private Views/PageContainer";
+import Authenticator from "./Contexts/Authenticator";
 import { CompanyContext } from "./Contexts";
 
 class App extends Component {
