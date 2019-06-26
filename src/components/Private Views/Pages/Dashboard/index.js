@@ -9,15 +9,15 @@ function Dashboard() {
             <h1>Dashboard</h1>
             <Row>
                 <Col xs={12} lg={4}>
-                <p>Current Projects</p>
+                <h3>Current Projects</h3>
                     <ProjectCard />
                 </Col>  
                 <Col xs={12} lg={4}>
-                <p>Open Tasks</p>
+                <h3>Open Tasks</h3>
                     <TaskCard />
                 </Col>
                 <Col xs={12} lg={4}>
-                <p>Time Cards</p>
+                <h3>Time Cards</h3>
                     <TimeCard />
                 </Col> 
             </Row>
