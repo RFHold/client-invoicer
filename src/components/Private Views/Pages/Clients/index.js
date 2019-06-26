@@ -37,18 +37,6 @@ function Clients() {
                             </Link>
                         </Row>
                     </Col>
-                    <Col xs={12}>
-                        <Row bottom="xs">
-                            <ul>
-                                <li>
-                                    <Link to="/clients">Active Clients</Link>
-                                </li>
-                                <li>
-                                    <Link to="/clients">Inactive Clients</Link>
-                                </li>
-                            </ul>
-                        </Row>
-                    </Col>
                 </Row>
             </div>
             <Row>
