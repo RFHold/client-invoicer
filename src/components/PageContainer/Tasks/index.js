@@ -1,11 +1,11 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import { Link } from "react-router-dom";
 //import "./style.css";
 import ListView from "../../ListView";
-import {CompanyContext} from "../../Contexts";
+import { CompanyContext } from "../../../Contexts";
 
-function ListItem ({ data: task }) {
+function ListItem({ data: task }) {
   return (
     <div>
       <h4>task Name: {task.name}</h4>
@@ -18,14 +18,14 @@ function ListItem ({ data: task }) {
 }
 
 function Tasks() {
-    const context = useContext(CompanyContext)
+  const context = useContext(CompanyContext)
   return (
     <Grid fluid id="tasks-container">
       <Row>
         <Col xs={12}>
           <Link to={context.routes.tasksViewRoute()} id="tasks">Task List</Link>
           <p>Tasks Say Hello</p>
-          <ListView itemComponent={ListItem} resource="/api/company/1/tasks"/>
+          <ListView itemComponent={ListItem} resource="/api/company/1/tasks" />
         </Col>
       </Row>
     </Grid>

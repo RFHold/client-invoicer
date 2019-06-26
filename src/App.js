@@ -4,8 +4,8 @@ import "./App.css";
 import { Grid, Row } from 'react-flexbox-grid';
 import GlobalHeader from "./components/GlobalHeader";
 import PageContainer from "./components/PageContainer";
-import Authenticator from "./components/Authenticator";
-import { CompanyContext } from "./components/Contexts";
+import Authenticator from "./Authenticator";
+import { CompanyContext } from "./Contexts";
 
 class App extends Component {
   constructor(props) {

@@ -1,5 +1,5 @@
 import React, { PureComponent as Component } from "react";
-import { CompanyContext } from "../Contexts"
+import { CompanyContext } from "../Contexts";
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 

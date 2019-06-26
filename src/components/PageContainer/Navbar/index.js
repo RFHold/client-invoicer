@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import { Link } from "react-router-dom";
-import { CompanyContext } from "../../Contexts"
+import { CompanyContext } from "../../../Contexts";
 import "./style.css";
 
 function Navbar() {

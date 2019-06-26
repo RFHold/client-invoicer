@@ -11,7 +11,7 @@ import { ClientForm, ProjectForm, TaskForm } from "../Forms";
 import { Col } from 'react-flexbox-grid';
 import Navbar from "./Navbar";
 import { CompanyForm } from '../Forms';
-import { CompanyContext } from "../Contexts"
+import { CompanyContext } from "../../Contexts";
 import "./style.css";
 
 function PageContainer(props) {

@@ -1,7 +1,7 @@
 import React, { PureComponent as Component } from "react";
 import Form from '../../Form';
 import Modal from '../../Modal';
-import { CompanyContext } from "../../Contexts"
+import { CompanyContext } from "../../../Contexts"
 import { withRouter } from 'react-router-dom';
 
 class ClientFormWithoutRouter extends Component {

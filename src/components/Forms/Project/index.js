@@ -1,6 +1,6 @@
 import React, { PureComponent as Component } from "react";
 import Form from '../../Form';
-import { CompanyContext } from "../../Contexts"
+import { CompanyContext } from "../../../Contexts"
 import { withRouter } from 'react-router-dom';
 import ListView from '../../ListView';
 

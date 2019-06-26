@@ -1,6 +1,6 @@
 import React,{useContext} from "react";
 import Card from "../Card";
-import {CompanyContext} from "../Contexts";
+import {CompanyContext} from "../../Contexts";
 import Listview from "../ListView"
 
 

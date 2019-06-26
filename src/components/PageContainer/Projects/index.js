@@ -3,7 +3,7 @@ import { Grid, Row, Col } from "react-flexbox-grid";
 import { Link } from "react-router-dom";
 import "./style.css";
 import ListView from "../../ListView";
-import { CompanyContext } from "../../Contexts";
+import { CompanyContext } from "../../../Contexts";
 
 function ListItem({ data: project }) {
     return (
