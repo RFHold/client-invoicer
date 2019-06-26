@@ -6,7 +6,6 @@ import ListView from "../../../Utilities/ListView";
 import { CompanyContext } from "../../../../Contexts";
 
 function ListItem({ data: project }) {
-  const context = useContext(CompanyContext);
   return (
     <div id="project-card">
       <h4>Project Name: {project.name}</h4>
@@ -35,7 +34,7 @@ function Projects() {
             <Row end="xs">
               <Link to={context.routes.newProjectViewRoute()} id="projects">
                 <button id="new-client-button">
-                  <i class="fas fa-plus" />
+                  <i className="fas fa-plus" />
                   Add New Project
                 </button>
               </Link>

@@ -4,10 +4,8 @@ import { Link } from "react-router-dom";
 import { CompanyContext } from '../../../../Contexts';
 import "./style.css";
 import ListView from "../../../Utilities/ListView";
-import Form from "../../../Utilities/Form";
 
 function ListItem({ data: client }) {
-    const context = useContext(CompanyContext);
     return (
         <div id="client-card">
             <h1>{client.name}</h1>
@@ -32,7 +30,7 @@ function Clients() {
                         <Row end="xs">
                             <Link to={context.routes.newClientViewRoute()} id="clients">
                                 <button id="new-client-button">
-                                    <i class="fas fa-plus" />Add New Client
+                                    <i className="fas fa-plus" />Add New Client
                 </button>
                             </Link>
                         </Row>
