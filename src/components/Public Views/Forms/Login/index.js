@@ -19,8 +19,8 @@ class LoginFormWithoutRouter extends Component {
                             <label htmlFor="sessionFormPasswordInput">Password</label>
                             <input id="sessionFormPasswordInput" name="password" type="password" />
                         </div>
-                        <div class="button-container">
-                            <button class="submit-button" type="submit">Login</button>
+                        <div className="button-container">
+                            <button className="submit-button" type="submit">Login</button>
                         </div>
                     </Form>
                 </Card>

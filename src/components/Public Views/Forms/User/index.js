@@ -38,7 +38,7 @@ class UserFormWithoutRouter extends Component {
                             <label htmlFor="userFormEmailInput">Email</label>
                             <input id="userFormEmailInput" name="email" type="email" />
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <div>
                                 <label htmlFor="userFormFirstNameInput">First Name</label>
                                 <input id="userFormFirstNameInput" name="firstName" type="text" />
@@ -48,7 +48,7 @@ class UserFormWithoutRouter extends Component {
                                 <input id="userFormLastNameInput" name="lastName" type="text" />
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <div>
                                 <label htmlFor="userFormAddressInput">Address</label>
                                 <input id="userFormAddressInput" name="address" type="text" />
@@ -58,8 +58,8 @@ class UserFormWithoutRouter extends Component {
                                 <input id="userFormPhoneInput" name="phone" type="text" />
                             </div>
                         </div>
-                        <div class="button-container">
-                            <button class="submit-button" type="submit">{this.state.verb}</button>
+                        <div className="button-container">
+                            <button className="submit-button" type="submit">{this.state.verb}</button>
                         </div>
                     </Form>
                 </Card>

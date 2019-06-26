@@ -1,6 +1,7 @@
 import React, { PureComponent as Component } from 'react';
 import { BrowserRouter as Router, Redirect, Switch } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
+import "./stylesheets/layout/_layout.scss";
 import { Grid, Row } from 'react-flexbox-grid';
 import GlobalHeader from "./components/Private Views/GlobalHeader";
 import PageContainer from "./components/Private Views/PageContainer";
@@ -15,10 +16,14 @@ class App extends Component {
       session: undefined
     };
   }
-  
+
   componentDidMount() {
     this.checkSession().then(response => {
+<<<<<<< HEAD
       this.setState({session: response.data.result.username})
+=======
+      this.setState({ session: true })
+>>>>>>> 194cb28c2ecefb5a2d4d6f3bcfafcff78ed38b52
     }).catch(error => {
       this.setState({ session: false })
     })
@@ -33,19 +38,19 @@ class App extends Component {
             {(this.state.session === false) ? <Redirect exact from="/" to="/login" /> : ""}
             {(this.state.session === false) ? <Redirect exact from="*" to="/login" /> : ""}
           </Switch>
-            <SessionContext.Provider value={this.state.session}>
-              <GlobalHeader />
-              <Grid fluid id="container">
-                <Row>
-                  <PageContainer />
-                </Row>
-              </Grid>
-            </SessionContext.Provider>
+          <SessionContext.Provider value={this.state.session}>
+            <GlobalHeader />
+            <Grid fluid id="container">
+              <Row>
+                <PageContainer />
+              </Row>
+            </Grid>
+          </SessionContext.Provider>
         </div>
       </Router>
     );
   }
-  
+
   checkSession() {
     return new Promise((resolve, reject) => {
       axios({

@@ -6,6 +6,7 @@ import "./style.css";
 import ListView from "../../../Utilities/ListView";
 import Form from "../../../Utilities/Form";
 
+
 function ListItem({ data: client }) {
     const context = useContext(RoutesContext);
     return (
@@ -32,7 +33,7 @@ function Clients() {
                         <Row end="xs">
                             <Link to={context.view.clients.new} id="clients">
                                 <button id="new-client-button">
-                                    <i class="fas fa-plus" />Add New Client
+                                    <i className="fas fa-plus" />Add New Client
                 </button>
                             </Link>
                         </Row>

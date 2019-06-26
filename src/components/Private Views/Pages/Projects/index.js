@@ -36,7 +36,7 @@ function Projects() {
             <Row end="xs">
               <Link to={context.view.projects.new} id="projects">
                 <button id="new-client-button">
-                  <i class="fas fa-plus" />
+                  <i className="fas fa-plus" />
                   Add New Project
                 </button>
               </Link>
