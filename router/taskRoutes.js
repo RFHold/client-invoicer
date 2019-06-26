@@ -20,13 +20,14 @@ module.exports = function (router) {
     })
 
     router.get("/api/tasks", function (req, res) {
-        return req.sessionUser.getTasks().then((tasks) => {
+        return req.sessionUser.getTasks({ include: [{ all: true }] }).then((tasks) => {
             if (tasks) {
                 res.json({ success: true, length: tasks.length, results: tasks.map(task => task.json), message: `Found ${tasks.length} tasks` })
             } else {
                 res.status(404).json({ error: "No tasks found" })
             }
         }).catch((error) => {
+            console.log(error);
             res.status(500).json({ message: "Internal server error", error: error })
         })
     })

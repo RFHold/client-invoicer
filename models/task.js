@@ -29,6 +29,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
       getterMethods: {
+        elapsed(){
+          let time = 0
+          if (this.TimeEntries[0]){
+            this.TimeEntries.map(timeEntry => {
+              time += (new Date(timeEntry.endDate).getTime() - new Date(timeEntry.startDate).getTime())
+            })
+          }
+          return time
+        },
         json() {
           return {
             id: this.id,
@@ -36,6 +45,7 @@ module.exports = (sequelize, DataTypes) => {
             description: this.description,
             startDate: this.startDate,
             dueDate: this.dueDate,
+            elapsed: this.elapsed,
             project: this.project,
             client: this.client
           }

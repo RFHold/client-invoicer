@@ -10,6 +10,8 @@ module.exports = function (router) {
                 description: description,
                 startDate: startDate,
                 endDate: endDate,
+                project: req.task.project,
+                client: req.task.client,
                 task: req.task.id
             }, { transaction: t }).then((timeEntry) => {
                 t.commit()
