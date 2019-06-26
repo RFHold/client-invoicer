@@ -3,7 +3,7 @@ import Form from '../../../Utilities/Form';
 import Card from "../../../Utilities/Card";
 import { RoutesContext } from "../../../../Contexts";
 import { withRouter } from 'react-router-dom';
-import "./style.css";
+import "../../../../stylesheets/components/_user.scss";
 
 class UserFormWithoutRouter extends Component {
     constructor(props) {

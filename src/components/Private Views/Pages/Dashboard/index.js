@@ -1,28 +1,26 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
-//import "./style.css";
 import { TimeCard, TaskCard, ProjectCard } from "../../Cards";
 
 function Dashboard() {
     return (
-        <Grid fluid id="dashboard-container">
-            <Row>
-                <Col xs={12}>
+        <div classNam="container-fluid" id="dashboard-container">
+            <div className="row">
+                <div className="col-xs-12">
                     <h1>Dashboard</h1>
-                </Col>
-            </Row>
-            <Row>
-                <Col xs={12} lg={4}>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-xs-12 col-lg-4">
                     <TimeCard />
-                </Col>
-                <Col xs={12} lg={4}>
+                </div>
+                <div className="col-xs-12 col-lg-4">
                     <TaskCard />
-                </Col>
-                <Col xs={12} lg={4}>
+                </div>
+                <div className="col-xs-12 col-lg-4">
                     <ProjectCard />
-                </Col>
-            </Row>
-        </Grid>
+                </div>
+            </div>
+        </div>
     );
 }
 

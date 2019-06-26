@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { Grid, Row, Col } from "react-flexbox-grid";
 import { Link } from "react-router-dom";
-//import "./style.css";
+import "../../../../stylesheets/layout/_clients-projects-tasks.scss";
 import ListView from "../../../Utilities/ListView";
 import { RoutesContext } from "../../../../Contexts";
+import Form from "../../../Utilities/Form";
 
 function ListItem({ data: task }) {
   const context = useContext(RoutesContext)
@@ -16,7 +16,7 @@ function ListItem({ data: task }) {
       <p>Start Date: {task.startDate}</p>
       {<Form method="DELETE" action={context.api.task(task.id)}>
         <input type="submit" value="Delete"></input>
-      </Form> }
+      </Form>}
     </div>
   );
 }
@@ -24,15 +24,15 @@ function ListItem({ data: task }) {
 function Tasks() {
   const context = useContext(RoutesContext)
   return (
-    <Grid fluid id="tasks-container">
-      <Row>
-        <Col xs={12}>
+    <div className="container-fluid" id="tasks-container">
+      <div className="row">
+        <div className="col-xs-12">
           <Link to={context.view.tasks.new} id="tasks">Task List</Link>
           <p>Tasks Say Hello</p>
           <ListView itemComponent={ListItem} resource={context.api.tasks} />
-        </Col>
-    </Row>
-    </Grid>
+        </div>
+      </div>
+    </div>
   );
 }
 

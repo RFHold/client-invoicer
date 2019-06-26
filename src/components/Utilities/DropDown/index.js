@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./styles.css";
+import "../../../stylesheets/components/_dropdown.scss";
 
 function DropDown({ header, children: options, className }) {
     const [open, setOpen] = useState(false);

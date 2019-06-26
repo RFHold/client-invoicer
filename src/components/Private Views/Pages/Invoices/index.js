@@ -1,16 +1,14 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
-// import "./style.css";
 
 function Invoices() {
     return (
-        <Grid fluid id="invoices-container">
-            <Row>
-                <Col xs={12}>
+        <div className="container-fluid" id="invoices-container">
+            <div className="row">
+                <div className="col-xs-12">
                     <p>Invoices says hello</p>
-                </Col>
-            </Row>
-        </Grid>
+                </div>
+            </div>
+        </div>
     );
 }
 

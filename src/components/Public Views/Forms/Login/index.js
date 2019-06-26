@@ -2,7 +2,7 @@ import React, { PureComponent as Component } from "react";
 import Form from "../../../Utilities/Form";
 import Card from "../../../Utilities/Card";
 import { withRouter } from 'react-router-dom';
-import "./style.css";
+import "../../../../stylesheets/components/_login.scss";
 
 class LoginFormWithoutRouter extends Component {
     render() {

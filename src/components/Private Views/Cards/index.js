@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Card from "../../Utilities/Card";
 import { RoutesContext } from "../../../Contexts";
-import Listview from "../../Utilities/ListView"
+import Listview from "../../Utilities/ListView";
 
 
 function TaskItem({ data: task }) {

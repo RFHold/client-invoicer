@@ -8,7 +8,8 @@
 
 // 2. Vendors
 @import
-  'vendors/reset';
+  'vendors/reset',
+  'vendors/flexboxgrid/main.scss';
 
 // 3. Base stuff
 @import
@@ -17,9 +18,10 @@
   'base/typography';
 
 // 4. Layout-related sections
-@import
-  'layout/layout';
+// @import
+//   'layout/layout';
 
 // 5. Components
 @import
-  'components/button';
+  'components/button',
+  "components/modal";
