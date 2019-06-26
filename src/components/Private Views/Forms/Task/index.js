@@ -42,13 +42,6 @@ class TaskFormWithoutRouter extends Component {
                     </select>
                 </div>
                 <div>
-                    <label htmlFor="taskFormClientInput">Client</label>
-                    <select name="client" id="taskFormClientInput">
-                        <option value="">Select a Client</option>
-                        <ListView itemComponent={SelectItem} resource={this.context.api.clients}/>
-                    </select>
-                </div>
-                <div>
                     <label htmlFor="taskFormDescriptionInput">Description</label>
                     <input id="taskFormDescriptionInput" name="description" type="text" />
                 </div>

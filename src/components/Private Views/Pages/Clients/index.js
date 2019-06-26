@@ -30,7 +30,7 @@ function Clients() {
                     </Col>
                     <Col xs={6}>
                         <Row end="xs">
-                            <Link to={context.routes.newClientViewRoute()} id="clients">
+                            <Link to={context.view.clients.new} id="clients">
                                 <button id="new-client-button">
                                     <i class="fas fa-plus" />Add New Client
                 </button>
@@ -55,7 +55,7 @@ function Clients() {
                 <Col xs={12}>
                     <ListView
                         itemComponent={ListItem}
-                        resource="/api/company/1/clients"
+                        resource={context.api.clients}
                     />
                 </Col>
             </Row>

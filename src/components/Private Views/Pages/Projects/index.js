@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./style.css";
 import ListView from "../../../Utilities/ListView";
 import { RoutesContext } from "../../../../Contexts";
+import Form from "../../../Utilities/Form";
 
 function ListItem({ data: project }) {
   const context = useContext(RoutesContext);
@@ -33,28 +34,12 @@ function Projects() {
           </Col>
           <Col xs={6}>
             <Row end="xs">
-              <Link to={context.routes.newProjectViewRoute()} id="projects">
+              <Link to={context.view.projects.new} id="projects">
                 <button id="new-client-button">
                   <i class="fas fa-plus" />
                   Add New Project
                 </button>
               </Link>
-            </Row>
-          </Col>
-          <Col xs={12}>
-            <Row bottom="xs">
-              <ul>
-                <li>
-                  <Link to={context.routes.projectsViewRoute()}>
-                    Active Projects
-                  </Link>
-                </li>
-                <li>
-                  <Link to={context.routes.projectsViewRoute()}>
-                    Inactive Projects
-                  </Link>
-                </li>
-              </ul>
             </Row>
           </Col>
         </Row>
@@ -63,7 +48,7 @@ function Projects() {
         <Col xs={12} id="projects-col">
           <ListView
             itemComponent={ListItem}
-            resource="/api/company/1/projects/"
+            resource={context.api.projects}
           />
         </Col>
       </Row>

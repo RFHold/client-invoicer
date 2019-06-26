@@ -21,7 +21,7 @@ class ProjectFormWithoutRouter extends Component {
     this.state = state;
   }
   componentDidMount() {
-    this.setState({ action: this.props.action ? this.props.action : this.context.routes.projectsRoute });
+    this.setState({ action: this.props.action ? this.props.action : this.context.api.projects });
   }
 
   render() {

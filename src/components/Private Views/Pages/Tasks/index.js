@@ -7,6 +7,7 @@ import ListView from "../../../Utilities/ListView";
 import { RoutesContext } from "../../../../Contexts";
 
 function ListItem({ data: task }) {
+  const context = useContext(RoutesContext)
   return (
     <div>
       <h4>task Name: {task.name}</h4>
@@ -27,9 +28,9 @@ function Tasks() {
     <Grid fluid id="tasks-container">
       <Row>
         <Col xs={12}>
-          <Link to={context.routes.tasksViewRoute()} id="tasks">Task List</Link>
+          <Link to={context.view.tasks.new} id="tasks">Task List</Link>
           <p>Tasks Say Hello</p>
-          <ListView itemComponent={ListItem} resource="/api/company/1/tasks" />
+          <ListView itemComponent={ListItem} resource={context.api.tasks} />
         </Col>
     </Row>
     </Grid>
