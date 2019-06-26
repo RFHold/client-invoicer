@@ -1,6 +1,6 @@
 import React, { PureComponent as Component } from "react";
 import Form from '../../../Utilities/Form';
-import { CompanyContext } from "../../../../Contexts"
+import { RoutesContext } from "../../../../Contexts"
 import { withRouter } from 'react-router-dom';
 import ListView from '../../../Utilities/ListView';
 import Modal from '../../../Utilities/Modal';
@@ -23,12 +23,12 @@ class TaskFormWithoutRouter extends Component {
         this.state = state
     }
     componentDidMount() {
-        this.setState({ action: (this.props.action) ? this.props.action : this.context.routes.tasksRoute })
+        this.setState({ action: (this.props.action) ? this.props.action : this.context.api.tasks })
     }
     render() {
         return (
-            <Modal header={`${this.state.verb} Client`} onClose={this.context.routes.tasksViewRoute()}>
-            <Form method={this.state.method} action={this.state.action} onSuccess={() => {this.props.history.push("/company/1/tasks")}}>
+            <Modal header={`${this.state.verb} Client`} onClose={this.context.view.tasks.all}>
+                <Form method={this.state.method} action={this.state.action} onSuccess={() => { this.props.history.push(this.context.view.tasks.all)}}>
                 <h1>Create Task</h1>
                 <div>
                     <label htmlFor="taskFormNameInput">Name</label>
@@ -38,7 +38,7 @@ class TaskFormWithoutRouter extends Component {
                     <label htmlFor="taskFormProjectInput">Project</label>
                     <select name="project" id="taskFormProjectInput">
                         <option value="">Select a Project</option>
-                        <ListView itemComponent={SelectItem} resource={this.context.routes.projectsRoute}/>
+                        <ListView itemComponent={SelectItem} resource={this.context.api.projects}/>
                     </select>
                 </div>
                 <div>
@@ -60,7 +60,7 @@ class TaskFormWithoutRouter extends Component {
     }
 }
 
-TaskFormWithoutRouter.contextType = CompanyContext;
+TaskFormWithoutRouter.contextType = RoutesContext;
 const TaskForm = withRouter(TaskFormWithoutRouter)
 
 export { TaskForm }

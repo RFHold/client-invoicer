@@ -1,77 +1,63 @@
 import React, { PureComponent as Component } from 'react';
-import { BrowserRouter as Router, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Switch } from "react-router-dom";
 import "./App.scss";
-import "./stylesheets/main.scss";
+import "./stylesheets/layout/_layout.scss";
 import { Grid, Row } from 'react-flexbox-grid';
 import GlobalHeader from "./components/Private Views/GlobalHeader";
 import PageContainer from "./components/Private Views/PageContainer";
-import Authenticator from "./Contexts/Authenticator";
-import { CompanyContext } from "./Contexts";
+import { RoutesContext, SessionContext } from "./Contexts";
+import axios from "axios"
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      company: 1
+      session: undefined
     };
   }
 
   componentDidMount() {
-  }
-
-  componentDidUpdate() {
-  }
-
-  componentWillUnmount() {
+    this.checkSession().then(response => {
+      this.setState({ session: true })
+    }).catch(error => {
+      this.setState({ session: false })
+    })
   }
 
   render() {
     return (
       <Router>
         <div>
-          <Redirect from="/" to="/login" />
-
-          <CompanyContext.Provider value={
-            {
-              setCompany: (id) => this.setState({ company: id }),
-              getCompany: () => this.state.company,
-              routes: {
-                clientsRoute: `/api/company/${this.state.company}/clients`,
-                projectsRoute: `/api/company/${this.state.company}/projects`,
-                tasksRoute: `/api/company/${this.state.company}/tasks`,
-                clientRoute: (id) => `/api/company/${this.state.company}/client/${id}`,
-                projectRoute: (id) => `/api/company/${this.state.company}/project/${id}`,
-                taskRoute: (id) => `/api/company/${this.state.company}/task/${id}`,
-                companiesRoute: `/api/companies`,
-                companyRoute: `/api/company/${this.state.company}`,
-                usersRoute: `/api/users`,
-                companyViewRoute: (id) => `/company/${id || this.state.company}/dashboard`,
-                clientsViewRoute: (id) => `/company/${id || this.state.company}/clients`,
-                newClientViewRoute: (id) => `/company/${id || this.state.company}/clients/new`,
-                projectsViewRoute: (id) => `/company/${id || this.state.company}/projects`,
-                newProjectViewRoute: (id) => `/company/${id || this.state.company}/projects/new`,
-                tasksViewRoute: (id) => `/company/${id || this.state.company}/tasks`,
-                newTaskViewRoute: (id) => `/company/${id || this.state.company}/tasks/new`,
-                invoicesViewRoute: (id) => `/company/${id || this.state.company}/invoices`,
-                reportsViewRoute: (id) => `/company/${id || this.state.company}/reports`,
-                deleteTaskRoute: (taskid) => `/api/company/${this.state.company}/task/${taskid}`,
-                deleteProjectRoute: (projectid) => `/api/company/${this.state.company}/project/${projectid}`,
-                deleteClientRoute: (clientid) => `/api/company/${this.state.company}/client/${clientid}`
-              }
-            }
-          }>
+          <Switch>
+            {(this.state.session === false) ? <Redirect exact from="/register" to="/register" /> : ""}
+            {(this.state.session === false) ? <Redirect exact from="/" to="/login" /> : ""}
+            {(this.state.session === false) ? <Redirect exact from="*" to="/login" /> : ""}
+          </Switch>
+          <SessionContext.Provider value={this.state.session}>
             <GlobalHeader />
             <Grid fluid id="container">
               <Row>
-                <Authenticator />
                 <PageContainer />
               </Row>
             </Grid>
-          </CompanyContext.Provider>
+          </SessionContext.Provider>
         </div>
       </Router>
     );
+  }
+
+  checkSession() {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: "GET",
+        url: "/api/session"
+      }).then((response) => {
+        resolve(response)
+      }).catch((error) => {
+        reject(error)
+      })
+    })
   }
 }
 

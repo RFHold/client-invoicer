@@ -21,7 +21,7 @@ module.exports = function (router) {
                 return res.json({ success: true, message: `Logged in as ${user.username}` })
             })
         }).catch(error => {
-            res.status(500).json({ error: "Internal server error" })
+            res.status(500).json({ message: "Internal server error", error: error })
         })
     })
 }

@@ -25,7 +25,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       phone: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       firstName: {
         allowNull: false,
@@ -44,9 +44,6 @@ module.exports = {
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      },
-      DeletedAt: {
         type: Sequelize.DATE
       }
     });

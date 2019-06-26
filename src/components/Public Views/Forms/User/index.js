@@ -1,7 +1,7 @@
 import React, { PureComponent as Component } from "react";
 import Form from '../../../Utilities/Form';
 import Card from "../../../Utilities/Card";
-import { CompanyContext } from "../../../../Contexts";
+import { RoutesContext } from "../../../../Contexts";
 import { withRouter } from 'react-router-dom';
 import "./style.css";
 
@@ -17,7 +17,7 @@ class UserFormWithoutRouter extends Component {
         this.state = state
     }
     componentDidMount() {
-        this.setState({ action: (this.props.action) ? this.props.action : this.context.routes.usersRoute })
+        this.setState({ action: (this.props.action) ? this.props.action : this.context.api.users })
     }
 
     render() {
@@ -68,7 +68,7 @@ class UserFormWithoutRouter extends Component {
     }
 }
 
-UserFormWithoutRouter.contextType = CompanyContext;
+UserFormWithoutRouter.contextType = RoutesContext;
 const UserForm = withRouter(UserFormWithoutRouter)
 
 export { UserForm }

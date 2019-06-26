@@ -1,23 +1,26 @@
 import React, { useContext } from "react";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import { Link } from "react-router-dom";
-import { CompanyContext } from '../../../../Contexts';
+import { RoutesContext } from '../../../../Contexts';
 import "./style.css";
 import ListView from "../../../Utilities/ListView";
+import Form from "../../../Utilities/Form";
+
 
 function ListItem({ data: client }) {
+    const context = useContext(RoutesContext);
     return (
         <div id="client-card">
             <h1>{client.name}</h1>
-            {/* <Form method="DELETE" action={context.routes.deleteClientRoute(client.id)}>
+            {<Form method="DELETE" action={context.api.client(client.id)}>
         <input type="submit" value="Delete" />
-      </Form> */}
+      </Form>}
         </div>
     );
 }
 
 function Clients() {
-    const context = useContext(CompanyContext);
+    const context = useContext(RoutesContext);
 
     return (
         <Grid fluid id="content-container">
@@ -28,7 +31,7 @@ function Clients() {
                     </Col>
                     <Col xs={6}>
                         <Row end="xs">
-                            <Link to={context.routes.newClientViewRoute()} id="clients">
+                            <Link to={context.view.clients.new} id="clients">
                                 <button id="new-client-button">
                                     <i className="fas fa-plus" />Add New Client
                 </button>
@@ -53,7 +56,7 @@ function Clients() {
                 <Col xs={12}>
                     <ListView
                         itemComponent={ListItem}
-                        resource="/api/company/1/clients"
+                        resource={context.api.clients}
                     />
                 </Col>
             </Row>

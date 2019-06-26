@@ -26,7 +26,7 @@
     "start:dev": "run-p start:server start:react",
     "start:react": "react-scripts start",
     "start:server": "npx nodemon app.js",
-    "start:server:dev": "npx cross-env PORT=3000 npx nodemon app.js",
+    "start:server:dev": "npx cross-env PORT=4000 node app.js",
     "db:migrate": "npx sequelize db:migrate",
     "db:create": "npx sequelize db:create",
     "db:reset": "npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate",

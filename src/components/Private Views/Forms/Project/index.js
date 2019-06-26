@@ -1,6 +1,6 @@
 import React, { PureComponent as Component } from "react";
 import Form from "../../../Utilities/Form";
-import { CompanyContext } from "../../../../Contexts";
+import { RoutesContext } from "../../../../Contexts";
 import { withRouter } from "react-router-dom";
 import ListView from "../../../Utilities/ListView";
 import Modal from "../../../Utilities/Modal";
@@ -21,26 +21,18 @@ class ProjectFormWithoutRouter extends Component {
     this.state = state;
   }
   componentDidMount() {
-    this.setState({
-      action: this.props.action
-        ? this.props.action
-        : this.context.routes.projectsRoute
-    });
+    this.setState({ action: this.props.action ? this.props.action : this.context.api.projects });
   }
 
   render() {
     return (
-      <Modal
-        header={`${this.state.verb} Project`}
-        onClose={this.context.routes.projectsViewRoute()}
-      >
+      <Modal header={`${this.state.verb} Project`} onClose={this.context.view.projects.all}>
         <Form
           method={this.state.method}
           action={this.state.action}
           onSuccess={() => {
-            this.props.history.push("/company/1/projects");
-          }}
-        >
+            this.props.history.push(this.context.view.projects.all);
+          }}>
           <h1>Create Project</h1>
           <div>
             <label htmlFor="projectFormNameInput">Name</label>
@@ -52,8 +44,7 @@ class ProjectFormWithoutRouter extends Component {
               <option value="">Select a Client</option>
               <ListView
                 itemComponent={SelectItem}
-                resource={this.context.routes.clientsRoute}
-              />
+                resource={this.context.api.clients} />
             </select>
           </div>
           <div>
@@ -61,24 +52,21 @@ class ProjectFormWithoutRouter extends Component {
             <input
               id="projectFormDescriptionInput"
               name="description"
-              type="text"
-            />
+              type="text" />
           </div>
           <div>
             <label htmlFor="projectFormStartDateInput">Start Date</label>
             <input
               id="projectFormStartDateInput"
               name="startDate"
-              type="datetime-local"
-            />
+              type="datetime-local" />
           </div>
           <div>
             <label htmlFor="projectFormDueDateInput">Due Date</label>
             <input
               id="projectFormDueDateInput"
               name="dueDate"
-              type="datetime-local"
-            />
+              type="datetime-local" />
           </div>
           <button type="submit">{this.state.verb} Project</button>
         </Form>
@@ -87,7 +75,7 @@ class ProjectFormWithoutRouter extends Component {
   }
 }
 
-ProjectFormWithoutRouter.contextType = CompanyContext;
+ProjectFormWithoutRouter.contextType = RoutesContext;
 const ProjectForm = withRouter(ProjectFormWithoutRouter);
 
 export { ProjectForm };

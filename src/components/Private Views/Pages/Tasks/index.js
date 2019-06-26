@@ -3,9 +3,10 @@ import { Grid, Row, Col } from "react-flexbox-grid";
 import { Link } from "react-router-dom";
 //import "./style.css";
 import ListView from "../../../Utilities/ListView";
-import { CompanyContext } from "../../../../Contexts";
+import { RoutesContext } from "../../../../Contexts";
 
 function ListItem({ data: task }) {
+  const context = useContext(RoutesContext)
   return (
     <div>
       <h4>task Name: {task.name}</h4>
@@ -13,22 +14,22 @@ function ListItem({ data: task }) {
       <p>Description: {task.description}</p>
       <p>Due Date: {task.dueDate}</p>
       <p>Start Date: {task.startDate}</p>
-      {/* <Form method="DELETE" action={context.routes.deleteTaskRoute(task.id)}>
+      {<Form method="DELETE" action={context.api.task(task.id)}>
         <input type="submit" value="Delete"></input>
-      </Form> */}
+      </Form> }
     </div>
   );
 }
 
 function Tasks() {
-  const context = useContext(CompanyContext)
+  const context = useContext(RoutesContext)
   return (
     <Grid fluid id="tasks-container">
       <Row>
         <Col xs={12}>
-          <Link to={context.routes.tasksViewRoute()} id="tasks">Task List</Link>
+          <Link to={context.view.tasks.new} id="tasks">Task List</Link>
           <p>Tasks Say Hello</p>
-          <ListView itemComponent={ListItem} resource="/api/company/1/tasks" />
+          <ListView itemComponent={ListItem} resource={context.api.tasks} />
         </Col>
     </Row>
     </Grid>

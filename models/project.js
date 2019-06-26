@@ -1,16 +1,15 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Project = sequelize.define('Project', {
-    company: {
+    user: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
     client: {
       allowNull: false,
       type: DataTypes.INTEGER
     },
     startDate: {
-      allowNull: false,
       type: DataTypes.DATE
     },
     dueDate: {
@@ -26,7 +25,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     }
   }, {
-    paranoid: true,
       getterMethods: {
         json() {
           return {
@@ -42,13 +40,13 @@ module.exports = (sequelize, DataTypes) => {
     });
   Project.associate = function(models) {
     // associations can be defined here
-    this.belongsTo(models.Company, {
-      foreignKey: 'company',
+    this.belongsTo(models.Client, {
+      foreignKey: 'client',
       constraints: true,
       onDelete: "CASCADE"
     });
-    this.belongsTo(models.Client, {
-      foreignKey: 'client',
+    this.belongsTo(models.User, {
+      foreignKey: 'user',
       constraints: true,
       onDelete: "CASCADE"
     });

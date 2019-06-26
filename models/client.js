@@ -1,16 +1,15 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Client = sequelize.define('Client', {
+    user: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+    },
     name: {
       allowNull: false,
       type: DataTypes.STRING
-    },
-    company: {
-      allowNull: false,
-      type: DataTypes.INTEGER
     }
   }, {
-    paranoid: true,
       getterMethods: {
         json() {
           return {
@@ -22,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
   });
   Client.associate = function(models) {
     // associations can be defined here
-    this.belongsTo(models.Company, {
-      foreignKey: 'company',
+    this.belongsTo(models.User, {
+      foreignKey: 'user',
       constraints: true,
       onDelete: "CASCADE"
     });
@@ -46,20 +45,6 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'client',
       constraints: true,
       onDelete: "CASCADE"
-    });
-    this.hasMany(models.Token, {
-      foreignKey: 'client',
-      constraints: true,
-      onDelete: "CASCADE"
-    });
-    this.belongsToMany(models.User, {
-      through: {
-        model: models.ClientUser,
-        unique: false
-      },
-      foreignKey: 'client',
-      otherKey: 'user',
-      as: "ClientUsers"
     });
   };
   return Client;

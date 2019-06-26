@@ -8,10 +8,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      company: {
+      user: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'Companies', key: 'id' }
+        references: { model: 'Users', key: 'id' },
+        onDelete: "CASCADE"
       },
       client: {
         allowNull: false,
@@ -22,7 +23,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      endDate: {
+      dueDate: {
         allowNull: false,
         type: Sequelize.DATE
       },
@@ -40,9 +41,6 @@ module.exports = {
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      },
-      deletedAt: {
         type: Sequelize.DATE
       }
     });

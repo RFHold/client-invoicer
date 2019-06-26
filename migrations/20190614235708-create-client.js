@@ -12,10 +12,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      company: {
+      user: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'Companies', key: 'id' },
+        references: { model: 'Users', key: 'id' },
         onDelete: "CASCADE"
       },
       createdAt: {
@@ -24,9 +24,6 @@ module.exports = {
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      },
-      DeletedAt: {
         type: Sequelize.DATE
       }
     });

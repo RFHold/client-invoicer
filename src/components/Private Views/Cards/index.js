@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Card from "../../Utilities/Card";
-import { CompanyContext } from "../../../Contexts";
+import { RoutesContext } from "../../../Contexts";
 import Listview from "../../Utilities/ListView"
 
 
@@ -16,11 +16,11 @@ function TaskItem({ data: task }) {
 }
 
 function TaskCard(props) {
-    const context = useContext(CompanyContext);
+    const context = useContext(RoutesContext);
 
     return (
         <Card>
-            <Listview itemComponent={TaskItem} resource={context.routes.tasksRoute} />
+            <Listview itemComponent={TaskItem} resource={context.api.tasks} />
         </Card>
     )
 }
@@ -36,11 +36,11 @@ function ProjectItem({ data: project }) {
 }
 
 function ProjectCard(props) {
-    const context = useContext(CompanyContext);
+    const context = useContext(RoutesContext);
 
     return (
         <Card>
-            <Listview itemComponent={ProjectItem} resource={context.routes.projectsRoute} />
+            <Listview itemComponent={ProjectItem} resource={context.api.projects} />
         </Card>
     )
 }
@@ -55,10 +55,10 @@ function TimeItem({ data: time }) {
 }
 
 function TimeCard(props) {
-    const context = useContext(CompanyContext);
+    const context = useContext(RoutesContext);
     return (
         <Card>
-            {<Listview itemComponent={TimeItem} resource={context.routes.tasksRoute} />}
+            {<Listview itemComponent={TimeItem} resource={context.api.tasks} />}
         </Card>
     )
 }
