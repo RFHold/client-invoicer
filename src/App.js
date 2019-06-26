@@ -18,7 +18,7 @@ class App extends Component {
   
   componentDidMount() {
     this.checkSession().then(response => {
-      this.setState({session: true})
+      this.setState({session: response.data.result.username})
     }).catch(error => {
       this.setState({ session: false })
     })

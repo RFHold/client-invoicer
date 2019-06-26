@@ -24,7 +24,7 @@ class UserFormWithoutRouter extends Component {
         return (
             <div className="register-form">
                 <Card>
-                    <Form method={this.state.method} action={this.state.action}>
+                    <Form method={this.state.method} action={this.state.action} onSuccess={() => { this.props.history.push("/dashboard") }}>
                         <h1>Register</h1>
                         <div>
                             <label htmlFor="userFormUsernameInput">Username</label>
