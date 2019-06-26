@@ -16,12 +16,12 @@ class ClientFormWithoutRouter extends Component {
         this.state = state
     }
     componentDidMount() {
-        this.setState({ action: (this.props.action) ? this.props.action : this.context.routes.clientsRoute })
+        this.setState({ action: (this.props.action) ? this.props.action : this.context.api.clients })
     }
     render() {
         return (
-            <Modal header={`${this.state.verb} Client`} onClose={this.context.routes.clientsViewRoute()}>
-                <Form method={this.state.method} action={this.state.action} onSuccess={() => { this.props.history.push(this.context.routes.clientsViewRoute()) }}>
+            <Modal header={`${this.state.verb} Client`} onClose={this.context.view.clients.all}>
+                <Form method={this.state.method} action={this.state.action} onSuccess={() => { this.props.history.push(this.context.view.clients.all) }}>
                     <div>
                         <label htmlFor="clientFormNameInput">Name</label>
                         <input id="clientFormNameInput" name="name" type="text" />

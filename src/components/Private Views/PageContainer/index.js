@@ -7,10 +7,9 @@ import Clients from "../Pages/Clients";
 import Invoices from "../Pages/Invoices";
 import Reports from "../Pages/Reports";
 import Register from "../../Utilities/Register";
-import { ClientForm, ProjectForm, TaskForm } from "../Forms";
+import { ClientForm, ProjectForm, TaskForm, TimeForm } from "../Forms";
 import { Col } from 'react-flexbox-grid';
 import Navbar from "../Navbar";
-import { CompanyForm } from "../Forms";
 import { RoutesContext } from "../../../Contexts";
 import "./style.css";
 
@@ -20,34 +19,24 @@ function PageContainer(props) {
 		<Switch>
 			<Route path="/register" component={Register} />
 			<Route path="/login" component={Register} />
-			<Route path="/companies/new" component={CompanyForm} />
-			<Route path="/dashboard" >
-				<CompanyForm />
-			</Route>
-			<Route path="/company/*">
-				<Route exact path="/company/:companyId/*" component={(props) => {
-					if (context.getCompany() !== props.match.params.companyId) {
-						context.setCompany(props.match.params.companyId)
-					}
-					return null
-				}} />
+			<Route path="*">
 				<Col xs={2} id="navbar-col">
 					<Navbar />
 				</Col>
 				<Col xs={10} id="pagecontainer-col">
-					<Route exact path="/company/:companyId/dashboard" component={Dashboard} />
-					<Route path="/company/:companyId/clients" component={Clients} />
-					<Route path="/company/:companyId/clients/new" component={ClientForm} />
-					<Route path="/company/:companyId/clients/edit/:clientId" component={ClientForm} />
-					<Route path="/company/:companyId/projects" component={Projects} />
-					<Route path="/company/:companyId/projects/new" component={ProjectForm} />
-					<Route path="/company/:companyId/projects/edit/:projectId" component={ProjectForm} />
-					<Route path="/company/:companyId/tasks" component={Tasks} />
-					<Route path="/company/:companyId/tasks/new" component={TaskForm} />
-					<Route path="/company/:companyId/tasks/edit/:taskId" component={TaskForm} />
-					<Route path="/company/:companyId/tasks/:taskId/timeEntry" component={TimeForm} />
-					<Route path="/company/:companyId/invoices" component={Invoices} />
-					<Route path="/company/:companyId/reports" component={Reports} />
+					<Route exact path="/" component={Dashboard} />
+					<Route path="/clients" component={Clients} />
+					<Route path="/clients/new" component={ClientForm} />
+					<Route path="/client/edit/:clientId" component={ClientForm} />
+					<Route path="/projects" component={Projects} />
+					<Route path="/projects/new" component={ProjectForm} />
+					<Route path="/project/edit/:projectId" component={ProjectForm} />
+					<Route path="/tasks" component={Tasks} />
+					<Route path="/tasks/new" component={TaskForm} />
+					<Route path="/task/edit/:taskId" component={TaskForm} />
+					<Route path="/tasks/:taskId/timeEntry" component={TimeForm} />
+					<Route path="/invoices" component={Invoices} />
+					<Route path="/reports" component={Reports} />
 
 				</Col>
 			</Route>
