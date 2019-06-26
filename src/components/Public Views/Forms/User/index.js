@@ -17,7 +17,7 @@ class UserFormWithoutRouter extends Component {
         this.state = state
     }
     componentDidMount() {
-        this.setState({ action: (this.props.action) ? this.props.action : this.context.routes.usersRoute })
+        this.setState({ action: (this.props.action) ? this.props.action : this.context.api.users })
     }
 
     render() {

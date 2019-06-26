@@ -11,9 +11,9 @@ function ListItem({ data: client }) {
     return (
         <div id="client-card">
             <h1>{client.name}</h1>
-            {/* <Form method="DELETE" action={context.routes.deleteClientRoute(client.id)}>
+            {<Form method="DELETE" action={context.api.client(client.id)}>
         <input type="submit" value="Delete" />
-      </Form> */}
+      </Form>}
         </div>
     );
 }

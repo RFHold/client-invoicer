@@ -14,9 +14,9 @@ function ListItem({ data: project }) {
       <p>Description: {project.description}</p>
       <p>Due Date: {project.dueDate}</p>
       <p>Start Date: {project.startDate}</p>
-      {/* <Form method="DELETE" action={context.routes.deleteProjectRoute(project.id)}>
+      {<Form method="DELETE" action={context.api.project(project.id)}>
         <input type="submit" value="Delete" />
-      </Form> */}
+      </Form>}
     </div>
   );
 }

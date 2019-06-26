@@ -14,9 +14,9 @@ function ListItem({ data: task }) {
       <p>Description: {task.description}</p>
       <p>Due Date: {task.dueDate}</p>
       <p>Start Date: {task.startDate}</p>
-      {/* <Form method="DELETE" action={context.routes.deleteTaskRoute(task.id)}>
+      {<Form method="DELETE" action={context.api.task(task.id)}>
         <input type="submit" value="Delete"></input>
-      </Form> */}
+      </Form> }
     </div>
   );
 }
