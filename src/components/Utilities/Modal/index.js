@@ -1,8 +1,8 @@
-import React, {useState} from "react";
-import "./styles.css";
+import React, { useState } from "react";
+import "../../../stylesheets/components/_modal.scss";
 import { withRouter } from 'react-router-dom';
 
-function Modal(props){
+function Modal(props) {
     const [visible, setVisible] = useState(true)
 
     function close() {
@@ -10,9 +10,9 @@ function Modal(props){
         setVisible(false)
     }
     return (
-        <div className={`modal ${(visible) ? `` :`hidden`}`}>
+        <div className={`modal ${(visible) ? `` : `hidden`}`}>
             <div className="modal-content">
-                <div className="modal-header"><h3>{props.header}</h3><i onClick={()=> {close()}} className="fas fa-times"></i></div>
+                <div className="modal-header"><h3>{props.header}</h3><i onClick={() => { close() }} className="fas fa-times"></i></div>
                 <div className="modal-body">{props.children}</div>
             </div>
         </div>

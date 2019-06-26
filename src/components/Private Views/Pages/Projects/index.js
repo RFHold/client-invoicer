@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
-import { Grid, Row, Col } from "react-flexbox-grid";
 import { Link } from "react-router-dom";
-import "./style.css";
+import "../../../../stylesheets/layout/_clients-projects-tasks.scss";
 import ListView from "../../../Utilities/ListView";
 import { RoutesContext } from "../../../../Contexts";
 import Form from "../../../Utilities/Form";
@@ -26,33 +25,33 @@ function Projects() {
   const context = useContext(RoutesContext);
 
   return (
-    <Grid fluid id="content-container">
+    <div className="container-fluid" id="content-container">
       <div id="client-container">
-        <Row className="page-header">
-          <Col xs={6}>
+        <div className="row page-header">
+          <div className="col-xs-6">
             <h2>Projects</h2>
-          </Col>
-          <Col xs={6}>
-            <Row end="xs">
+          </div>
+          <div className="col-xs-6">
+            <div className="row end-xs">
               <Link to={context.view.projects.new} id="projects">
                 <button id="new-client-button">
                   <i className="fas fa-plus" />
                   Add New Project
                 </button>
               </Link>
-            </Row>
-          </Col>
-        </Row>
+            </div>
+          </div>
+        </div>
       </div>
-      <Row>
-        <Col xs={12} id="projects-col">
+      <div className="row">
+        <div className="row-xs-12" id="projects-col">
           <ListView
             itemComponent={ListItem}
             resource={context.api.projects}
           />
-        </Col>
-      </Row>
-    </Grid>
+        </div>
+      </div>
+    </div>
   );
 }
 

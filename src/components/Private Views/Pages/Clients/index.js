@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
-import { Grid, Row, Col } from "react-flexbox-grid";
 import { Link } from "react-router-dom";
 import { RoutesContext } from '../../../../Contexts';
-import "./style.css";
+import "../../../../stylesheets/layout/_clients-projects-tasks.scss";
 import ListView from "../../../Utilities/ListView";
 import Form from "../../../Utilities/Form";
 
@@ -13,8 +12,8 @@ function ListItem({ data: client }) {
         <div id="client-card">
             <h1>{client.name}</h1>
             {<Form method="DELETE" action={context.api.client(client.id)}>
-        <input type="submit" value="Delete" />
-      </Form>}
+                <input type="submit" value="Delete" />
+            </Form>}
         </div>
     );
 }
@@ -23,23 +22,23 @@ function Clients() {
     const context = useContext(RoutesContext);
 
     return (
-        <Grid fluid id="content-container">
+        <div className="container-fluid" id="content-container">
             <div id="client-container">
-                <Row className="page-header">
-                    <Col xs={6}>
+                <div className="row page-header">
+                    <div className="col-xs-6">
                         <h2>Clients</h2>
-                    </Col>
-                    <Col xs={6}>
-                        <Row end="xs">
+                    </div>
+                    <div className="col-xs-6">
+                        <div className="row end-xs">
                             <Link to={context.view.clients.new} id="clients">
                                 <button id="new-client-button">
                                     <i className="fas fa-plus" />Add New Client
                 </button>
                             </Link>
-                        </Row>
-                    </Col>
-                    <Col xs={12}>
-                        <Row bottom="xs">
+                        </div>
+                    </div>
+                    <div className="col-xs-12">
+                        <div className="row bottom-xs">
                             <ul>
                                 <li>
                                     <Link to="/clients">Active Clients</Link>
@@ -48,19 +47,19 @@ function Clients() {
                                     <Link to="/clients">Inactive Clients</Link>
                                 </li>
                             </ul>
-                        </Row>
-                    </Col>
-                </Row>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <Row>
-                <Col xs={12}>
+            <div className="row">
+                <div className="col-xs-12">
                     <ListView
                         itemComponent={ListItem}
                         resource={context.api.clients}
                     />
-                </Col>
-            </Row>
-        </Grid>
+                </div>
+            </div>
+        </div>
     );
 }
 

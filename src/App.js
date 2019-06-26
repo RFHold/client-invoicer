@@ -1,12 +1,12 @@
 import React, { PureComponent as Component } from 'react';
 import { BrowserRouter as Router, Redirect, Switch } from "react-router-dom";
-import "./App.scss";
-import "./stylesheets/layout/_layout.scss";
-import { Grid, Row } from 'react-flexbox-grid';
+
+import "./stylesheets/main.scss";
+
 import GlobalHeader from "./components/Private Views/GlobalHeader";
 import PageContainer from "./components/Private Views/PageContainer";
 import { RoutesContext, SessionContext } from "./Contexts";
-import axios from "axios"
+import axios from "axios";
 
 class App extends Component {
   constructor(props) {
@@ -40,11 +40,11 @@ class App extends Component {
           </Switch>
           <SessionContext.Provider value={this.state.session}>
             <GlobalHeader />
-            <Grid fluid id="container">
-              <Row>
+            <div className="container-fluid">
+              <div className="row">
                 <PageContainer />
-              </Row>
-            </Grid>
+              </div>
+            </div>
           </SessionContext.Provider>
         </div>
       </Router>

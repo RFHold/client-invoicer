@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { Grid, Row, Col } from "react-flexbox-grid";
 import { Link } from "react-router-dom";
-//import "./style.css";
+import "../../../../stylesheets/layout/_clients-projects-tasks.scss";
 import ListView from "../../../Utilities/ListView";
 import { RoutesContext } from "../../../../Contexts";
+import Form from "../../../Utilities/Form";
 
 function ListItem({ data: task }) {
   const context = useContext(RoutesContext)
@@ -18,7 +18,7 @@ function ListItem({ data: task }) {
       <Link to={context.view.time.new(task.id)}>Add Time</Link>
       {<Form method="DELETE" action={context.api.task(task.id)}>
         <input type="submit" value="Delete"></input>
-      </Form> }
+      </Form>}
     </div>
   );
 }
