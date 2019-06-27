@@ -31,15 +31,23 @@ function ListItem({ data: project }) {
           </div>
         </div>
       </div>
-      <div className="row">
-        <div className="col" id="card-options">
-
+      <div className="row center-xs">
+        <div className="col-xs-12 text-center">
+          <h5>Client: {project.client}</h5>
+          <p>{project.description}</p>
         </div>
       </div>
-      <h5>Client: {project.client}</h5>
-      <p>Description: {project.description}</p>
-      <p>Due Date: {project.dueDate}</p>
-      <p>Start Date: {project.startDate}</p>
+      <div className="row center-xs">
+        <div className="col-xs-6 text-center" id="limit">
+          <h6>Due Date</h6>
+          {project.dueDate}
+        </div>
+        <div className="col-xs-6 text-center" id="limit">
+          <h6>Start Date</h6>
+          {project.startDate}
+        </div>
+      </div>
+
     </Card>
   );
 }
