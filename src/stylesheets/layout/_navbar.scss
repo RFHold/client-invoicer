@@ -4,7 +4,7 @@
     background: #fff;
     display: flex;
     flex-direction: column;
-    padding-top: 20px;
+    padding-top: 30px;
 }
 
 .nav-link, .navbar-button {
@@ -16,8 +16,10 @@
     background: #fff;
     border: none;
     font-size: $font-size-md;
+    letter-spacing: 0.04em;
+    color: $dark-grey;
     text-align: left;
-    padding: 0 30px;
+    padding: 0 40px;
     outline: none;
     white-space: nowrap;
 
@@ -33,5 +35,6 @@
 
     .fas {
         padding-right: 15px;
+        color: $light-grey-1;
     }
 }
