@@ -7,7 +7,7 @@ import Form from "../../../Utilities/Form";
 import Card from "../../../Utilities/Card";
 import DropDown from "../../../Utilities/DropDown";
 
-function ListItem({ data: project }) {
+function ListItem({ data: project, data: client }) {
   const context = useContext(RoutesContext);
   return (
     <Card id="project-card">
@@ -15,25 +15,25 @@ function ListItem({ data: project }) {
         <div className="col-xs-11">
           <div className="row center-xs">
             <h3>{project.name}</h3>
+            <span class="text-right">
+              <DropDown header={<i className="fas fa-ellipsis-v"></i>} className="dropdown">
+                <div id="project-options">
+                  <div>
+                    {<Form method="DELETE" action={context.api.project(project.id)}>
+                      <input type="submit" value="Delete" />
+                    </Form>}
+                  </div>
+                </div>
+              </DropDown>
+            </span>
           </div>
         </div>
         <div className="col-xs-1">
-          <div className="row end-xs">
-            <DropDown header={<i class="fas fa-ellipsis-v"></i>} className="dropdown">
-              <div id="project-options">
-                <div>
-                  {<Form method="DELETE" action={context.api.project(project.id)}>
-                    <input type="submit" value="Delete" />
-                  </Form>}
-                </div>
-              </div>
-            </DropDown>
-          </div>
         </div>
       </div>
       <div className="row center-xs">
         <div className="col-xs-12 text-center">
-          <h5>Client: {project.client}</h5>
+          <h6>{client.name}</h6>
           <p>{project.description}</p>
         </div>
       </div>
@@ -80,7 +80,7 @@ function Projects() {
           />
         </div>
       </div>
-    </div >
+    </div>
   );
 }
 

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "../../../stylesheets/main.scss";
 import { RoutesContext, SessionContext } from "../../../Contexts";
 import DropDown from "../../Utilities/DropDown"
-import { Grid, Row, Col } from 'react-flexbox-grid';
 
 function GlobalHeader() {
 	const context = useContext(RoutesContext);

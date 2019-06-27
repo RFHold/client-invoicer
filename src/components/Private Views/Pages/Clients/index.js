@@ -20,7 +20,7 @@ function ListItem({ data: client }) {
                 </div>
                 <div className="col-xs-1">
                     <div className="row end-xs">
-                        <DropDown header={<i class="fas fa-ellipsis-v"></i>} className="dropdown">
+                        <DropDown header={<i className="fas fa-ellipsis-v"></i>} className="dropdown">
                             <div id="project-options">
                                 <div>
                                     {<Form method="DELETE" action={context.api.client(client.id)}>

@@ -4,6 +4,7 @@ import "../../../../stylesheets/main.scss";
 import ListView from "../../../Utilities/ListView";
 import { RoutesContext } from "../../../../Contexts";
 import Form from "../../../Utilities/Form";
+import Invoice from "../../Forms/Invoice";
 import Card from "../../../Utilities/Card";
 
 function ListItem({ data: task }) {
@@ -12,7 +13,7 @@ function ListItem({ data: task }) {
     <Card>
       <h4>task Name: {task.name}</h4>
       <h5>Client: {task.client}</h5>
-      <h5>Project: {task.project}</h5> 
+      <h5>Project: {task.project}</h5>
       <p>Description: {task.description}</p>
       <p>Due Date: {task.dueDate}</p>
       <p>Start Date: {task.startDate}</p>
@@ -25,48 +26,46 @@ function ListItem({ data: task }) {
   );
 }
 
-function SelectItem ({ data: option }) {
+function SelectItem({ data: option }) {
   return (
-      <option value={option.id}>{option.name}</option>
+    <option value={option.id}>{option.name}</option>
   );
 }
 
 function Tasks(props) {
   const context = useContext(RoutesContext)
   return (
-    <Grid fluid id="content-container">
-    <div id="client-container">
-      <Row className="page-header">
-        <Col xs={6}>
-        <div>
-                    <label htmlFor="taskFormProjectInput">Project</label>
-                    <select name="project" id="taskFormProjectInput">
-                        <option value="">Select a Project</option>
-                        <ListView itemComponent={SelectItem} resource={context.api.projects}/>
-                    </select>
-                </div>
-        </Col>
-        <Col xs={6}>
-          <Row end="xs">
+    <div className="col-xs-10" id="content-container">
+      <div className="row middle-xs" id="content-header">
+        <div className="col-xs-6">
+          <div>
+            <label htmlFor="taskFormProjectInput">Project</label>
+            <select name="project" id="taskFormProjectInput">
+              <option value="">Select a Project</option>
+              <ListView itemComponent={SelectItem} resource={context.api.projects} />
+            </select>
+          </div>
+        </div>
+        <div className="col-xs-6">
+          <div className="row end-xs">
             <Link to={context.view.tasks.new} id="tasks">
-              <button id="new-client-button">
-                <i class="fas fa-plus" />
+              <button className="primary-button">
+                <i className="fas fa-plus" />
                 Add New Task
               </button>
             </Link>
-          </Row>
-        </Col>
-      </Row>
+          </div>
+        </div>
+      </div>
+      <div className="row">
+        <div className="row-xs-12" id="list-container">
+          <ListView
+            itemComponent={ListItem}
+            resource={context.api.tasks}
+          />
+        </div>
+      </div>
     </div>
-    <Row>
-      <Col xs={12} id="tasks-col">
-        <ListView
-          itemComponent={ListItem}
-          resource={context.api.tasks}
-        />
-      </Col>
-    </Row>
-  </Grid>
   );
 }
 
