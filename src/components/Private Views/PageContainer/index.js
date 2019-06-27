@@ -7,12 +7,7 @@ import Clients from "../Pages/Clients";
 import Invoices from "../Pages/Invoices";
 import Reports from "../Pages/Reports";
 import Register from "../../Utilities/Register";
-<<<<<<< HEAD
-import { ClientForm, ProjectForm, TaskForm, TimeForm, InvoiceForm } from "../Forms";
-import { Col } from 'react-flexbox-grid';
-=======
 import { ClientForm, ProjectForm, TaskForm, TimeForm } from "../Forms";
->>>>>>> styling-refactor
 import Navbar from "../Navbar";
 import GlobalHeader from "../GlobalHeader";
 import { RoutesContext } from "../../../Contexts";
