@@ -11,23 +11,31 @@ function ListItem({ data: project }) {
   const context = useContext(RoutesContext);
   return (
     <Card id="project-card">
-      <div className="row end-xs">
-        <DropDown header={<i class="fas fa-ellipsis-v"></i>} className="dropdown">
-          <div id="project-options">
-            <div>
-              {<Form method="DELETE" action={context.api.project(project.id)}>
-                <input type="submit" value="Delete" />
-              </Form>}
-            </div>
+      <div className="row center-xs">
+        <div className="col-xs-11">
+          <div className="row center-xs">
+            <h3>{project.name}</h3>
           </div>
-        </DropDown>
+        </div>
+        <div className="col-xs-1">
+          <div className="row end-xs">
+            <DropDown header={<i class="fas fa-ellipsis-v"></i>} className="dropdown">
+              <div id="project-options">
+                <div>
+                  {<Form method="DELETE" action={context.api.project(project.id)}>
+                    <input type="submit" value="Delete" />
+                  </Form>}
+                </div>
+              </div>
+            </DropDown>
+          </div>
+        </div>
       </div>
       <div className="row">
         <div className="col" id="card-options">
 
         </div>
       </div>
-      <h4>Project Name: {project.name}</h4>
       <h5>Client: {project.client}</h5>
       <p>Description: {project.description}</p>
       <p>Due Date: {project.dueDate}</p>
