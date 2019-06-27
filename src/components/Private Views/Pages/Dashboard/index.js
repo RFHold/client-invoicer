@@ -20,6 +20,14 @@ function Dashboard() {
                 <div className="col-xs-12">
                     <ProjectCard />
                 </div>
+                <div className="col-xs-12">
+                    <h3>Open Tasks</h3>
+                    <TaskCard />
+                </div>
+                <div className="col-xs-12">
+                    <h3>Time Cards</h3>
+                    <TimeCard />
+                </div> 
             </div>
         </div>
     );

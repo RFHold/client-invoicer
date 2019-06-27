@@ -6,12 +6,12 @@ import Listview from "../../Utilities/ListView";
 
 function TaskItem({ data: task }) {
     return (
-        <div>
+        <Card>
             <h4>Task:</h4><p>{task.name}</p>
             <h4>Description:</h4><p>{task.description}</p>
             <h4>Project:</h4><p>{task.project}</p>
             <h4>Client:</h4><p>{task.client}</p>
-        </div>
+        </Card>
     )
 }
 
@@ -19,19 +19,19 @@ function TaskCard(props) {
     const context = useContext(RoutesContext);
 
     return (
-        <Card>
+        
             <Listview itemComponent={TaskItem} resource={context.api.tasks} />
-        </Card>
+        
     )
 }
 
 function ProjectItem({ data: project }) {
     return (
-        <div>
+        <Card>
             <h4>Project:</h4><p>{project.name}</p>
             <h4>Description:</h4><p>{project.description}</p>
             <h4>Client:</h4><p>{project.client}</p>
-        </div>
+        </Card>
     )
 }
 
@@ -39,9 +39,9 @@ function ProjectCard(props) {
     const context = useContext(RoutesContext);
 
     return (
-        <Card>
+        
             <Listview itemComponent={ProjectItem} resource={context.api.projects} />
-        </Card>
+       
     )
 }
 

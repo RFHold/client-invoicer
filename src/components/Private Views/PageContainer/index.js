@@ -23,21 +23,21 @@ function PageContainer(props) {
 					<GlobalHeader />
 					<div className="row">
 						<Navbar />
-
 						<Route exact path="/" component={Dashboard} />
-						<Route exact path="/dashboard" component={Dashboard} />
-						<Route path="/clients" component={Clients} />
-						<Route path="/clients/new" component={ClientForm} />
-						<Route path="/client/edit/:clientId" component={ClientForm} />
-						<Route path="/projects" component={Projects} />
-						<Route path="/projects/new" component={ProjectForm} />
-						<Route path="/project/edit/:projectId" component={ProjectForm} />
-						<Route path="/tasks" component={Tasks} />
-						<Route path="/tasks/new" component={TaskForm} />
-						<Route path="/task/edit/:taskId" component={TaskForm} />
-						<Route path="/tasks/:taskId/timeEntry" component={TimeForm} />
-						<Route path="/invoices" component={Invoices} />
-						<Route path="/reports" component={Reports} />
+					<Route path="/clients" component={Clients} />
+					<Route path="/clients/new" component={ClientForm} />
+					<Route path="/client/edit/:clientId" component={ClientForm} />
+					<Route path="/projects" component={Projects} />
+					<Route path="/projects/new" component={ProjectForm} />
+					<Route path="/project/edit/:projectId" component={ProjectForm} />
+					<Route path="/tasks" component={Tasks} />
+					<Route path="/tasks/new" component={TaskForm} />
+					<Route path="/task/edit/:taskId" component={TaskForm} />
+					<Route path="/tasks/:taskId/timeEntry" component={TimeForm} />
+					<Route path="/invoices" component={Invoices} />
+					<Route path="/invoices/new" component={InvoiceForm} />
+					<Route path="/reports" component={Reports} />
+					<Route path="/projects/:projectId/tasks" component={Tasks} projectId={context.api.project.id || 1} />
 					</div>
 				</div>
 			</Route>
