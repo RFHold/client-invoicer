@@ -20,7 +20,6 @@ function Dashboard() {
                 </div>
                 <div className="col-xs-12 col-lg-4">
                     <ProjectCard />
-                </Col>  
                 <Col xs={12} lg={4}>
                 <h3>Open Tasks</h3>
                     <TaskCard />
@@ -29,8 +28,9 @@ function Dashboard() {
                 <h3>Time Cards</h3>
                     <TimeCard />
                 </Col> 
-            </Row>
-        </Grid>
+            </div>
+        </div>
+        </div>
     );
 }
 

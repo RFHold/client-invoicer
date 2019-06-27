@@ -5,6 +5,7 @@ import ListView from "../../../Utilities/ListView";
 import { RoutesContext } from "../../../../Contexts";
 import Form from "../../../Utilities/Form";
 import Card from "../../../Utilities/Card";
+import { tsPropertySignature } from "@babel/types";
 
 function ListItem({ data: task }) {
   const context = useContext(RoutesContext)
@@ -22,52 +23,40 @@ function ListItem({ data: task }) {
         <input type="submit" value="Delete"></input>
       </Form>}
     </Card>
-  );
-}
+  )};
 
-function SelectItem ({ data: option }) {
-  return (
-      <option value={option.id}>{option.name}</option>
-  );
-}
 
 function Tasks(props) {
   const context = useContext(RoutesContext)
   return (
-    <Grid fluid id="content-container">
-    <div id="client-container">
-      <Row className="page-header">
-        <Col xs={6}>
-        <div>
-                    <label htmlFor="taskFormProjectInput">Project</label>
-                    <select name="project" id="taskFormProjectInput">
-                        <option value="">Select a Project</option>
-                        <ListView itemComponent={SelectItem} resource={context.api.projects}/>
-                    </select>
-                </div>
-        </Col>
-        <Col xs={6}>
-          <Row end="xs">
-            <Link to={context.view.tasks.new} id="tasks">
-              <button id="new-client-button">
-                <i class="fas fa-plus" />
-                Add New Task
+    <div className="col-xs-10" id="content-container">
+    <div className="row middle-xs" id="content-header">
+      <div className="col-xs-6">
+        <h2>Tasks</h2>
+      </div>
+      <div className="col-xs-6">
+        <div className="row end-xs">
+        <Link to={context.view.tasks.new} id="tasks">
+            <button className="primary-button">
+              <i className="fas fa-plus" />
+              Add New Task
               </button>
-            </Link>
-          </Row>
-        </Col>
-      </Row>
+          </Link>
+        </div>
+      </div>
     </div>
-    <Row>
-      <Col xs={12} id="tasks-col">
+    <div className="row">
+      <div className="col-xs-12" id="list-container">
+        <h1>{props.match.params.projectId}</h1>
         <ListView
           itemComponent={ListItem}
           resource={context.api.tasks}
         />
-      </Col>
-    </Row>
-  </Grid>
+      </div>
+    </div>
+    </div >
   );
 }
 
 export default Tasks;
+
