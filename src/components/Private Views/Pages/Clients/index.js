@@ -39,14 +39,6 @@ function Clients() {
                     </div>
                     <div className="col-xs-12">
                         <div className="row bottom-xs">
-                            <ul>
-                                <li>
-                                    <Link to="/clients">Active Clients</Link>
-                                </li>
-                                <li>
-                                    <Link to="/clients">Inactive Clients</Link>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>

@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
-import "./style.css";
+//import "./style.css";
 import { RoutesContext, SessionContext } from "../../../Contexts";
 import DropDown from "../../Utilities/DropDown"
+import { Grid, Row, Col } from 'react-flexbox-grid';
 
 function GlobalHeader() {
 	const context = useContext(RoutesContext);
