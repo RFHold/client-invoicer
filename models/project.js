@@ -38,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     });
-  Project.associate = function(models) {
+  Project.associate = function (models) {
     // associations can be defined here
     this.belongsTo(models.Client, {
       foreignKey: 'client',

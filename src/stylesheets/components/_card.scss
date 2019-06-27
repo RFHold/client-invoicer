@@ -5,4 +5,10 @@
     padding: 20px 40px;
     margin: 20px;
     min-width: 299px;
+
+    #limit {
+        width: 100px;
+        white-space: nowrap;
+        overflow: hidden;
+    }
 }
