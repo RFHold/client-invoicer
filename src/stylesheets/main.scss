@@ -3,8 +3,7 @@
 
 // 1. Configuration and helpers
 @import
-  'abstracts/variables',
-  'abstracts/mixins';
+  'utilities/variables';
 
 // 2. Vendors
 @import
@@ -14,14 +13,19 @@
 // 3. Base stuff
 @import
   'base/base',
-  'base/fonts',
   'base/typography';
 
 // 4. Layout-related sections
-// @import
-//   'layout/layout';
+@import
+  'layout/clients-projects-tasks',
+  'layout/header',
+  'layout/navbar';
 
 // 5. Components
 @import
   'components/button',
+  'components/card',
+  'components/dropdown',
+  'components/login',
+  'components/user',
   "components/modal";

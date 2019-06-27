@@ -1,5 +1,5 @@
 import React from "react";
-import "../../../stylesheets/components/_card.scss";
+import "../../../stylesheets/main.scss";
 
 
 function Card(props) {

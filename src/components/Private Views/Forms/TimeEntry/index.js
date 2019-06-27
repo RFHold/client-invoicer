@@ -48,7 +48,7 @@ class TimeFormWithoutRouter extends Component {
                         <label htmlFor="timeFormDueDateInput">End Date</label>
                         <input id="timeFormDueDateInput" name="endDate" type="datetime-local" />
                     </div>
-                    <button type="submit">{this.state.verb} Time</button>
+                    <button className="secondary-button" type="submit">{this.state.verb} Time</button>
                 </Form>
             </Modal>
         );

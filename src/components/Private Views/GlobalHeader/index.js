@@ -1,36 +1,30 @@
 import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
-import "../../../stylesheets/layout/_header.scss";
+import "../../../stylesheets/main.scss";
 import { RoutesContext } from "../../../Contexts";
 import DropDown from "../../Utilities/DropDown"
 
 function GlobalHeader() {
 	const context = useContext(RoutesContext);
 	return (
-		<div className="container-fluid" id="global-header-container">
-			<div className="row" id="global-header-row">
-				<div className="col-xs-2" id="brand-col">
-					<Link to={context.view.index} id="brand"><i className="fas fa-circle"></i>App Name</Link>
-				</div>
-				<div className="col-xs-10" id="headernav-col">
-					<div className="row end-xs" id="header-links">
-						<div id="timers">
-							<i className="fas fa-stopwatch"></i>
-						</div>
-						<DropDown header="Username" className="dropdown">
-							<div id="user-options">
-								<div>
-									<Link to="/login">Login</Link>
-								</div>
-								<div>
-									<Link to="/register">Register</Link>
-								</div>
-							</div>
-						</DropDown>
-					</div>
+		<div className="row" id="header-container">
+			<div className="col-xs-2" id="brand-col">
+				<div className="row center-xs bottom-xs">
+					<Link to={context.view.index} id="brand"><h1>Optime</h1></Link>
 				</div>
 			</div>
-		</div >
+			<div className="col-xs-10" id="user-col">
+				<div className="row end-xs">
+					<DropDown header={<button id="user-button"><i className="fas fa-user"></i>Username<i className="fas fa-angle-down"></i></button>} className="dropdown">
+						<div id="user-options">
+							<div>
+								<Link to="/login">Logout</Link>
+							</div>
+						</div>
+					</DropDown>
+				</div>
+			</div>
+		</div>
 	);
 }
 

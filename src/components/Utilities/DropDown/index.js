@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import "../../../stylesheets/components/_dropdown.scss";
+import "../../../stylesheets/main.scss";
 
 function DropDown({ header, children: options, className }) {
     const [open, setOpen] = useState(false);
     return (
         <div className={`drop-down ${open ? "open" : ""} ${className}`} onClick={() => { setOpen(!open) }} onBlur={(e) => { if (!e.relatedTarget) setOpen(false) }}>
-            <button id="user-button"><i className="fas fa-user"></i>{header}<i className="fas fa-angle-down"></i></button>
+            {header}
             <div className="options">
                 {options}
             </div>

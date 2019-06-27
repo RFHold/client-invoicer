@@ -1,79 +1,22 @@
-#global-header-container {
-    height: 70px;
-    background: #fbfbfb;
-    margin: 0;
-    padding: 0;
+#header-container {
+    height: 60px;
+    background: $white;
+
+    .row {
+        height: 100%;
+    }
+
+    #brand-col {
+        background: $white;
+        white-space: nowrap;
+        border-right: $border;
+        font-family: $brand;
+    }
+    
+    #user-col {
+        border-bottom: $border;
+    }
 }
 
-#global-header-row {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
 
-#brand-col, #headernav-col {
-    display: flex;
-    align-items: center;
-    margin: 0;
-}
 
-#brand-col {
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    padding-left: 20px;
-}
-
-#headernav-col {
-    padding: 0;
-}
-
-#brand {
-    font-size: 28px;
-    color: #444;
-}
-
-.fa-circle {
-    margin-right: 10px;
-}
-
-#headernav-col {
-    justify-content: flex-end;
-    border-bottom: 1px solid #ccc;
-}
-
-#header-links {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
-
-#timers {
-    font-size: 24px;
-    width: 70px;
-    display: inline-block;
-    text-align: center;
-    padding-top: 20px;
-}
-
-#user {
-    border: 1px solid #ccc;
-    height: 100%;
-    display: inline-block;
-    align-items: center;
-    position: relative;
-    padding: 25px;
-}
-
-#user-companies {
-    padding: 10px;
-    text-align: left;
-}
-
-#user-options {
-    border-top: 1px solid #ccc;
-    padding: 10px 0;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
