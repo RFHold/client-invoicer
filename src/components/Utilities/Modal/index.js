@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../../stylesheets/components/_modal.scss";
+import "../../../stylesheets/main.scss";
 import { withRouter } from 'react-router-dom';
 
 function Modal(props) {

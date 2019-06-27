@@ -5,11 +5,20 @@ import {ProjectCard, TimeCard, TaskCard} from "../../../Private Views/Cards"
 
 function Dashboard() {
     return (
-        <Grid fluid id="dashboard-container">
-            <h1>Dashboard</h1>
-            <Row>
-                <Col xs={12} lg={4}>
-                <h3>Current Projects</h3>
+        <div className="col-xs-10">
+            <div className="row">
+                <div className="col-xs-12">
+                    <h1>Dashboard</h1>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-xs-12 col-lg-4">
+                    <TimeCard />
+                </div>
+                <div className="col-xs-12 col-lg-4">
+                    <TaskCard />
+                </div>
+                <div className="col-xs-12 col-lg-4">
                     <ProjectCard />
                 </Col>  
                 <Col xs={12} lg={4}>

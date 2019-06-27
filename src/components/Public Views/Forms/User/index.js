@@ -3,7 +3,7 @@ import Form from '../../../Utilities/Form';
 import Card from "../../../Utilities/Card";
 import { RoutesContext } from "../../../../Contexts";
 import { withRouter } from 'react-router-dom';
-import "../../../../stylesheets/components/_user.scss";
+import "../../../../stylesheets/main.scss";
 
 class UserFormWithoutRouter extends Component {
     constructor(props) {
@@ -59,7 +59,7 @@ class UserFormWithoutRouter extends Component {
                             </div>
                         </div>
                         <div className="button-container">
-                            <button className="submit-button" type="submit">{this.state.verb}</button>
+                            <button className="primary-button" type="submit">{this.state.verb}</button>
                         </div>
                     </Form>
                 </Card>

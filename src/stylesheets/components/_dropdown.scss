@@ -1,8 +1,26 @@
-.drop-down {
-    position: relative;
-    border-left: 1px solid #ccc;
-}
+#user-col {
+    .drop-down {
+        position: relative;
+        border-left: $border;
+    }
 
+    .drop-down .options {
+        white-space: nowrap;
+        visibility: hidden;
+        position: absolute;
+        left: -1px;
+    }
+    
+    .drop-down.open .options {
+        visibility: visible;
+        background: $white;
+        border: $border;
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+        box-shadow: $drop-shadow;
+    }
+}
 #user-button {
     height: 100%;
     padding: 0 30px;
@@ -23,14 +41,21 @@
 .drop-down .options {
     white-space: nowrap;
     visibility: hidden;
-    background: white;
-    padding: 10px;
     position: absolute;
 }
 
 .drop-down.open .options {
     visibility: visible;
-    border: 1px solid #ccc;
-    width: 100%;
-    padding: 0;
+    background: $white;
+    border: $border;
+    width: 100px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: $drop-shadow;
+
+    input { 
+        background: none;
+        border: none;
+        font-size: $font-size-xs;
+    }
 }

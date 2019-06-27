@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import "../../../../stylesheets/layout/_clients-projects-tasks.scss";
+import "../../../../stylesheets/main.scss";
 import ListView from "../../../Utilities/ListView";
 import { RoutesContext } from "../../../../Contexts";
 import Form from "../../../Utilities/Form";
-import { Grid, Row, Col } from 'react-flexbox-grid';
+import Card from "../../../Utilities/Card";
 
 function ListItem({ data: task }) {
   const context = useContext(RoutesContext)
   return (
-    <div id="task-card">
+    <Card>
       <h4>task Name: {task.name}</h4>
       <h5>Client: {task.client}</h5>
       <h5>Project: {task.project}</h5> 
@@ -21,7 +21,7 @@ function ListItem({ data: task }) {
       {<Form method="DELETE" action={context.api.task(task.id)}>
         <input type="submit" value="Delete"></input>
       </Form>}
-    </div>
+    </Card>
   );
 }
 

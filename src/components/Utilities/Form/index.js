@@ -1,6 +1,7 @@
 import React, { PureComponent as Component } from "react";
 import axios from "axios";
 import Alert from "../Alert/Alert";
+import "../../../stylesheets/main.scss";
 
 class Form extends Component {
   constructor(props) {

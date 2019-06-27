@@ -7,24 +7,28 @@ import Clients from "../Pages/Clients";
 import Invoices from "../Pages/Invoices";
 import Reports from "../Pages/Reports";
 import Register from "../../Utilities/Register";
+<<<<<<< HEAD
 import { ClientForm, ProjectForm, TaskForm, TimeForm, InvoiceForm } from "../Forms";
 import { Col } from 'react-flexbox-grid';
+=======
+import { ClientForm, ProjectForm, TaskForm, TimeForm } from "../Forms";
+>>>>>>> styling-refactor
 import Navbar from "../Navbar";
+import GlobalHeader from "../GlobalHeader";
 import { RoutesContext } from "../../../Contexts";
-import "../../../stylesheets/layout/_pagecontainer.scss";
 
 function PageContainer(props) {
 	const context = useContext(RoutesContext);
 	return (
 		<Switch>
-			{/* <Route path="/register" component={Register} /> */}
-			{/* <Route path="/login" component={Register} /> */}
+			<Route path="/register" component={Register} />
+			<Route path="/login" component={Register} />
 			<Route path="*">
-				<div className="col-xs-2" id="navbar-col">
-					<Navbar />
-				</div>
-				<div className="col-xs-10" id="pagecontainer-col">
-					<Route exact path="/" component={Dashboard} />
+				<div className="container-fluid">
+					<GlobalHeader />
+					<div className="row">
+						<Navbar />
+						<Route exact path="/" component={Dashboard} />
 					<Route path="/clients" component={Clients} />
 					<Route path="/clients/new" component={ClientForm} />
 					<Route path="/client/edit/:clientId" component={ClientForm} />
@@ -39,7 +43,7 @@ function PageContainer(props) {
 					<Route path="/invoices/new" component={InvoiceForm} />
 					<Route path="/reports" component={Reports} />
 					<Route path="/projects/:projectId/tasks" component={Tasks} projectId={context.api.project.id || 1} />
-
+					</div>
 				</div>
 			</Route>
 		</Switch>
