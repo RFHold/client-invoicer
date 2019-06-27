@@ -46,8 +46,8 @@ function ListItem({ data: project, data: client }) {
           <h6>Start Date</h6>
           {project.startDate}
         </div>
+        <Link to={context.view.tasks.projectTasks(project.id)}>See Tasks</Link> 
       </div>
-
     </Card>
   );
 }
