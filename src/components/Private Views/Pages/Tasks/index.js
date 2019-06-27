@@ -12,6 +12,7 @@ function ListItem({ data: task }) {
     <div id="task-card">
       <h4>task Name: {task.name}</h4>
       <h5>Client: {task.client}</h5>
+      <h5>Project: {task.project}</h5> 
       <p>Description: {task.description}</p>
       <p>Due Date: {task.dueDate}</p>
       <p>Start Date: {task.startDate}</p>
@@ -24,14 +25,26 @@ function ListItem({ data: task }) {
   );
 }
 
-function Tasks() {
+function SelectItem ({ data: option }) {
+  return (
+      <option value={option.id}>{option.name}</option>
+  );
+}
+
+function Tasks(props) {
   const context = useContext(RoutesContext)
   return (
     <Grid fluid id="content-container">
     <div id="client-container">
       <Row className="page-header">
         <Col xs={6}>
-          <h2>Tasks</h2>
+        <div>
+                    <label htmlFor="taskFormProjectInput">Project</label>
+                    <select name="project" id="taskFormProjectInput">
+                        <option value="">Select a Project</option>
+                        <ListView itemComponent={SelectItem} resource={context.api.projects}/>
+                    </select>
+                </div>
         </Col>
         <Col xs={6}>
           <Row end="xs">
