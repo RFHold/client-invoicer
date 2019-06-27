@@ -52,7 +52,7 @@ module.exports = (sequelize, DataTypes) => {
       constraints: true
     });
     this.belongsTo(models.Invoice, {
-      foreignKey: 'invocie',
+      foreignKey: 'invoice',
       constraints: true
     });
   };

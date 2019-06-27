@@ -6,8 +6,9 @@ import Tasks from "../Pages/Tasks";
 import Clients from "../Pages/Clients";
 import Invoices from "../Pages/Invoices";
 import Reports from "../Pages/Reports";
-// import Register from "../../Utilities/Register";
-import { ClientForm, ProjectForm, TaskForm, TimeForm } from "../Forms";
+import Register from "../../Utilities/Register";
+import { ClientForm, ProjectForm, TaskForm, TimeForm, InvoiceForm } from "../Forms";
+import { Col } from 'react-flexbox-grid';
 import Navbar from "../Navbar";
 import { RoutesContext } from "../../../Contexts";
 import "../../../stylesheets/layout/_pagecontainer.scss";
@@ -35,6 +36,7 @@ function PageContainer(props) {
 					<Route path="/task/edit/:taskId" component={TaskForm} />
 					<Route path="/tasks/:taskId/timeEntry" component={TimeForm} />
 					<Route path="/invoices" component={Invoices} />
+					<Route path="/invoices/new" component={InvoiceForm} />
 					<Route path="/reports" component={Reports} />
 
 				</div>

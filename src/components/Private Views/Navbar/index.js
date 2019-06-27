@@ -21,7 +21,7 @@ function Navbar() {
                     <Link to={context.view.clients.all} className="nav-link"><button className="navbar-button"><i className="fas fa-user-tie"></i>Clients</button></Link>
                     {/* </Col>
                 <Col xs={12} class="links-col"> */}
-                    <Link to={context.view.invoices} className="nav-link"><button className="navbar-button"><i className="fas fa-file-invoice-dollar"></i>Invoices</button></Link>
+                    <Link to={context.view.invoices.all} class="nav-link"><button class="navbar-button"><i class="fas fa-file-invoice-dollar"></i>Invoices</button></Link>
                     {/* </Col>
                 <Col xs={12} class="links-col"> */}
                     {/* <Link to={context.view.reports} class="nav-link"><button class="navbar-button"><i class="fas fa-th-list"></i>Reports</button></Link> */}

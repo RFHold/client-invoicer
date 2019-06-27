@@ -37,10 +37,6 @@ function Clients() {
                             </Link>
                         </div>
                     </div>
-                    <div className="col-xs-12">
-                        <div className="row bottom-xs">
-                        </div>
-                    </div>
                 </div>
             </div>
             <div className="row">
