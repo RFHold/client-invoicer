@@ -31,7 +31,7 @@ class InvoiceFormWithoutRouter extends Component {
                 <Form method={this.state.method} action={this.state.action} onSuccess={() => { this.props.history.push(this.context.view.invoices.all) }}>
                     <div>
                         <label htmlFor="invoiceFormProjectInput">Client</label>
-                        <select name="project" id="invoiceFormProjectInput">
+                        <select name="client" id="invoiceFormProjectInput">
                             <option value="">Select a Client</option>
                             <ListView itemComponent={SelectItem} resource={this.context.api.clients} />
                         </select>
