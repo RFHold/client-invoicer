@@ -20,5 +20,6 @@ require("./clientRoutes")(router)
 require("./projectRoutes")(router)
 require("./taskRoutes")(router)
 require("./timeEntryRoutes")(router)
+require("./invoiceRoutes")(router)
 
 module.exports = router

@@ -17,6 +17,14 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.DATE
     },
+    dueDate: {
+      allowNull: false,
+      type: DataTypes.DATE
+    },
+    date: {
+      allowNull: false,
+      type: DataTypes.DATE
+    },
     paid: {
       allowNull: false,
       type: DataTypes.FLOAT
@@ -29,15 +37,20 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.FLOAT
     },
-    viewed: {
-      allowNull: false,
-      type: DataTypes.INTEGER
-    },
     rate: {
       allowNull: false,
       type: DataTypes.FLOAT
     }
-  });
+  }, {
+      getterMethods: {
+        json() {
+          return {
+            id: this.id,
+            client: this.client
+          }
+        }
+      }
+    });
   Invoice.associate = function(models) {
     // associations can be defined here
     this.belongsTo(models.User,{

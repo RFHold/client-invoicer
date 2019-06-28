@@ -7,7 +7,7 @@ import Clients from "../Pages/Clients";
 import Invoices from "../Pages/Invoices";
 import Reports from "../Pages/Reports";
 import Register from "../../Utilities/Register";
-import { ClientForm, ProjectForm, TaskForm, TimeForm } from "../Forms";
+import { ClientForm, ProjectForm, TaskForm, TimeForm, InvoiceForm } from "../Forms";
 import Navbar from "../Navbar";
 import GlobalHeader from "../GlobalHeader";
 import { RoutesContext } from "../../../Contexts";
@@ -35,7 +35,7 @@ function PageContainer(props) {
 					<Route path="/task/edit/:taskId" component={TaskForm} />
 					<Route path="/tasks/:taskId/timeEntry" component={TimeForm} />
 					<Route path="/invoices" component={Invoices} />
-					{/* <Route path="/invoices/new" component={InvoiceForm} /> */}
+					<Route path="/invoices/new" component={InvoiceForm} />
 					<Route path="/reports" component={Reports} />
 					<Route path="/projects/:projectId/tasks" component={Tasks} />
 					</div>
