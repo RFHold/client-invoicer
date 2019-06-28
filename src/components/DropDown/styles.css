@@ -1,0 +1,13 @@
+.drop-down {
+    position: relative;
+}
+.drop-down .options {
+    white-space: nowrap;
+    visibility: hidden;
+    background: white;
+    padding: 10px;
+    position: absolute;
+}
+.drop-down.open .options {
+    visibility: visible;
+}

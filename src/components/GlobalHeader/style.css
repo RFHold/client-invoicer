@@ -1,0 +1,49 @@
+#global-header-container {
+    height: 70px;
+    background: #fbfbfb;
+    margin: 0;
+    padding: 0;
+}
+
+#global-header-row {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#brand-col, #headernav-col {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    margin: 0;
+}
+
+#brand-col {
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+#brand {
+    font-size: 28px;
+    color: #444;
+}
+
+.fa-circle {
+    margin-right: 10px;
+}
+
+#headernav-col {
+    justify-content: flex-end;
+    border-bottom: 1px solid #ccc;
+}
+
+#timers {
+    font-size: 24px;
+    border: 1px solid #ccc;
+    margin-right: 20px;
+}
+
+#header-links {
+    margin: 0;
+    padding: 0;
+}

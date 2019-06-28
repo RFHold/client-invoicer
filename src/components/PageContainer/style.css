@@ -1,0 +1,5 @@
+#page-container {
+    height: calc(100vh - 70px);
+    border: 1px solid #ccc;
+    background-color: yellowgreen;
+}
