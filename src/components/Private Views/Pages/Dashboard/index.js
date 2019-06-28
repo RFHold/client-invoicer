@@ -12,9 +12,6 @@ function Dashboard() {
             </div>
             <div className="row">
                 <div className="col-xs-6">
-                    <TimeCard />
-                </div>
-                <div className="col-xs-6">
                     <TaskCard />
                 </div>
                 <div className="col-xs-12">

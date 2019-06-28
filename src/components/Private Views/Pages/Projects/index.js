@@ -6,6 +6,8 @@ import { RoutesContext } from "../../../../Contexts";
 import Form from "../../../Utilities/Form";
 import Card from "../../../Utilities/Card";
 import DropDown from "../../../Utilities/DropDown";
+import DateComponent from "../../../Utilities/DateComponent";
+import Timestamp from "../../../Utilities/Timestamp";
 
 function ListItem({ data: project, data: client }) {
   const context = useContext(RoutesContext);
@@ -38,14 +40,14 @@ function ListItem({ data: project, data: client }) {
         </div>
       </div>
       <div className="row center-xs">
-        <div className="col-xs-6 text-center" id="limit">
-          <h6>Due Date</h6>
-          {project.dueDate}
-        </div>
-        <div className="col-xs-6 text-center" id="limit">
+        <div className="col-xs-12 text-center" id="limit">
+          <div>
           <h6>Start Date</h6>
-          {project.startDate}
-        </div>
+          <DateComponent projectdate={project.startDate}/>
+          <h6>Due Date</h6>
+          <DateComponent projectdate={project.dueDate}/>
+          </div>
+          </div>
         <Link to={context.view.tasks.projectTasks(project.id)}>See Tasks</Link> 
       </div>
     </Card>
