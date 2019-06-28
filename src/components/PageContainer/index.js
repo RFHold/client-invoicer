@@ -21,6 +21,9 @@ function PageContainer(props) {
 				<LoginForm/>
 			</Route>
 			<Route path="/companies/new" component={CompanyForm} />
+			<Route path="/dashboard" >
+				<h1>Dashboard</h1>
+			</Route>
 			<Route exact path="/register" component={UserForm} />
 			<Route path="/company/*">
 				<Route exact path="/company/:companyId/*" component={(props) => {
