@@ -26,7 +26,9 @@ class ClientFormWithoutRouter extends Component {
                         <label htmlFor="clientFormNameInput">Name</label>
                         <input id="clientFormNameInput" name="name" type="text" />
                     </div>
-                    <button type="submit">{this.state.verb} Client</button>
+                    <div className="button-container">
+                        <button className="secondary-button" type="submit">{this.state.verb} Client</button>
+                    </div>
                 </Form>
             </Modal>
         );

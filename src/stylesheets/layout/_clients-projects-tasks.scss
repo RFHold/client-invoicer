@@ -1,0 +1,16 @@
+#content-container {
+    background: $light-grey-3;
+}
+
+#content-header {
+    height: 140px;
+    background: $light-grey-3;
+    padding: 0 40px;
+    border-bottom: $border;;
+}
+
+#list-container {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}

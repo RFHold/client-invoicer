@@ -33,7 +33,6 @@ class ProjectFormWithoutRouter extends Component {
           onSuccess={() => {
             this.props.history.push(this.context.view.projects.all);
           }}>
-          <h1>Create Project</h1>
           <div>
             <label htmlFor="projectFormNameInput">Name</label>
             <input id="projectFormNameInput" name="name" type="text" />
@@ -68,7 +67,9 @@ class ProjectFormWithoutRouter extends Component {
               name="dueDate"
               type="datetime-local" />
           </div>
-          <button type="submit">{this.state.verb} Project</button>
+          <div className="button-container">
+            <button className="secondary-button" type="submit">{this.state.verb} Project</button>
+          </div>
         </Form>
       </Modal>
     );

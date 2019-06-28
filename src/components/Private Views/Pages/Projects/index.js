@@ -1,24 +1,54 @@
 import React, { useContext } from "react";
-import { Grid, Row, Col } from "react-flexbox-grid";
 import { Link } from "react-router-dom";
-import "./style.css";
+import "../../../../stylesheets/main.scss";
 import ListView from "../../../Utilities/ListView";
 import { RoutesContext } from "../../../../Contexts";
 import Form from "../../../Utilities/Form";
+import Card from "../../../Utilities/Card";
+import DropDown from "../../../Utilities/DropDown";
 
-function ListItem({ data: project }) {
+function ListItem({ data: project, data: client }) {
   const context = useContext(RoutesContext);
   return (
-    <div id="project-card">
-      <h4>Project Name: {project.name}</h4>
-      <h5>Client: {project.client}</h5>
-      <p>Description: {project.description}</p>
-      <p>Due Date: {project.dueDate}</p>
-      <p>Start Date: {project.startDate}</p>
-      {<Form method="DELETE" action={context.api.project(project.id)}>
-        <input type="submit" value="Delete" />
-      </Form>}
-    </div>
+    <Card id="project-card">
+      <div className="row center-xs">
+        <div className="col-xs-11">
+          <div className="row center-xs">
+            <h3>{project.name}</h3>
+            <span class="text-right">
+              <DropDown header={<i className="fas fa-ellipsis-v"></i>} className="dropdown">
+                <div id="project-options">
+                  <div>
+                    {<Form method="DELETE" action={context.api.project(project.id)}>
+                      <input type="submit" value="Delete" />
+                    </Form>}
+                  </div>
+                </div>
+              </DropDown>
+            </span>
+          </div>
+        </div>
+        <div className="col-xs-1">
+        </div>
+      </div>
+      <div className="row center-xs">
+        <div className="col-xs-12 text-center">
+          <h6>{client.name}</h6>
+          <p>{project.description}</p>
+        </div>
+      </div>
+      <div className="row center-xs">
+        <div className="col-xs-6 text-center" id="limit">
+          <h6>Due Date</h6>
+          {project.dueDate}
+        </div>
+        <div className="col-xs-6 text-center" id="limit">
+          <h6>Start Date</h6>
+          {project.startDate}
+        </div>
+        <Link to={context.view.tasks.projectTasks(project.id)}>See Tasks</Link> 
+      </div>
+    </Card>
   );
 }
 
@@ -26,33 +56,31 @@ function Projects() {
   const context = useContext(RoutesContext);
 
   return (
-    <Grid fluid id="content-container">
-      <div id="client-container">
-        <Row className="page-header">
-          <Col xs={6}>
-            <h2>Projects</h2>
-          </Col>
-          <Col xs={6}>
-            <Row end="xs">
-              <Link to={context.view.projects.new} id="projects">
-                <button id="new-client-button">
-                  <i class="fas fa-plus" />
-                  Add New Project
+    <div className="col-xs-10" id="content-container">
+      <div className="row middle-xs" id="content-header">
+        <div className="col-xs-6">
+          <h2>Projects</h2>
+        </div>
+        <div className="col-xs-6">
+          <div className="row end-xs">
+            <Link to={context.view.projects.new} id="projects">
+              <button className="primary-button">
+                <i className="fas fa-plus" />
+                Add New Project
                 </button>
-              </Link>
-            </Row>
-          </Col>
-        </Row>
+            </Link>
+          </div>
+        </div>
       </div>
-      <Row>
-        <Col xs={12} id="projects-col">
+      <div className="row">
+        <div className="col-xs-12" id="list-container">
           <ListView
             itemComponent={ListItem}
             resource={context.api.projects}
           />
-        </Col>
-      </Row>
-    </Grid>
+        </div>
+      </div>
+    </div>
   );
 }
 

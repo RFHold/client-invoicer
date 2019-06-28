@@ -8,10 +8,9 @@ import Invoices from "../Pages/Invoices";
 import Reports from "../Pages/Reports";
 import Register from "../../Utilities/Register";
 import { ClientForm, ProjectForm, TaskForm, TimeForm } from "../Forms";
-import { Col } from 'react-flexbox-grid';
 import Navbar from "../Navbar";
+import GlobalHeader from "../GlobalHeader";
 import { RoutesContext } from "../../../Contexts";
-import "./style.css";
 
 function PageContainer(props) {
 	const context = useContext(RoutesContext);
@@ -20,11 +19,11 @@ function PageContainer(props) {
 			<Route path="/register" component={Register} />
 			<Route path="/login" component={Register} />
 			<Route path="*">
-				<Col xs={2} id="navbar-col">
-					<Navbar />
-				</Col>
-				<Col xs={10} id="pagecontainer-col">
-					<Route exact path="/" component={Dashboard} />
+				<div className="container-fluid">
+					<GlobalHeader />
+					<div className="row">
+						<Navbar />
+						<Route exact path="/" component={Dashboard} />
 					<Route path="/clients" component={Clients} />
 					<Route path="/clients/new" component={ClientForm} />
 					<Route path="/client/edit/:clientId" component={ClientForm} />
@@ -36,9 +35,11 @@ function PageContainer(props) {
 					<Route path="/task/edit/:taskId" component={TaskForm} />
 					<Route path="/tasks/:taskId/timeEntry" component={TimeForm} />
 					<Route path="/invoices" component={Invoices} />
+					{/* <Route path="/invoices/new" component={InvoiceForm} /> */}
 					<Route path="/reports" component={Reports} />
-
-				</Col>
+					<Route path="/projects/:projectId/tasks" component={Tasks} />
+					</div>
+				</div>
 			</Route>
 		</Switch>
 	);

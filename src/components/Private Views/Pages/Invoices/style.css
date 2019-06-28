@@ -4,12 +4,12 @@
     height: calc(100vh - 15%);
 }
 
-#client-card {
+#invoice-card {
     border: 1px solid #ccc;
     width: 20%;
 }
 
-#client-container {
+#invoice-container {
     background: #fff;
     margin: 0;
     padding: 20px 20px 10px 20px;
@@ -37,7 +37,7 @@ ul>li:first-child {
     height: 100%;
 }
 
-#new-client-button {
+#new-invoice-button {
     padding: 0 20px;
     font-size: 14px;
     background: #fbfbfb;

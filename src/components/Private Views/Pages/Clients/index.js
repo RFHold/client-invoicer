@@ -1,20 +1,38 @@
 import React, { useContext } from "react";
-import { Grid, Row, Col } from "react-flexbox-grid";
 import { Link } from "react-router-dom";
 import { RoutesContext } from '../../../../Contexts';
-import "./style.css";
-import ListView from "../../../Utilities/ListView";
+import "../../../../stylesheets/main.scss";
 import Form from "../../../Utilities/Form";
+import Card from "../../../Utilities/Card";
+import DropDown from "../../../Utilities/DropDown";
+import ListView from "../../../Utilities/ListView";
+
 
 function ListItem({ data: client }) {
     const context = useContext(RoutesContext);
     return (
-        <div id="client-card">
-            <h1>{client.name}</h1>
-            {<Form method="DELETE" action={context.api.client(client.id)}>
-        <input type="submit" value="Delete" />
-      </Form>}
-        </div>
+        <Card>
+            <div className="row center-xs">
+                <div className="col-xs-11">
+                    <div className="row center-xs">
+                        <h3>{client.name}</h3>
+                    </div>
+                </div>
+                <div className="col-xs-1">
+                    <div className="row end-xs">
+                        <DropDown header={<i className="fas fa-ellipsis-v"></i>} className="dropdown">
+                            <div id="project-options">
+                                <div>
+                                    {<Form method="DELETE" action={context.api.client(client.id)}>
+                                        <input type="submit" value="Delete" />
+                                    </Form>}
+                                </div>
+                            </div>
+                        </DropDown>
+                    </div>
+                </div>
+            </div>
+        </Card>
     );
 }
 
@@ -22,44 +40,30 @@ function Clients() {
     const context = useContext(RoutesContext);
 
     return (
-        <Grid fluid id="content-container">
-            <div id="client-container">
-                <Row className="page-header">
-                    <Col xs={6}>
-                        <h2>Clients</h2>
-                    </Col>
-                    <Col xs={6}>
-                        <Row end="xs">
-                            <Link to={context.view.clients.new} id="clients">
-                                <button id="new-client-button">
-                                    <i class="fas fa-plus" />Add New Client
-                </button>
-                            </Link>
-                        </Row>
-                    </Col>
-                    <Col xs={12}>
-                        <Row bottom="xs">
-                            <ul>
-                                <li>
-                                    <Link to="/clients">Active Clients</Link>
-                                </li>
-                                <li>
-                                    <Link to="/clients">Inactive Clients</Link>
-                                </li>
-                            </ul>
-                        </Row>
-                    </Col>
-                </Row>
+        <div className="col-xs-10" id="content-container">
+            <div className="row middle-xs" id="content-header">
+                <div className="col-xs-6">
+                    <h2>Clients</h2>
+                </div>
+                <div className="col-xs-6">
+                    <div className="row end-xs">
+                        <Link to={context.view.clients.new} id="clients">
+                            <button className="primary-button">
+                                <i className="fas fa-plus" />Add New Client
+                            </button>
+                        </Link>
+                    </div>
+                </div>
             </div>
-            <Row>
-                <Col xs={12}>
+            <div className="row">
+                <div className="col-xs-12" id="list-container">
                     <ListView
                         itemComponent={ListItem}
                         resource={context.api.clients}
                     />
-                </Col>
-            </Row>
-        </Grid>
+                </div>
+            </div>
+        </div>
     );
 }
 

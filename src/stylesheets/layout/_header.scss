@@ -1,0 +1,22 @@
+#header-container {
+    height: 60px;
+    background: $white;
+
+    .row {
+        height: 100%;
+    }
+
+    #brand-col {
+        background: $white;
+        white-space: nowrap;
+        border-right: $border;
+        font-family: $brand;
+    }
+    
+    #user-col {
+        border-bottom: $border;
+    }
+}
+
+
+

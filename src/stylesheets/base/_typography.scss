@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Roboto:300,400,500&display=swap');
+
+
+body {
+  color: $dark-grey;
+  font-family: $font-family;
+}
+
+ a {
+  color: $primary;
+  text-decoration: none;
+  font-weight: $medium;
+}
+
+h1 {
+  font-size: $font-size-xxl;
+  font-weight: $light;
+}
+
+h2 {
+  font-size: $font-size-xl;
+  font-weight: $medium;
+}
+
+h3 {
+  font-size: $font-size-lg;
+  font-weight: $medium;
+}
+
+h4 {
+  font-size: $font-size-md;
+  font-weight: $medium;
+}
+
+h5 {
+  font-size: $font-size-sm;
+  $font-weight: $semibold;
+}
+
+h6 {
+  font-size: $font-size-xs;
+  $font-weight: $semibold;
+  text-transform: uppercase;
+}
+
+label {
+  font-size: $font-size-xxs;
+  $font-weight: $semibold;
+  text-transform: uppercase;
+}

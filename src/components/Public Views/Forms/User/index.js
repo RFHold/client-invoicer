@@ -3,7 +3,7 @@ import Form from '../../../Utilities/Form';
 import Card from "../../../Utilities/Card";
 import { RoutesContext } from "../../../../Contexts";
 import { withRouter } from 'react-router-dom';
-import "./style.css";
+import "../../../../stylesheets/main.scss";
 
 class UserFormWithoutRouter extends Component {
     constructor(props) {
@@ -24,7 +24,7 @@ class UserFormWithoutRouter extends Component {
         return (
             <div className="register-form">
                 <Card>
-                    <Form method={this.state.method} action={this.state.action}>
+                    <Form method={this.state.method} action={this.state.action} onSuccess={() => { this.props.history.push("/dashboard") }}>
                         <h1>Register</h1>
                         <div>
                             <label htmlFor="userFormUsernameInput">Username</label>
@@ -38,7 +38,7 @@ class UserFormWithoutRouter extends Component {
                             <label htmlFor="userFormEmailInput">Email</label>
                             <input id="userFormEmailInput" name="email" type="email" />
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <div>
                                 <label htmlFor="userFormFirstNameInput">First Name</label>
                                 <input id="userFormFirstNameInput" name="firstName" type="text" />
@@ -48,7 +48,7 @@ class UserFormWithoutRouter extends Component {
                                 <input id="userFormLastNameInput" name="lastName" type="text" />
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <div>
                                 <label htmlFor="userFormAddressInput">Address</label>
                                 <input id="userFormAddressInput" name="address" type="text" />
@@ -58,8 +58,8 @@ class UserFormWithoutRouter extends Component {
                                 <input id="userFormPhoneInput" name="phone" type="text" />
                             </div>
                         </div>
-                        <div class="button-container">
-                            <button class="submit-button" type="submit">{this.state.verb}</button>
+                        <div className="button-container">
+                            <button className="primary-button" type="submit">{this.state.verb}</button>
                         </div>
                     </Form>
                 </Card>

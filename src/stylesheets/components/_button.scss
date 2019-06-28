@@ -1,0 +1,27 @@
+.primary-button {
+    padding: 0 20px;
+    font-size: $font-size-xs;
+    color: $white;
+    background: $primary;
+    font-weight: $semibold;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    height: 46px;
+
+    .fa-plus {
+        padding-right: 10px;
+    }
+}
+
+.secondary-button {
+    padding: 0 20px;
+    font-size: $font-size-xs;
+    font-weight: $semibold;
+    color: $primary;
+    background: $secondary;
+    outline: none;
+    border: 1px solid $primary;
+    border-radius: 10px;
+    height: 46px;
+}
