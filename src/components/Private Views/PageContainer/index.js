@@ -30,14 +30,13 @@ function PageContainer(props) {
 					<Route path="/projects" component={Projects} />
 					<Route path="/projects/new" component={ProjectForm} />
 					<Route path="/project/edit/:projectId" component={ProjectForm} />
-					<Route path="/tasks" component={Tasks} />
-					<Route path="/tasks/new" component={TaskForm} />
-					<Route path="/task/edit/:taskId" component={TaskForm} />
-					<Route path="/tasks/:taskId/timeEntry" component={TimeForm} />
+					<Route path="/project/:projectId/tasks/new" component={TaskForm} />
+					<Route path="/project/:projectId/task/edit/:taskId" component={TaskForm} />
+					<Route path="/project/:projectId/tasks/:taskId/timeEntry" component={TimeForm} />
 					<Route path="/invoices" component={Invoices} />
 					<Route path="/invoices/new" component={InvoiceForm} />
 					<Route path="/reports" component={Reports} />
-					<Route path="/projects/:projectId/tasks" component={Tasks} />
+					<Route path="/project/:projectId/tasks" component={Tasks} />
 					</div>
 				</div>
 			</Route>

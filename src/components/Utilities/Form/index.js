@@ -53,6 +53,7 @@ class Form extends Component {
       .then(response => {
         this.onSuccess(response);
         this.setState({ message: response.data.message });
+        window.location.reload();
       })
       .catch(error => {
         this.onError(error);
