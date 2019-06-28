@@ -37,7 +37,7 @@ function PageContainer(props) {
 					<Route path="/invoices" component={Invoices} />
 					<Route path="/invoices/new" component={InvoiceForm} />
 					<Route path="/reports" component={Reports} />
-					<Route path="/projects/:projectId/tasks" component={Tasks} />
+					<Route path="/project/:projectId/tasks" component={Tasks} />
 					</div>
 				</div>
 			</Route>

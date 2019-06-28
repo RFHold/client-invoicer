@@ -10,8 +10,6 @@ import { tsPropertySignature } from "@babel/types";
 
 function ListItem({ data: task, projectId }) {
   const context = useContext(RoutesContext)
-  if (projectId !== undefined) {
-  if (task.project == projectId) {
   return (
     <Card>
       <h4>task Name: {task.name}</h4>
@@ -27,25 +25,6 @@ function ListItem({ data: task, projectId }) {
       </Form>}
     </Card>
   )}
-  else return null; 
-  }
-  else {
-    return (
-      <Card>
-        <h4>task Name: {task.name}</h4>
-        <h5>Client: {task.client}</h5>
-        <h5>Project: {task.project}</h5>
-        <p>Description: {task.description}</p>
-        <p>Due Date: {task.dueDate}</p>
-        <p>Start Date: {task.startDate}</p>
-        <p>Elapsed Time: {task.elapsed}</p>
-        <Link to={context.view.time.new(task.id)}>Add Time</Link>
-        {<Form method="DELETE" action={context.api.task(task.id)}>
-          <input type="submit" value="Delete"></input>
-        </Form>}
-      </Card>
-    )}
-  }
 
 function SelectItem({ data: option }) {
   return (
@@ -59,13 +38,7 @@ function Tasks(props) {
     <div className="col-xs-10" id="content-container">
       <div className="row middle-xs" id="content-header">
         <div className="col-xs-6">
-          <div>
-            <label htmlFor="taskFormProjectInput">Project</label>
-            <select name="project" id="taskFormProjectInput">
-              <option value="">Select a Project</option>
-              <ListView itemComponent={SelectItem} resource={context.api.projects} />
-            </select>
-          </div>
+         <h2>Project Tasks</h2>
         </div>
         <div className="col-xs-6">
           <div className="row end-xs">
@@ -82,8 +55,7 @@ function Tasks(props) {
         <div className="row-xs-12" id="list-container">
           <ListView
             itemComponent={ListItem}
-            resource={context.api.tasks}
-            projectId={props.match.params.projectId}
+            resource={context.api.project.tasks(props.match.params.projectId)}
           />
         </div>
       </div>
