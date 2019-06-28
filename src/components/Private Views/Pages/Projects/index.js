@@ -7,46 +7,47 @@ import Form from "../../../Utilities/Form";
 import Card from "../../../Utilities/Card";
 import DropDown from "../../../Utilities/DropDown";
 
-function ListItem({ data: project, data: client }) {
+function ListItem({ data: project }) {
   const context = useContext(RoutesContext);
   return (
-    <Card id="project-card">
-      <div className="row center-xs">
-        <div className="col-xs-11">
-          <div className="row center-xs">
-            <h3>{project.name}</h3>
-          </div>
-        </div>
-        <div className="col-xs-1">
-          <div className="row end-xs">
-            <DropDown header={<i className="fas fa-ellipsis-v"></i>} className="dropdown">
-              <div id="project-options">
-                <div>
-                  {<Form method="DELETE" action={context.api.project.one(project.id)}>
-                    <input type="submit" value="Delete" />
-                  </Form>}
+    <Card>
+      <div id="project-card">
+        <div className="row center-xs">
+          <div className="col-xs-12">
+            <div className="row end-xs">
+              <DropDown header={<i className="fas fa-ellipsis-v"></i>} className="dropdown">
+                <div id="project-options">
+                  <div>
+                    {<Form method="DELETE" action={context.api.project.one(project.id)}>
+                      <input type="submit" value="Delete" />
+                    </Form>}
+                  </div>
                 </div>
-              </div>
-            </DropDown>
+              </DropDown>
+            </div>
+            <div className="row center-xs text-center">
+              <h4>{project.name}</h4>
+            </div>
+            <div className="row center-xs text-center">
+              <h6>{project.Client}</h6>
+            </div>
+            {/* <div className="row center-xs text-center">
+              <p>{project.description}</p>
+            </div> */}
           </div>
         </div>
-      </div>
-      <div className="row center-xs">
-        <div className="col-xs-12 text-center">
-          <h6>{client.name}</h6>
-          <p>{project.description}</p>
+
+        <div className="row center-xs">
+          <div className="col-xs-6 text-center" id="limit">
+            <h6>Due Date</h6>
+            {project.dueDate}
+          </div>
+          <div className="col-xs-6 text-center" id="limit">
+            <h6>Start Date</h6>
+            {project.startDate}
+          </div>
+          <Link to={context.view.tasks.projectTasks(project.id)}>See Tasks</Link>
         </div>
-      </div>
-      <div className="row center-xs">
-        <div className="col-xs-6 text-center" id="limit">
-          <h6>Due Date</h6>
-          {project.dueDate}
-        </div>
-        <div className="col-xs-6 text-center" id="limit">
-          <h6>Start Date</h6>
-          {project.startDate}
-        </div>
-        <Link to={context.view.tasks.projectTasks(project.id)}>See Tasks</Link> 
       </div>
     </Card>
   );

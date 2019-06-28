@@ -31,7 +31,7 @@ function ListItem({ data: invoice }) {
                                 </div>
                                 <div>
                                     {
-                                        <button onClick={() => { axios({ url: context.api.invoice(invoice.id), method: "GET", responseType: "blob"}).then((response) => { console.log(response.data);;FileDownload(response.data, 'invoice.pdf'); })} }>Download</button>
+                                        <button onClick={() => { axios({ url: context.api.invoice(invoice.id), method: "GET", responseType: "blob" }).then((response) => { console.log(response.data);; FileDownload(response.data, 'invoice.pdf'); }) }}>Download</button>
                                     }
                                 </div>
                             </div>

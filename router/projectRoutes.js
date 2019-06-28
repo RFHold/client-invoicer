@@ -19,7 +19,7 @@ module.exports = function (router) {
         })
     })
     router.get("/api/projects", function (req, res) {
-        return req.sessionUser.getProjects().then((projects) => {
+        return req.sessionUser.getProjects({ include: [{ model: db.Client }] }).then((projects) => {
             if (projects) {
                 res.json({ success: true, length: projects.length, results: projects.map(project => project.json), message: `Found ${projects.length} projects` })
             } else {
