@@ -6,7 +6,7 @@ const MySQLStore = require('connect-mysql')(session)
 
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/config/config.js')[env];
-const PORT = process.env.port || 4000
+const PORT = process.env.PORT || 4000
 require('dotenv').config()
 
 global.__root = __dirname
