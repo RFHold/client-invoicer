@@ -34,11 +34,7 @@ class TaskFormWithoutRouter extends Component {
                         <input id="taskFormNameInput" name="name" type="text" />
                     </div>
                     <div>
-                        <label htmlFor="taskFormProjectInput">Project</label>
-                        <select name="project" id="taskFormProjectInput">
-                            <option value="">Select a Project</option>
-                            <ListView itemComponent={SelectItem} resource={this.context.api.projects} />
-                        </select>
+                        <input type="hidden" name="project" id="taskFormProjectInput" value={this.props.match.params.projectId}/>
                     </div>
                     <div>
                         <label htmlFor="taskFormDescriptionInput">Description</label>

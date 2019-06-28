@@ -9,6 +9,11 @@ import Card from "../../../Utilities/Card";
 import Timestamp from "../../../Utilities/Timestamp";
 import DateComponent from "../../../Utilities/DateComponent";
 
+function projectName({data: project}) {
+  return (
+    <h2>{project.name} Tasks</h2>
+  )
+}
 function ListItem({ data: task}) {
   const context = useContext(RoutesContext)
   return (
@@ -35,11 +40,12 @@ function SelectItem({ data: option }) {
 
 function Tasks(props) {
   const context = useContext(RoutesContext)
+
   return (
     <div className="col-xs-10" id="content-container">
       <div className="row middle-xs" id="content-header">
         <div className="col-xs-6">
-         <h2>Project Tasks</h2>
+          <ListView itemComponent={projectName} resource={context.api.project.one(props.match.params.projectId)}/>
         </div>
         <div className="col-xs-6">
           <div className="row end-xs">
