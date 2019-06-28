@@ -45,7 +45,7 @@ module.exports = function (router) {
         })
     })
     router.post("/api/tasks", function (req, res) {
-        const { name, description, startDate, dueDate, project } = req.body
+        const { name, description, startDate, dueDate, project, rate } = req.body
         return db.sequelize.transaction().then((t) => {
             return req.sessionUser.getProjects({
                 where: { id: project }
@@ -58,7 +58,8 @@ module.exports = function (router) {
                         startDate: startDate,
                         dueDate: dueDate,
                         project: project.id,
-                        client: project.client
+                        client: project.client,
+                        rate: rate
                     }, { transaction: t })
                 } else {
                     res.status(404).json({ error: "Project does not exist or User is not the owner" })
@@ -72,7 +73,7 @@ module.exports = function (router) {
         })
     })
     router.patch("/api/task/:task_id", function (req, res) {
-        const { name, description, startDate, dueDate, project } = req.body
+        const { name, description, startDate, dueDate, project, rate } = req.body
         return db.sequelize.transaction().then((t) => {
             return req.task.update({
                 name: name,
@@ -80,7 +81,8 @@ module.exports = function (router) {
                 startDate: startDate,
                 dueDate: dueDate,
                 project: project,
-                client: project.client
+                client: project.client,
+                rate: rate
             }, { transaction: t }).then((task) => {
                 t.commit()
                 return res.json({ success: true, result: task.json, message: `Updated task: "${task.name}"` })
