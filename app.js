@@ -6,7 +6,7 @@ const MySQLStore = require('connect-mysql')(session)
 
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/config/config.js')[env];
-const PORT = process.env.port || 4000
+const PORT = process.env.PORT || 4000
 require('dotenv').config()
 
 global.__root = __dirname
@@ -32,8 +32,12 @@ app.use(session({
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
 app.use(express.static(__root + "/build"));
 app.use(require(__root + "/router/router"))
+app.get("*", (req, res) => {
+    res.sendFile(__root + "/build/index.html")
+});
 
 app.listen(PORT, function() {
     console.log("App listening to port: " + PORT);
