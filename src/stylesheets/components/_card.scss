@@ -4,11 +4,17 @@
     border-radius: 10px;
     padding: 20px 40px;
     margin: 20px;
-    min-width: 299px;
+    min-width: 217px;
 
     #limit {
         width: 100px;
         white-space: nowrap;
         overflow: hidden;
     }
+}
+
+#client-card {
+    width: 217px;
+    display: flex;
+    justify-content: space-between;
 }

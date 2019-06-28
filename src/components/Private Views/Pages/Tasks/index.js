@@ -11,23 +11,24 @@ import { tsPropertySignature } from "@babel/types";
 function ListItem({ data: task, projectId }) {
   const context = useContext(RoutesContext)
   if (projectId !== undefined) {
-  if (task.project == projectId) {
-  return (
-    <Card>
-      <h4>task Name: {task.name}</h4>
-      <h5>Client: {task.client}</h5>
-      <h5>Project: {task.project}</h5>
-      <p>Description: {task.description}</p>
-      <p>Due Date: {task.dueDate}</p>
-      <p>Start Date: {task.startDate}</p>
-      <p>Elapsed Time: {task.elapsed}</p>
-      <Link to={context.view.time.new(task.id)}>Add Time</Link>
-      {<Form method="DELETE" action={context.api.task(task.id)}>
-        <input type="submit" value="Delete"></input>
-      </Form>}
-    </Card>
-  )}
-  else return null; 
+    if (task.project == projectId) {
+      return (
+        <Card>
+          <h4>task Name: {task.name}</h4>
+          <h5>Client: {task.client}</h5>
+          <h5>Project: {task.project}</h5>
+          <p>Description: {task.description}</p>
+          <p>Due Date: {task.dueDate}</p>
+          <p>Start Date: {task.startDate}</p>
+          <p>Elapsed Time: {task.elapsed}</p>
+          <Link to={context.view.time.new(task.id)}>Add Time</Link>
+          {<Form method="DELETE" action={context.api.task(task.id)}>
+            <input type="submit" value="Delete"></input>
+          </Form>}
+        </Card>
+      )
+    }
+    else return null;
   }
   else {
     return (
@@ -44,8 +45,9 @@ function ListItem({ data: task, projectId }) {
           <input type="submit" value="Delete"></input>
         </Form>}
       </Card>
-    )}
+    )
   }
+}
 
 function SelectItem({ data: option }) {
   return (
@@ -79,7 +81,7 @@ function Tasks(props) {
         </div>
       </div>
       <div className="row">
-        <div className="row-xs-12" id="list-container">
+        <div className="col-xs-12" id="list-container">
           <ListView
             itemComponent={ListItem}
             resource={context.api.tasks}

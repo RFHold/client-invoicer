@@ -6,29 +6,33 @@ import Form from "../../../Utilities/Form";
 import Card from "../../../Utilities/Card";
 import DropDown from "../../../Utilities/DropDown";
 import ListView from "../../../Utilities/ListView";
+import Avatar from 'react-avatar';
 
 
 function ListItem({ data: client }) {
     const context = useContext(RoutesContext);
     return (
         <Card>
-            <div className="row center-xs">
-                <div className="col-xs-11">
-                    <div className="row center-xs">
-                        <h3>{client.name}</h3>
-                    </div>
-                </div>
-                <div className="col-xs-1">
-                    <div className="row end-xs">
-                        <DropDown header={<i className="fas fa-ellipsis-v"></i>} className="dropdown">
-                            <div id="project-options">
-                                <div>
-                                    {<Form method="DELETE" action={context.api.client(client.id)}>
-                                        <input type="submit" value="Delete" />
-                                    </Form>}
+            <div id="client-card">
+                <div className="row center-xs">
+                    <div className="col-xs-12">
+                        <div className="row end-xs">
+                            <DropDown header={<i className="fas fa-ellipsis-v"></i>} className="dropdown">
+                                <div id="project-options">
+                                    <div>
+                                        {<Form method="DELETE" action={context.api.client(client.id)}>
+                                            <input type="submit" value="Delete" />
+                                        </Form>}
+                                    </div>
                                 </div>
-                            </div>
-                        </DropDown>
+                            </DropDown>
+                        </div>
+                        <div className="row center-xs">
+                            <Avatar name={client.name} size="120" round={true} />
+                        </div>
+                        <div className="row center-xs text-center" id="client-name-container">
+                            <h4>{client.name}</h4>
+                        </div>
                     </div>
                 </div>
             </div>
