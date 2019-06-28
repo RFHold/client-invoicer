@@ -2,6 +2,14 @@ const db = require(__root + "/models")
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
+function formatDate (date) {
+    let formatted ="";
+    date = new Date(date);
+    const months =["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    formatted += `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
+    return formatted;
+}
+
 module.exports = function (router) {
     router.param('invoice_id', function (req, res, next, id) {
         return req.sessionUser.getInvoices({
@@ -55,7 +63,7 @@ module.exports = function (router) {
     })
     router.get("/api/invoices", async function (req, res) {
         try {
-            const invoices = await req.sessionUser.getInvoices()
+            const invoices = await req.sessionUser.getInvoices({include: [{model: db.Client}]})
 
             if (invoices) {
                 res.json({ success: true, length: invoices.length, results: invoices.map(invoice => invoice.json), message: `Found ${invoices.length} invoices` })
@@ -97,10 +105,7 @@ module.exports = function (router) {
             let totalElapsed = 0;
 
             for (const task of tasks) {
-
-                // TODO ADD RATE !!!!!!!
-                task.rate = 40
-                
+                                
                 defs.push({
                     text: `${task.name} $${task.rate}/hour`,
                     style: "subsubheader",
@@ -108,7 +113,8 @@ module.exports = function (router) {
                 const tableItems = [];
                 for (const timeEntry of task.TimeEntries) {
                     let time = (new Date(timeEntry.endDate).getTime() - new Date(timeEntry.startDate).getTime())
-                    tableItems.push([timeEntry.description, time]);
+                    const formattedTime = `${Math.floor(time/1000/60/60)}:${Math.floor((time/1000/60)%60)}`
+                    tableItems.push([timeEntry.description, formattedTime]);
                     totalElapsed += time;
                     totalDue += (time /1000/60/60) * task.rate;
                 }
@@ -126,13 +132,13 @@ module.exports = function (router) {
                         text: `Invoice for ${tasks[0].Client.name}\n\n`,
                         style: 'header'
                     },
-                    `Posted: ${req.invoice.date}\n`,
-                    `Due Date: ${req.invoice.dueDate}\n\n`,
+                    `Posted: ${formatDate(req.invoice.date)}\n`,
+                    `Due Date: ${formatDate(req.invoice.dueDate)}\n\n`,
                     {
                         text: 'Time Entries',
                         style: 'subheader'
                     },
-                    `${req.invoice.startDate} - ${req.invoice.endDate}\n\n`,
+                    `${formatDate(req.invoice.startDate)} - ${formatDate(req.invoice.endDate)}\n\n`,
                     ...defs,
                     "\n",
                     {
@@ -140,7 +146,7 @@ module.exports = function (router) {
                         table: {
                             widths: ['*', 50],
                             body: [
-                                ['Total', totalElapsed],
+                                ['Total', `${Math.floor(totalElapsed/1000/60/60)}:${Math.floor((totalElapsed/1000/60)%60)}`],
                                 ['Amount Due', `$${Math.round(totalDue * 100) / 100}`]
                             ]
                         }

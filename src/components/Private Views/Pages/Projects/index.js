@@ -22,7 +22,7 @@ function ListItem({ data: project, data: client }) {
             <DropDown header={<i className="fas fa-ellipsis-v"></i>} className="dropdown">
               <div id="project-options">
                 <div>
-                  {<Form method="DELETE" action={context.api.project(project.id)}>
+                  {<Form method="DELETE" action={context.api.project.one(project.id)}>
                     <input type="submit" value="Delete" />
                   </Form>}
                 </div>
