@@ -32,8 +32,12 @@ app.use(session({
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
 app.use(express.static(__root + "/build"));
 app.use(require(__root + "/router/router"))
+app.get("*", (req, res) => {
+    res.sendFile(__root + "/build/index.html")
+});
 
 app.listen(PORT, function() {
     console.log("App listening to port: " + PORT);
