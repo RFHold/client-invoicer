@@ -1,6 +1,6 @@
 const db = require(__root + "/models")
-const Sequelize = require('./node_modules/sequelize')
-const bcrypt = require('./node_modules/bcrypt')
+const Sequelize = require('sequelize')
+const bcrypt = require('bcrypt')
 const Op = Sequelize.Op;
 
 module.exports = function (router) {

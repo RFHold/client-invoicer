@@ -1,5 +1,5 @@
 const db = require(__root + "/models")
-const Sequelize = require('./node_modules/sequelize');
+const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
 module.exports = function (router) {
@@ -43,7 +43,8 @@ module.exports = function (router) {
                         description: description,
                         startDate: startDate,
                         dueDate: dueDate,
-                        project: project.id
+                        project: project.id,
+                        client: project.client
                     }, { transaction: t })
                 } else {
                     res.status(404).json({ error: "Project does not exist or User is not the owner" })
@@ -64,7 +65,8 @@ module.exports = function (router) {
                 description: description,
                 startDate: startDate,
                 dueDate: dueDate,
-                project: project
+                project: project,
+                client: project.client
             }, { transaction: t }).then((task) => {
                 t.commit()
                 return res.json({ success: true, result: task.json, message: `Updated task: "${task.name}"` })
