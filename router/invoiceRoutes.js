@@ -55,7 +55,7 @@ module.exports = function (router) {
     })
     router.get("/api/invoices", async function (req, res) {
         try {
-            const invoices = await req.sessionUser.getInvoices()
+            const invoices = await req.sessionUser.getInvoices({include: [{model: db.Client}]})
 
             if (invoices) {
                 res.json({ success: true, length: invoices.length, results: invoices.map(invoice => invoice.json), message: `Found ${invoices.length} invoices` })
