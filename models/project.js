@@ -33,7 +33,8 @@ module.exports = (sequelize, DataTypes) => {
             description: this.description,
             startDate: this.startDate,
             dueDate: this.dueDate,
-            client: this.client
+            client: this.client,
+            Client: (this.Client) ? this.Client.name : this.client
           }
         }
       }
