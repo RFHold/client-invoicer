@@ -9,7 +9,7 @@ class LoginFormWithoutRouter extends Component {
         return (
             <div className="login-form">
                 <Card>
-                    <Form method="POST" action="/api/session" onSuccess={() => { this.props.history.push("/dashboard") }}>
+                    <Form method="POST" action="/api/session" onSuccess={() => { this.props.history.push("/") }}>
                         <h2>Login</h2>
                         <div>
                             <label htmlFor="sessionFormLoginInput">Username or Email</label>
