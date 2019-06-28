@@ -59,7 +59,7 @@ function Tasks(props) {
         </div>
       </div>
       <div className="row">
-        <div className="row-xs-12" id="list-container">
+        <div className="col-xs-12" id="list-container">
           <ListView
             itemComponent={ListItem}
             resource={context.api.project.tasks(props.match.params.projectId)}

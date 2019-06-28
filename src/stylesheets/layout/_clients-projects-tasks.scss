@@ -3,9 +3,8 @@
 }
 
 #content-header {
-    height: 140px;
     background: $light-grey-3;
-    padding: 0 40px;
+    padding: 40px;
     border-bottom: $border;;
 }
 
@@ -13,4 +12,8 @@
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
+}
+
+#client-name-container {
+    padding-top: 20px;
 }
