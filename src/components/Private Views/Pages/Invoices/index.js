@@ -8,6 +8,7 @@ import DropDown from "../../../Utilities/DropDown";
 import ListView from "../../../Utilities/ListView";
 import FileDownload from "js-file-download";
 import axios from "axios";
+import DateComponent from "../../../Utilities/DateComponent";
 
 
 function ListItem({ data: invoice }) {
@@ -42,8 +43,8 @@ function ListItem({ data: invoice }) {
                 <div className="row center-xs">
                     <div className="col-xs-12 text-center">
                         <h6>{invoice.client}</h6>
-                        <p>Posted: {invoice.date}</p>
-                        <p>{invoice.startDate} - {invoice.endDate}</p>
+                        <p>Posted: <DateComponent projectdate={invoice.date}/></p>
+                        <p><DateComponent projectdate={invoice.startDate}/> - <DateComponent projectdate={invoice.endDate}/></p>
                     </div>
                 </div>
             </div>
