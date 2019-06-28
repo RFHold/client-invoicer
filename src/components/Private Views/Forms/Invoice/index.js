@@ -48,7 +48,9 @@ class InvoiceFormWithoutRouter extends Component {
                         <label htmlFor="invoiceFormDueDateInput">Due Date</label>
                         <input id="invoiceFormStartDateInput" name="dueDate" type="datetime-local" />
                     </div>
-                    <button type="submit">{this.state.verb} Invoice</button>
+                    <div className="button-container">
+                        <button className="secondary-button" type="submit">{this.state.verb} Invoice</button>
+                    </div>
                 </Form>
             </Modal>
         );
