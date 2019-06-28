@@ -1,25 +1,18 @@
 import React from "react";
 
 function Timestamp({ timestamp }) {
-  const timeStampObject = new Timestamp(timestamp);
-
-  let formattedTime;
+  let formattedTime= "";
   let hours;
   let minutes;
 
-  minutes = `0${timeStampObject.getMinutes()}`;
+  minutes = `0${Math.floor((timestamp/1000/60) % 60)}`;
   minutes = minutes.substr(minutes.length - 2);
-
-  if ((timeStampObject.getHours() + 1) % 12 === 0) {
-    hours = 12;
-  } else {
-    hours = `0${(timeStampObject.getHours() % 12) + 1}`;
-    hours = hours.substr(hours.length - 2);
-  }
+  hours = `0${Math.floor(timestamp/1000/60/60)}`;
+  hours = hours.substr(hours.length - 2);
 
   formattedTime += ` ${hours}:${minutes} `;
 
   return <React.Fragment>{formattedTime}</React.Fragment>;
 }
 
-export default Date;
+export default Timestamp;

@@ -6,7 +6,8 @@ import { RoutesContext } from "../../../../Contexts";
 import Form from "../../../Utilities/Form";
 import Invoice from "../../Forms/Invoice";
 import Card from "../../../Utilities/Card";
-import { tsPropertySignature } from "@babel/types";
+import Timestamp from "../../../Utilities/Timestamp";
+import DateComponent from "../../../Utilities/DateComponent";
 
 function ListItem({ data: task}) {
   const context = useContext(RoutesContext)
@@ -16,9 +17,9 @@ function ListItem({ data: task}) {
       <h5>Client: {task.client}</h5>
       <h5>Project: {task.project}</h5>
       <p>Description: {task.description}</p>
-      <p>Due Date: {task.dueDate}</p>
-      <p>Start Date: {task.startDate}</p>
-      <p>Elapsed Time: {task.elapsed}</p>
+      <p>Due Date: <DateComponent projectdate={task.dueDate}/></p>
+      <p>Start Date: <DateComponent projectdate={task.startDate}/></p>
+      <p>Elapsed Time: <Timestamp timestamp={task.elapsed}/></p>
       <Link to={context.view.time.new(task.id, task.project)}>Add Time</Link>
       {<Form method="DELETE" action={context.api.task(task.id)}>
         <input type="submit" value="Delete"></input>

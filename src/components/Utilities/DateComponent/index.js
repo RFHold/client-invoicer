@@ -1,8 +1,7 @@
 import React from "react";
 
 function DateComponent(props) {
-    console.log(props);
-    const date = props.projectdate;
+  const date = props.projectdate;
   const dateObject = new Date(date);
 
   const months = [
