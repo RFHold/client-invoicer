@@ -32,7 +32,7 @@ app.use(session({
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static(__root + "/public"));
+app.use(express.static(__root + "/build"));
 app.use(require(__root + "/router/router"))
 
 app.listen(PORT, function() {
