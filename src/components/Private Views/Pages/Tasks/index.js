@@ -8,7 +8,7 @@ import Invoice from "../../Forms/Invoice";
 import Card from "../../../Utilities/Card";
 import { tsPropertySignature } from "@babel/types";
 
-function ListItem({ data: task, projectId }) {
+function ListItem({ data: task}) {
   const context = useContext(RoutesContext)
   return (
     <Card>
@@ -19,7 +19,7 @@ function ListItem({ data: task, projectId }) {
       <p>Due Date: {task.dueDate}</p>
       <p>Start Date: {task.startDate}</p>
       <p>Elapsed Time: {task.elapsed}</p>
-      <Link to={context.view.time.new(task.id)}>Add Time</Link>
+      <Link to={context.view.time.new(task.id, task.project)}>Add Time</Link>
       {<Form method="DELETE" action={context.api.task(task.id)}>
         <input type="submit" value="Delete"></input>
       </Form>}

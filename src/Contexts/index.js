@@ -26,7 +26,7 @@ export const RoutesContext = React.createContext({
             projectTasks: id => `/project/${id}/tasks`
         },
         time: {
-            new: id => `/tasks/${id}/timeEntry` 
+            new: (id, projectId) => `/project/${projectId}/tasks/${id}/timeEntry` 
         },
         projects: {
             all: `/projects`,

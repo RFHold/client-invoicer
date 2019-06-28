@@ -27,8 +27,8 @@ class TaskFormWithoutRouter extends Component {
     }
     render() {
         return (
-            <Modal header={`${this.state.verb} Task`} onClose={this.context.view.tasks.all}>
-                <Form method={this.state.method} action={this.state.action} onSuccess={() => { this.props.history.push(this.context.view.tasks.all) }}>
+            <Modal header={`${this.state.verb} Task`} onClose={this.context.view.tasks.projectTasks(this.props.match.params.projectId)}>
+                <Form method={this.state.method} action={this.state.action} onSuccess={() => { this.props.history.push(this.context.view.tasks.projectTasks(this.props.match.params.projectId)) }}>
                     <div>
                         <label htmlFor="taskFormNameInput">Name</label>
                         <input id="taskFormNameInput" name="name" type="text" />
@@ -43,6 +43,10 @@ class TaskFormWithoutRouter extends Component {
                     <div>
                         <label htmlFor="taskFormDescriptionInput">Description</label>
                         <input id="taskFormDescriptionInput" name="description" type="text" />
+                    </div>
+                    <div>
+                        <label htmlFor="taskFormRateInput">Rate</label>
+                        <input id="taskFormRateInput" name="rate" type="number" />
                     </div>
                     <div>
                         <label htmlFor="taskFormStartDateInput">Start Date</label>

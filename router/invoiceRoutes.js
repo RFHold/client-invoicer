@@ -97,10 +97,7 @@ module.exports = function (router) {
             let totalElapsed = 0;
 
             for (const task of tasks) {
-
-                // TODO ADD RATE !!!!!!!
-                task.rate = 40
-                
+                                
                 defs.push({
                     text: `${task.name} $${task.rate}/hour`,
                     style: "subsubheader",
