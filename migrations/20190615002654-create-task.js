@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('CompanyClients', {
+    return queryInterface.createTable('Tasks', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -14,17 +14,25 @@ module.exports = {
         references: { model: 'Users', key: 'id' },
         onDelete: "CASCADE"
       },
-      company: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: { model: 'Companies', key: 'id' },
-        onDelete: "CASCADE"
-      },
       client: {
-        allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'Clients', key: 'id' },
-        onDelete: "CASCADE"
+        references: { model: 'Clients', key: 'id' }
+      },
+      project: {
+        type: Sequelize.INTEGER,
+        references: { model: 'Projects', key: 'id' }
+      },
+      startDate: {
+        type: Sequelize.DATE
+      },
+      dueDate: {
+        type: Sequelize.DATE
+      },
+      name: {
+        type: Sequelize.STRING
+      },
+      description: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -33,13 +41,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-      DeletedAt: {
-        type: Sequelize.DATE
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('CompanyClients');
+    return queryInterface.dropTable('Tasks');
   }
 };

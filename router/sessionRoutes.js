@@ -1,6 +1,6 @@
 const db = require(__root + "/models")
-const Sequelize = require('sequelize')
-const bcrypt = require('bcrypt')
+const Sequelize = require('./node_modules/sequelize')
+const bcrypt = require('./node_modules/bcrypt')
 const Op = Sequelize.Op;
 
 module.exports = function (router) {
@@ -16,13 +16,13 @@ module.exports = function (router) {
                     res.status(401).json({ error: "Session user does not exist" })
                 }
             }).catch((error) => {
-                res.status(500).json({ error: "Internal server error" })
+                res.status(500).json({ message: "Internal server error", error: error })
             })
-        }else{
+        } else {
             return res.status(401).json({ error: "Not logged in" })
         }
     }
-    
+
     router.post("/api/session", function (req, res) {
         const { login, password } = req.body
 
@@ -33,12 +33,12 @@ module.exports = function (router) {
         }).then((user) => {
             if (user && bcrypt.compareSync(password, user.password)) {
                 req.session.userID = user.id
-                res.json({success: true, message: `Logged in as ${user.username}`})
+                res.json({ success: true, message: `Logged in as ${user.username}` })
             } else {
                 res.status(401).json({ success: false, error: "Incorrect username or password" })
             }
         }).catch((error) => {
-            res.status(500).json({ error: "Internal server error" })
+            res.status(500).json({ message: "Internal server error", error: error })
         })
     })
 

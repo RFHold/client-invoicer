@@ -1,5 +1,5 @@
 import React, { PureComponent as Component } from "react";
-import { CompanyContext } from "../Contexts"
+import { SessionContext } from "../Contexts"
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
@@ -19,9 +19,12 @@ function checkSession() {
 class Authenticator extends Component {
     componentDidMount() {
         checkSession().then(response => {
-
+            this.context.setSession(true)
         }).catch(error => {
-            this.props.history.push("/login")
+            this.context.setSession(false)
+            if (this.props.history.location.pathname !== "/register") {
+                this.props.history.push("/login")
+            }
         })
     }
     render() {
@@ -31,6 +34,6 @@ class Authenticator extends Component {
     }
 }
 
-Authenticator.contextType = CompanyContext;
+Authenticator.contextType = SessionContext;
 
 export default withRouter(Authenticator)

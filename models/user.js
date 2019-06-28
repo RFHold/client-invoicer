@@ -38,8 +38,7 @@ module.exports = (sequelize, DataTypes) => {
     verified: {
       type: DataTypes.BOOLEAN
     }
-  }, { 
-    paranoid: true, 
+  }, {
     getterMethods: {
       fullName() {
         return `${this.firstName} ${this.lastName}`;
@@ -58,36 +57,30 @@ module.exports = (sequelize, DataTypes) => {
   });
   User.associate = function(models) {
     // associations can be defined here
-    this.hasMany(models.Token, {
+    this.hasMany(models.Client, {
+      foreignKey: 'user',
+      constraints: true,
+      onDelete: "CASCADE"
+    });
+    this.hasMany(models.Project, {
+      foreignKey: 'user',
+      constraints: true,
+      onDelete: "CASCADE"
+    });
+    this.hasMany(models.Task, {
       foreignKey: 'user',
       constraints: true,
       onDelete: "CASCADE"
     });
     this.hasMany(models.TimeEntry, {
       foreignKey: 'user',
-      constraints: true
+      constraints: true,
+      onDelete: "CASCADE"
     });
-    this.hasMany(models.Company, {
+    this.hasMany(models.Invoice, {
       foreignKey: 'user',
-      constraints: true
-    });
-    this.belongsToMany(models.Company, {
-      through: {
-        model: models.CompanyUser,
-        unique: false
-      },
-      foreignKey: 'user',
-      otherKey: 'company',
-      as: "UserCompanies"
-    });
-    this.belongsToMany(models.Client, {
-      through: {
-        model: models.ClientUser,
-        unique: false
-      },
-      foreignKey: 'user',
-      otherKey: 'client',
-      as: "UserClients"
+      constraints: true,
+      onDelete: "CASCADE"
     });
   };
   return User;

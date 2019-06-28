@@ -11,22 +11,8 @@ module.exports = {
       user: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'Users', key: 'id' }
-      },
-      employee: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: { model: 'CompanyMembers', key: 'id' }
-      },
-      service: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: { model: 'Services', key: 'id' }
-      },
-      company: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: { model: 'Companies', key: 'id' }
+        references: { model: 'Users', key: 'id' },
+        onDelete: "CASCADE"
       },
       client: {
         allowNull: false,
@@ -41,9 +27,9 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: 'Projects', key: 'id' }
       },
-      goal: {
+      task: {
         type: Sequelize.INTEGER,
-        references: { model: 'Goals', key: 'id' }
+        references: { model: 'Tasks', key: 'id' }
       },
       startDate: {
         allowNull: false,
@@ -57,19 +43,12 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      archived: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      },
-      deletedAt: {
         type: Sequelize.DATE
       }
     });

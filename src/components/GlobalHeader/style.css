@@ -14,13 +14,17 @@
 #brand-col, #headernav-col {
     display: flex;
     align-items: center;
-    padding: 0 20px;
     margin: 0;
 }
 
 #brand-col {
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
+    padding-left: 20px;
+}
+
+#headernav-col {
+    padding: 0;
 }
 
 #brand {
@@ -37,13 +41,39 @@
     border-bottom: 1px solid #ccc;
 }
 
-#timers {
-    font-size: 24px;
-    border: 1px solid #ccc;
-    margin-right: 20px;
-}
-
 #header-links {
     margin: 0;
     padding: 0;
+    height: 100%;
+}
+
+#timers {
+    font-size: 24px;
+    width: 70px;
+    display: inline-block;
+    text-align: center;
+    padding-top: 20px;
+}
+
+#user {
+    border: 1px solid #ccc;
+    height: 100%;
+    display: inline-block;
+    align-items: center;
+    position: relative;
+    padding: 25px;
+}
+
+#user-companies {
+    padding: 10px;
+    text-align: left;
+}
+
+#user-options {
+    border-top: 1px solid #ccc;
+    padding: 10px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }

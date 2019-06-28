@@ -5,18 +5,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER,
     },
-    member: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-    },
-    service: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-    },
-    company: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-    },
     client: {
       allowNull: false,
       type: DataTypes.INTEGER,
@@ -25,9 +13,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
     },
     project: {
+      allowNull: false,
       type: DataTypes.INTEGER,
     },
     task: {
+      allowNull: false,
       type: DataTypes.INTEGER,
     },
     startDate: {
@@ -41,52 +31,29 @@ module.exports = (sequelize, DataTypes) => {
     description: {
       allowNull: false,
       type: DataTypes.STRING
-    },
-    archived: {
-      allowNull: false,
-      type: DataTypes.DATE
     }
-  }, { paranoid: true});
+  });
   TimeEntry.associate = function(models) {
     // associations can be defined here
     this.belongsTo(models.User, {
       foreignKey: 'user',
       constraints: true
     });
-    this.belongsTo(models.CompanyUser, {
-      foreignKey: 'member',
-      constraints: true,
-      onDelete: "CASCADE"
-    });
-    this.belongsTo(models.Service, {
-      foreignKey: 'service',
-      constraints: true,
-      onDelete: "CASCADE"
-    });
-    this.belongsTo(models.Company, {
-      foreignKey: 'company',
-      constraints: true,
-      onDelete: "CASCADE"
-    });
-    this.belongsTo(models.Client, {
-      foreignKey: 'client',
-      constraints: true,
-      onDelete: "CASCADE"
-    });
-    this.belongsTo(models.Invoice, {
-      foreignKey: 'invoice',
-      constraints: true,
-      onDelete: "CASCADE"
+    this.belongsTo(models.Task, {
+      foreignKey: 'task',
+      constraints: true
     });
     this.belongsTo(models.Project, {
       foreignKey: 'project',
-      constraints: true,
-      onDelete: "CASCADE"
+      constraints: true
     });
-    this.belongsTo(models.Task, {
-      foreignKey: 'task',
-      constraints: true,
-      onDelete: "CASCADE"
+    this.belongsTo(models.Client, {
+      foreignKey: 'client',
+      constraints: true
+    });
+    this.belongsTo(models.Invoice, {
+      foreignKey: 'invocie',
+      constraints: true
     });
   };
   return TimeEntry;

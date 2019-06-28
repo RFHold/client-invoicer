@@ -1,5 +1,6 @@
 import React, { PureComponent as Component } from "react";
 import Form from '../../Form';
+import Modal from '../../Modal';
 import { CompanyContext } from "../../Contexts"
 import { withRouter } from 'react-router-dom';
 
@@ -19,14 +20,15 @@ class ClientFormWithoutRouter extends Component {
     }
     render() {
         return (
-            <Form method={this.state.method} action={this.state.action}>
-                <h1>Create Client</h1>
-                <div>
-                    <label htmlFor="clientFormNameInput">Name</label>
-                    <input id="clientFormNameInput" name="name" type="text" />
-                </div>
-                <button type="submit">{this.state.verb} Client</button>
-            </Form>
+            <Modal header={`${this.state.verb} Client`} onClose={this.context.routes.clientsViewRoute()}>
+                <Form method={this.state.method} action={this.state.action} onSuccess={() => { this.props.history.push(this.context.routes.clientsViewRoute()) }}>
+                    <div>
+                        <label htmlFor="clientFormNameInput">Name</label>
+                        <input id="clientFormNameInput" name="name" type="text" />
+                    </div>
+                    <button type="submit">{this.state.verb} Client</button>
+                </Form>
+            </Modal>
         );
     }
 }
