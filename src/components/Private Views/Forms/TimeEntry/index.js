@@ -27,8 +27,8 @@ class TimeFormWithoutRouter extends Component {
     }
     render() {
         return (
-            <Modal header={`${this.state.verb} Time`} onClose={this.context.view.tasks.all}>
-                <Form method={this.state.method} action={this.state.action} onSuccess={() => { this.props.history.push(this.context.view.tasks.all) }}>
+            <Modal header={`${this.state.verb} Time`} onClose={this.context.view.tasks.projectTasks(this.props.match.params.projectId)}>
+                <Form method={this.state.method} action={this.state.action} onSuccess={() => { this.props.history.push(this.context.view.tasks.projectTasks(this.props.match.params.projectId)) }}>
                     <div>
                         <label htmlFor="TimeFormProjectInput">Task</label>
                         <select name="task" id="timeFormProjectInput">

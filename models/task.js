@@ -26,6 +26,10 @@ module.exports = (sequelize, DataTypes) => {
     description: {
       allowNull: false,
       type: DataTypes.STRING
+    },
+    rate: {
+      allowNull: false,
+      type: DataTypes.INTEGER
     }
   }, {
       getterMethods: {
@@ -47,7 +51,8 @@ module.exports = (sequelize, DataTypes) => {
             dueDate: this.dueDate,
             elapsed: this.elapsed,
             project: this.project,
-            client: this.client
+            client: this.client,
+            rate: this.rate
           }
         }
       }

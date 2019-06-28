@@ -17,7 +17,7 @@ function ListItem({ data: invoice }) {
             <div className="row center-xs">
                 <div className="col-xs-11">
                     <div className="row center-xs">
-                        <h3>{invoice.name}</h3>
+                        <h3>Invoice</h3>
                     </div>
                 </div>
                 <div className="col-xs-1">
@@ -36,6 +36,14 @@ function ListItem({ data: invoice }) {
                                 </div>
                             </div>
                         </DropDown>
+                    </div>
+                </div>
+
+                <div className="row center-xs">
+                    <div className="col-xs-12 text-center">
+                        <h6>{invoice.client}</h6>
+                        <p>Posted: {invoice.date}</p>
+                        <p>{invoice.startDate} - {invoice.endDate}</p>
                     </div>
                 </div>
             </div>

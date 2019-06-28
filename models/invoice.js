@@ -46,7 +46,10 @@ module.exports = (sequelize, DataTypes) => {
         json() {
           return {
             id: this.id,
-            client: this.client
+            client: (this.Client) ? this.Client.name : this.client,
+            date: this.date,
+            startDate: this.startDate,
+            endDate: this.endDate
           }
         }
       }
